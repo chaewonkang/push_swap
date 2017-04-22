@@ -22,8 +22,8 @@ int		ft_end(int status)
 		return (0);
 	}
 	else if (status == 3)
-		ft_putendl_fd("READ Error", 2);
+		ft_putendl_fd("Error (read)", 2);
 	else if (status == 4)
-		ft_putendl_fd("MALLOC Error", 2);
+		ft_putendl_fd("Error (malloc)", 2);
 	return (-1);
 }

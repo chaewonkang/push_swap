@@ -37,7 +37,7 @@ typedef struct	s_stack
 	int	j;
 }		t_stack;
 
-int		get_instructions(char *line, t_stack *stack);
+int		get_operations(char *line, t_stack *stack);
 int		ft_end(int status);
 
 #endif

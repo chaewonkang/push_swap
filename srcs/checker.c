@@ -17,12 +17,12 @@ static int		check_stack(t_stack *stack, int find_dup)
 	I = -1;
 	if (find_dup)
 	{
-		while (++I + 1 < LEN)
+		while (++I + 1 < PARAM)
 		{
 			J = -1;
-			while (++J < LEN)
+			while (++J < PARAM)
 			{
-				if (I == J && J < LEN)
+				if (I == J && J < PARAM)
 					++J;
 				if (A[I] == A[J] && I != J)
 					return (0);
@@ -31,7 +31,7 @@ static int		check_stack(t_stack *stack, int find_dup)
 	}
 	else
 	{
-		while (++I + 1 < LEN)
+		while (++I + 1 < PARAM)
 		{
 			if (A[I] >= A[I + 1])
 				return (0);
@@ -40,9 +40,23 @@ static int		check_stack(t_stack *stack, int find_dup)
 	return (1);
 }
 
-static void		checker(char **arg, int param)
+static void		get_instructions(t_stack *stack)
 {
 	char		*line;
+	int		ret;
+
+	while ((ret = get_next_line(0, &line)))
+	{
+		if (ret == -1)
+			exit(ft_end(3));
+		if (!get_operations(line, stack))
+			exit(ft_end(1));
+		free(line);
+	}
+}
+
+static void		checker(char **arg, int param)
+{
 	int		r;
 	t_stack		*stack;
 
@@ -61,14 +75,7 @@ static void		checker(char **arg, int param)
 	free(arg);
 	if (!check_stack(stack, 1))
 		exit(ft_end(1));
-	while ((r = get_next_line(0, &line)))
-	{
-		if (r == -1)
-			exit(ft_end(3));
-		if (!get_instructions(line, stack))
-			exit(ft_end(1));
-		free(line);
-	}
+	get_instructions(stack);
 	check_stack(stack, 0) && !B ? ft_putendl("OK") : exit(ft_end(2));
 }
 
