@@ -19,7 +19,7 @@ int		ft_end(int status)
 	else if (status == 2)
 	{
 		ft_putendl("KO");
-		retur (0);
+		return (0);
 	}
 	else if (status == 3)
 		ft_putendl_fd("READ ERROR", 2);

@@ -18,13 +18,16 @@
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
 
+# define A stack->stack_a
+# define B stack->stack_b
+
 typedef struct	s_stack
 {
-	char	*stack_a;
-	char	*stack_b;
-}				t_stack;
+	int	*stack_a;
+	int	*stack_b;
+}		t_stack;
 
-void		check(char **arg);
-int			ft_end(int status);
+int		get_instructions(char *line, t_stack *stack);
+int		ft_end(int status);
 
 #endif

@@ -1,4 +1,4 @@
- # *************************************************************************** #
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
@@ -13,8 +13,8 @@
 NAME = push_swap
 NAME_C = checker
 
-SRCS = main_push_swap.c 
-SRCS_C = main_checker.c end.c checker.c
+SRCS = main_push_swap.c
+SRCS_C = checker.c end.c
 
 FLAGS = -Wall -Werror -Wextra
 LIBFT = ./libft/
