@@ -42,14 +42,16 @@ static int		check_stack(t_stack *stack, int find_dup)
 
 static void		checker(char **arg, int param)
 {
-	//	char		*line;
+	char		*line;
 	int		r;
 	t_stack		*stack;
 
 	if (!(stack = ft_memalloc(sizeof(t_stack))))
 		exit(ft_end(4));
-	LEN = param;
-	A = ft_memalloc(sizeof(int) * LEN);
+	PARAM = param;
+	A = ft_memalloc(sizeof(int) * PARAM);
+	LEN_A = PARAM;
+	B = ft_memalloc(sizeof(int) * PARAM);
 	r = -1;
 	while (arg[++r])
 	{
@@ -59,15 +61,15 @@ static void		checker(char **arg, int param)
 	free(arg);
 	if (!check_stack(stack, 1))
 		exit(ft_end(1));
-	/*	while ((r = get_next_line(0, &line)))
-		{
+	while ((r = get_next_line(0, &line)))
+	{
 		if (r == -1)
-		exit(ft_end(3));
+			exit(ft_end(3));
 		if (!get_instructions(line, stack))
-		exit(ft_end(1));
+			exit(ft_end(1));
 		free(line);
-		}
-	check_stack(stack, 0) ? ft_putendl("OK") : exit(ft_end(2));*/
+	}
+	check_stack(stack, 0) && !B ? ft_putendl("OK") : exit(ft_end(2));
 }
 
 static int		get_format(char **arg)

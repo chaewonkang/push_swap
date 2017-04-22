@@ -20,7 +20,9 @@
 
 # define A stack->stack_a
 # define B stack->stack_b
-# define LEN stack->param
+# define PARAM stack->param
+# define LEN_A stack->len_a
+# define LEN_B stack->len_b
 # define I stack->i
 # define J stack->j
 
@@ -29,6 +31,8 @@ typedef struct	s_stack
 	int	*stack_a;
 	int	*stack_b;
 	int	param;
+	int	len_a;
+	int	len_b;
 	int	i;
 	int	j;
 }		t_stack;
