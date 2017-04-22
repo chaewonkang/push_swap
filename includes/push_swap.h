@@ -20,11 +20,17 @@
 
 # define A stack->stack_a
 # define B stack->stack_b
+# define LEN stack->param
+# define I stack->i
+# define J stack->j
 
 typedef struct	s_stack
 {
 	int	*stack_a;
 	int	*stack_b;
+	int	param;
+	int	i;
+	int	j;
 }		t_stack;
 
 int		get_instructions(char *line, t_stack *stack);

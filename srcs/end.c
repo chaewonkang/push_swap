@@ -15,15 +15,15 @@
 int		ft_end(int status)
 {
 	if (status == 1)
-		ft_putendl_fd("ERROR", 2);
+		ft_putendl_fd("Error", 2);
 	else if (status == 2)
 	{
 		ft_putendl("KO");
 		return (0);
 	}
 	else if (status == 3)
-		ft_putendl_fd("READ ERROR", 2);
+		ft_putendl_fd("READ Error", 2);
 	else if (status == 4)
-		ft_putendl_fd("MALLOC ERROR", 2);
+		ft_putendl_fd("MALLOC Error", 2);
 	return (-1);
 }

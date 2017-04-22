@@ -12,15 +12,44 @@
 
 #include "../includes/push_swap.h"
 
+static int		check_stack(t_stack *stack, int find_dup)
+{
+	I = -1;
+	if (find_dup)
+	{
+		while (++I + 1 < LEN)
+		{
+			J = -1;
+			while (++J < LEN)
+			{
+				if (I == J && J < LEN)
+					++J;
+				if (A[I] == A[J] && I != J)
+					return (0);
+			}
+		}
+	}
+	else
+	{
+		while (++I + 1 < LEN)
+		{
+			if (A[I] >= A[I + 1])
+				return (0);
+		}
+	}
+	return (1);
+}
+
 static void		checker(char **arg, int param)
 {
-//	char		*line;
+	//	char		*line;
 	int		r;
 	t_stack		*stack;
 
 	if (!(stack = ft_memalloc(sizeof(t_stack))))
 		exit(ft_end(4));
-	A = ft_memalloc(sizeof(int) * param);
+	LEN = param;
+	A = ft_memalloc(sizeof(int) * LEN);
 	r = -1;
 	while (arg[++r])
 	{
@@ -28,25 +57,17 @@ static void		checker(char **arg, int param)
 		free(arg[r]);
 	}
 	free(arg);
-	r =  0;
-	while (r < param)
-	{
-
-		ft_printf("%d\n", A[r]);
-		r++;
-	}
-/*	while ((r = get_next_line(0, &line)))
-	{
+	if (!check_stack(stack, 1))
+		exit(ft_end(1));
+	/*	while ((r = get_next_line(0, &line)))
+		{
 		if (r == -1)
-			exit(ft_end(3));
+		exit(ft_end(3));
 		if (!get_instructions(line, stack))
-			exit(ft_end(1));
+		exit(ft_end(1));
 		free(line);
-	}
-	if (stack_checked())
-		ft_putendl("OK");
-	else
-		exit(ft_end(2));*/
+		}
+	check_stack(stack, 0) ? ft_putendl("OK") : exit(ft_end(2));*/
 }
 
 static int		get_format(char **arg)
@@ -67,7 +88,7 @@ static int		get_format(char **arg)
 			j++;
 		}
 		if (ft_strlen(arg[i]) > 11 || ft_atoss(arg[i]) > INT_MAX
-			|| ft_atoss(arg[i]) < INT_MIN)
+				|| ft_atoss(arg[i]) < INT_MIN)
 			return (0);
 		i++;
 	}
