@@ -12,7 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-static int		check_stack(t_stack *stack, int find_dup)
+static int		check_stack(t_stack *env, int find_dup)
 {
 	I = -1;
 	if (find_dup)
@@ -40,17 +40,34 @@ static int		check_stack(t_stack *stack, int find_dup)
 	return (1);
 }
 
-static void		get_instructions(t_stack *stack)
+static void		get_instructions(t_stack *env)
 {
 	char		*line;
 	int		ret;
+	int		i;
 
 	while ((ret = get_next_line(0, &line)))
 	{
 		if (ret == -1)
-			exit(ft_end(3));
-		if (!get_operations(line, stack))
-			exit(ft_end(1));
+			exit(ft_end(3, NULL));
+		OP_OK = 0;
+		if (!get_operations(line, env))
+			exit(ft_end(1, NULL));
+		i = 0;
+		ft_printf("STACK A: \n");
+		while (i < LEN_A)
+		{
+			ft_printf("%d\n", A[i]);
+			i++;
+		}
+		i = 0;
+		ft_printf("\nSTACK B: \n");
+		while (i < LEN_B)
+		{
+			ft_printf("%d\n", B[i]);
+			i++;
+		}
+		ft_putchar('\n');
 		free(line);
 	}
 }
@@ -58,10 +75,10 @@ static void		get_instructions(t_stack *stack)
 static void		checker(char **arg, int param)
 {
 	int		r;
-	t_stack		*stack;
+	t_stack		*env;
 
-	if (!(stack = ft_memalloc(sizeof(t_stack))))
-		exit(ft_end(4));
+	if (!(env = ft_memalloc(sizeof(t_stack))))
+		exit(ft_end(4, NULL));
 	PARAM = param;
 	A = ft_memalloc(sizeof(int) * PARAM);
 	LEN_A = PARAM;
@@ -73,10 +90,10 @@ static void		checker(char **arg, int param)
 		free(arg[r]);
 	}
 	free(arg);
-	if (!check_stack(stack, 1))
-		exit(ft_end(1));
-	get_instructions(stack);
-	check_stack(stack, 0) && !B ? ft_putendl("OK") : exit(ft_end(2));
+	if (!check_stack(env, 1))
+		exit(ft_end(1, NULL));
+	get_instructions(env);
+	check_stack(env, 0) && LEN_B == 0 ? exit(ft_end(0, env)) : exit(ft_end(2, NULL));
 }
 
 static int		get_format(char **arg)
@@ -117,14 +134,14 @@ int			main(int argc, char **argv)
 	else
 	{
 		if (!(arg = (char**)malloc(sizeof(char*) * (argc))))
-			exit(ft_end(4));
+			exit(ft_end(4, NULL));
 		i = -1;
 		while (++i + 1 < argc)
 			arg[i] = ft_strdup(argv[i + 1]);
 		arg[i] = NULL;
 	}
 	if (!(param = get_format(arg)))
-		exit(ft_end(1));
+		exit(ft_end(1, NULL));
 	checker(arg, param);
 	return (0);
 }

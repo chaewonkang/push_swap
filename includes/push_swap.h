@@ -15,16 +15,14 @@
 
 # include "../libft/includes/libft.h"
 
-# define INT_MIN -2147483648
-# define INT_MAX 2147483647
-
-# define A stack->stack_a
-# define B stack->stack_b
-# define PARAM stack->param
-# define LEN_A stack->len_a
-# define LEN_B stack->len_b
-# define I stack->i
-# define J stack->j
+# define A env->stack_a
+# define B env->stack_b
+# define PARAM env->param
+# define LEN_A env->len_a
+# define LEN_B env->len_b
+# define I env->index_i
+# define J env->index_j
+# define OP_OK env->op_ok
 
 typedef struct	s_stack
 {
@@ -33,11 +31,12 @@ typedef struct	s_stack
 	int	param;
 	int	len_a;
 	int	len_b;
-	int	i;
-	int	j;
+	int	index_i;
+	int	index_j;
+	int	op_ok;
 }		t_stack;
 
-int		get_operations(char *line, t_stack *stack);
-int		ft_end(int status);
+int		get_operations(char *line, t_stack *env);
+int		ft_end(int status, t_stack *env);
 
 #endif

@@ -12,8 +12,16 @@
 
 #include "../includes/push_swap.h"
 
-int		ft_end(int status)
+int		ft_end(int status, t_stack *env)
 {
+	if (status == 0)
+	{
+		ft_putendl("OK");
+		free(A);
+		free(B);
+		free(env);
+		return (0);
+	}
 	if (status == 1)
 		ft_putendl_fd("Error", 2);
 	else if (status == 2)

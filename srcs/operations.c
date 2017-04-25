@@ -1,86 +1,89 @@
 #include "../includes/push_swap.h"
 
-/*static void	reverse_rotate(t_stack *stack, int a)
-  {
-  }
-
-  static void	rotate(t_stack *stack, int a)
-  {
-  }*/
-
-static void	push(t_stack *stack, int a)
+static void	reverse_rotate(t_stack *env, int *st, int len)
 {
-	if (a && LEN_B > 0)
+	int	i;
+	int	j;
+
+	if (len > 1)
 	{
-		I = B[0];
-		J = -1;
-		while (++J + 1 < LEN_B)
-			B[J] = B[J + 1];
-		LEN_B -= 1;
-		J = LEN_A + 1;
-		while (--J > 0)
-			A[J] = A[J - 1];
-		A[0] = I;
-		LEN_A += 1;
+		i = st[len - 1];
+		j = len;
+		while (--j > 0)
+			st[j] = st[j - 1];
+		st[j] = i;
 	}
-	else if (!a && LEN_A > 0)
+	OP_OK = 1;
+}
+
+static void	rotate(t_stack *env, int *st, int len)
+{
+	int	i;
+	int	j;
+
+	if (len > 1)
 	{
-		I = A[0];
-		J = -1;
-		while (++J + 1 < LEN_A)
-			A[J] = A[J + 1];
-		LEN_A -= 1;
-		J = LEN_B + 1;
-		while (--J > 0)
-			B[J] = B[J - 1];
-		B[0] = I;
-		LEN_B += 1;
+		i = st[0];
+		j = -1;
+		while (++j + 1 < len)
+			st[j] = st[j + 1];
+		st[j] = i;
+	}
+	OP_OK = 1;
+}
+
+static void	push(int *st1, int *st2, int *len1, int *len2)
+{
+	int	i;
+	int	j;
+
+	if (*len2 > 0)
+	{
+		i = st2[0];
+		j = -1;
+		while (++j + 1 < *len2)
+			st2[j] = st2[j + 1];
+		*len2 -= 1;
+		j = *len1 + 1;
+		while (--j > 0)
+			st1[j] = st1[j - 1];
+		st1[0] = i;
+		*len1 += 1;
 	}
 }
 
-static void	swap(t_stack *stack, int a)
+static void	swap(t_stack *env, int *tab, int len)
 {
-	if ((a || a == 3) && LEN_A > 1)
-	{
-		I = A[0];
-		A[0] = A[1];
-		A[1] = I;
-	}
-	else if ((!a || a == 3) && LEN_B > 1)
-	{
-		I = B[0];
-		B[0] = B[1];
-		B[1] = I;
+	int	i;
 
+	if (len > 1)
+	{
+		i = tab[0];
+		tab[0] = tab[1];
+		tab[1] = i;
 	}
-	write(1, &A, PARAM - 1);
-	ft_putchar('\n');
+	OP_OK = 1;
 }
 
-int		get_operations(char *line, t_stack *stack)
+int		get_operations(char *line, t_stack *env)
 {
-	if (ft_strequ(line, "sa"))
-		swap(stack, 1);
-	else if (ft_strequ(line, "sb"))
-		swap(stack, 0);
-	else if (ft_strequ(line, "ss"))
-		swap(stack, 3);
-	else if (ft_strequ(line, "pa"))
-		push(stack, 1);
-	else if (ft_strequ(line, "pb"))
-		push(stack, 0);
-	/*	else if (ft_strequ(line, "ra") || ft_strequ(line, "rr"))
-		rotate(stack, 1);
-		else if (ft_strequ(line, "rb") || ft_strequ(line, "rr"))
-		rotate(stack, 0);
-		else if (ft_strequ(line, "rra") || ft_strequ(line, "rrr"))
-		reverse_rotate(stack, 1);
-		else if (ft_strequ(line, "rrb") || ft_strequ(line, "rrr"))
-		reverse_rotate(stack, 2);*/
-	else
-	{
-		ft_putendl("COUCOU");
+	if (ft_strequ(line, "sa") || ft_strequ(line, "ss"))
+		swap(env, A, LEN_A);
+	if (ft_strequ(line, "sb") || ft_strequ(line, "ss"))
+		swap(env, B, LEN_B);
+	else if (ft_strequ(line, "pa") && (OP_OK = 1))
+		push(A, B, &LEN_A, &LEN_B);
+	else if (ft_strequ(line, "pb") && (OP_OK = 1))
+		push(B, A, &LEN_B, &LEN_A);
+	else if (ft_strequ(line, "ra") || ft_strequ(line, "rr"))
+		rotate(env, A, LEN_A);
+	if (ft_strequ(line, "rb") || ft_strequ(line, "rr"))
+		rotate(env, B, LEN_B);
+	else if (ft_strequ(line, "rra") || ft_strequ(line, "rrr"))
+		reverse_rotate(env, A, LEN_A);
+	if (ft_strequ(line, "rrb") || ft_strequ(line, "rrr"))
+		reverse_rotate(env, B, LEN_B);
+	if (!OP_OK)
 		return (0);
-	}
 	return (1);
 }

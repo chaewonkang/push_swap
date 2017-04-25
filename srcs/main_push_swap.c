@@ -14,6 +14,6 @@
 
 int		main(void)
 {
-	write(1, &("push"), 4);
+	write(1, &("sa"), 2);
 	return (0);
 }
