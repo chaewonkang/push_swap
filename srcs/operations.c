@@ -85,5 +85,6 @@ int		get_operations(char *line, t_stack *env)
 		reverse_rotate(env, B, LEN_B);
 	if (!OP_OK)
 		return (0);
+	ft_putendl(line);
 	return (1);
 }

@@ -23,6 +23,7 @@
 # define I env->index_i
 # define J env->index_j
 # define OP_OK env->op_ok
+# define DISPLAY env->display_stacks
 
 typedef struct	s_stack
 {
@@ -34,6 +35,7 @@ typedef struct	s_stack
 	int	index_i;
 	int	index_j;
 	int	op_ok;
+	int	display_stacks;
 }		t_stack;
 
 int		get_operations(char *line, t_stack *env);
