@@ -74,20 +74,21 @@ static void		get_instructions(t_stack *env)
 
 static void		checker(char **arg, int param)
 {
-	int		r;
+	int		i;
 	t_stack		*env;
 
 	if (!(env = ft_memalloc(sizeof(t_stack))))
 		exit(ft_end(4, NULL));
 	PARAM = param;
-	A = ft_memalloc(sizeof(int) * PARAM);
+	if (!(A = ft_memalloc(sizeof(int) * PARAM)) ||
+		!(B = ft_memalloc(sizeof(int) * PARAM)))
+		exit(ft_end(4, NULL));
 	LEN_A = PARAM;
-	B = ft_memalloc(sizeof(int) * PARAM);
-	r = -1;
-	while (arg[++r])
+	i = -1;
+	while (arg[++i])
 	{
-		A[r] = ft_atoi(arg[r]);
-		free(arg[r]);
+		A[i] = ft_atoi(arg[i]);
+		free(arg[i]);
 	}
 	free(arg);
 	if (!check_stack(env, 1))
