@@ -12,19 +12,46 @@
 
 #include "../includes/push_swap.h"
 
+static void		stack_features(t_stack *env)
+{
+	int		val;
+
+	if (PARAM % 2 == 0)
+		val = PARAM / 2;
+	else
+		val = (PARAM + 1) / 2;
+	I = -1;
+	MIN = INT_MAX;
+	MAX = INT_MIN;
+	while (++I < LEN_A)
+	{
+		if (A[I] < MIN)
+			MIN = A[I];
+		if (A[I] > MAX)
+			MAX = A[I];
+	}
+}
+
 static void		push_swap(char **arg, int param)
 {
-	int	tab[12] = {0};
-	int	i;
+	int		i;
+	t_stack		*env;
 
-	(void)arg;
-	tab[0] = param;
-	i = 0;
-	while (i < 12)
+	if (!(env = ft_memalloc(sizeof(t_stack))))
+		exit(ft_end(4, NULL));
+	PARAM = param;
+	if (!(A = ft_memalloc(sizeof(int) * PARAM)) ||
+			!(B = ft_memalloc(sizeof(int) * PARAM)))
+		exit(ft_end(4, NULL));
+	LEN_A = PARAM;
+	i = -1;
+	while (arg[++i])
 	{
-		ft_printf("%d\n", tab[i]);
-		i++;
+		A[i] = ft_atoi(arg[i]);
+		free(arg[i]);
 	}
+	free(arg);
+	stack_features(env);
 }
 
 static int		get_format(char **arg)

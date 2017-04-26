@@ -13,8 +13,8 @@
 NAME = push_swap
 NAME_C = checker
 
-SRCS = push_swap.c end.c
-SRCS_C = checker.c end.c operations.c
+SRCS = push_swap.c op.c end.c
+SRCS_C = checker.c checker_op.c end.c
 
 FLAGS = -Wall -Werror -Wextra
 LIBFT = ./libft/
