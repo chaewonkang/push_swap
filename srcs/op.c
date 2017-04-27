@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_op.c                                       :+:      :+:    :+:   */
+/*   op.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/27 13:53:56 by ljoly             #+#    #+#             */
-/*   Updated: 2017/04/27 17:31:17 by ljoly            ###   ########.fr       */
+/*   Created: 2017/04/27 14:00:13 by ljoly             #+#    #+#             */
+/*   Updated: 2017/04/27 18:55:45 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void		reverse_rotate(t_stack *env, int *st, int len)
+static void     reverse_rotate(t_stack *env, int *st, int len)
 {
-	int			i;
-	int			j;
+	int         i;
+	int         j;
 
 	if (len > 1)
 	{
@@ -25,13 +25,12 @@ static void		reverse_rotate(t_stack *env, int *st, int len)
 			st[j] = st[j - 1];
 		st[j] = i;
 	}
-	OP_OK = 1;
 }
 
-static void		rotate(t_stack *env, int *st, int len)
+static void     rotate(t_stack *env, int *st, int len)
 {
-	int			i;
-	int			j;
+	int         i;
+	int         j;
 
 	if (len > 1)
 	{
@@ -41,13 +40,12 @@ static void		rotate(t_stack *env, int *st, int len)
 			st[j] = st[j + 1];
 		st[j] = i;
 	}
-	OP_OK = 1;
 }
 
-static void		push(int *st1, int *st2, int *len1, int *len2)
+static void     push(int *st1, int *st2, int *len1, int *len2)
 {
-	int			i;
-	int			j;
+	int         i;
+	int         j;
 
 	if (*len2 > 0)
 	{
@@ -64,9 +62,9 @@ static void		push(int *st1, int *st2, int *len1, int *len2)
 	}
 }
 
-static void		swap(t_stack *env, int *tab, int len)
+static void     swap(t_stack *env, int *tab, int len)
 {
-	int			i;
+	int         i;
 
 	if (len > 1)
 	{
@@ -74,29 +72,25 @@ static void		swap(t_stack *env, int *tab, int len)
 		tab[0] = tab[1];
 		tab[1] = i;
 	}
-	OP_OK = 1;
 }
 
-int		get_operations(char *line, t_stack *env)
+
+void		operate(int op)
 {
-	if (ft_strequ(line, "sa") || ft_strequ(line, "ss"))
+	if (op == SA || op == SS)
 		swap(env, A, LEN_A);
-	if (ft_strequ(line, "sb") || ft_strequ(line, "ss"))
+	if (op ==SB || op == SS)
 		swap(env, B, LEN_B);
-	else if (ft_strequ(line, "pa") && (OP_OK = 1))
+	else if (op == PA)
 		push(A, B, &LEN_A, &LEN_B);
-	else if (ft_strequ(line, "pb") && (OP_OK = 1))
+	else if (op == PB)
 		push(B, A, &LEN_B, &LEN_A);
-	else if (ft_strequ(line, "ra") || ft_strequ(line, "rr"))
+	else if (op == RA || op == RR)
 		rotate(env, A, LEN_A);
-	if (ft_strequ(line, "rb") || ft_strequ(line, "rr"))
+	if (op == RB || op == RR)
 		rotate(env, B, LEN_B);
-	else if (ft_strequ(line, "rra") || ft_strequ(line, "rrr"))
+	else if (op == RRA || op == RRR)
 		reverse_rotate(env, A, LEN_A);
-	if (ft_strequ(line, "rrb") || ft_strequ(line, "rrr"))
-		reverse_rotate(env, B, LEN_B);
-	if (!OP_OK)
-		return (0);
-	ft_putendl(line);
-	return (1);
+	if (op == RRB || op == RRR)
+		reverse_rotate(env, B, LEN_B);	
 }

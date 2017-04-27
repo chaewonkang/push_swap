@@ -5,101 +5,57 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/17 21:52:48 by ljoly             #+#    #+#             */
-/*   Updated: 2017/04/17 21:53:52 by ljoly            ###   ########.fr       */
+/*   Created: 2017/04/27 18:03:52 by ljoly             #+#    #+#             */
+/*   Updated: 2017/04/27 19:07:48 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void		stack_features(t_stack *env)
+static void		print_instruction(int op)
 {
-	int		val;
+	if (op == SA)
+		ft_putendl("sa");
+	else if (op == SB)
+		ft_putendl("sb");
+	else if (op == SS)
+		ft_putendl("ss");
+	else if (op == PA)
+		ft_putendl("pa");
+	else if (op == PB)
+		ft_putendl("pb");
+	else if (op == RA)
+		ft_putendl("ra");
+	else if (op == RB)
+		ft_putendl("rb");
+	else if (op == RR)
+		ft_putendl("rr");
+	else if (op == RRA)
+		ft_putendl("rra");
+	else if (op == RRB)
+		ft_putendl("rrb");
+	else if (op == RRR)
+		ft_putendl("rrr");
+}
 
-	if (PARAM % 2 == 0)
-		val = PARAM / 2;
-	else
-		val = (PARAM + 1) / 2;
+static void		is_sort(char *tab)
+{
 	I = -1;
-	MIN = INT_MAX;
-	MAX = INT_MIN;
-	while (++I < LEN_A)
+	while (++I + 1 < PARAM)
 	{
-		if (A[I] < MIN)
-			MIN = A[I];
-		if (A[I] > MAX)
-			MAX = A[I];
-	}
-}
-
-static void		push_swap(char **arg, int param)
-{
-	int		i;
-	t_stack		*env;
-
-	if (!(env = ft_memalloc(sizeof(t_stack))))
-		exit(ft_end(4, NULL));
-	PARAM = param;
-	if (!(A = ft_memalloc(sizeof(int) * PARAM)) ||
-			!(B = ft_memalloc(sizeof(int) * PARAM)))
-		exit(ft_end(4, NULL));
-	LEN_A = PARAM;
-	i = -1;
-	while (arg[++i])
-	{
-		A[i] = ft_atoi(arg[i]);
-		free(arg[i]);
-	}
-	free(arg);
-	stack_features(env);
-}
-
-static int		get_format(char **arg)
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	while (arg[i])
-	{
-		j = 0;
-		if (arg[i][j] == '-' || arg[i][j] == '+')
-			j++;
-		while (arg[i][j])
-		{
-			if (!ft_isdigit(arg[i][j]))
-				return (0);
-			j++;
-		}
-		if (ft_strlen(arg[i]) > 11 || ft_atoss(arg[i]) > INT_MAX
-				|| ft_atoss(arg[i]) < INT_MIN)
+		if (A[I] >= A[I + 1])
 			return (0);
-		i++;
 	}
-	return (i);
+	return (1);
 }
 
-int			main(int argc, char **argv)
+void			push_swap(t_stack *env)
 {
-	char		**arg;
-	int		i;
-	int		param;
-
-	if (argc < 2)
-		return (-1);
-	if (argc == 2)
-		arg = ft_strsplit(argv[1], ' ');
-	else
+	while (LEN_A < PARAM || !is_sort(A))
 	{
-		if (!(arg = (char**)malloc(sizeof(char*) * (argc))))
-			exit(ft_end(4, NULL));
-		i = -1;
-		while (++i + 1 < argc)
-			arg[i] = ft_strdup(argv[i + 1]);
-		arg[i] = NULL;
+		if (LEN_A > 1 && LEN_B > 1 && A[0] > A[1] && B[0] > B[1])
+			operate(SS);
+		
+		print_instruction();
 	}
-	if (!(param = get_format(arg)))
-		exit(ft_end(1, NULL));
-	push_swap(arg, param);
-	return (0);
 }

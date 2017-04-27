@@ -6,14 +6,14 @@
 #    By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/24 16:34:42 by ljoly             #+#    #+#              #
-#    Updated: 2017/04/18 17:23:48 by ljoly            ###   ########.fr        #
+#    Updated: 2017/04/27 18:02:48 by ljoly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 NAME_C = checker
 
-SRCS = push_swap.c op.c end.c
+SRCS = get_specs.c push_swap.c op.c end.c
 SRCS_C = checker.c checker_op.c end.c
 
 FLAGS = -Wall -Werror -Wextra

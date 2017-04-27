@@ -1,78 +1,65 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   get_specs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/18 17:19:19 by ljoly             #+#    #+#             */
-/*   Updated: 2017/04/27 18:48:01 by ljoly            ###   ########.fr       */
+/*   Created: 2017/04/27 18:02:04 by ljoly             #+#    #+#             */
+/*   Updated: 2017/04/27 18:46:37 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static int		check_stack(t_stack *env, int find_dup)
+static int		find_dup(t_stack *env)
 {
 	I = -1;
-	if (find_dup)
+	while (++I + 1 < PARAM)
 	{
-		while (++I + 1 < PARAM)
+		J = -1;
+		while (++J < PARAM)
 		{
-			J = -1;
-			while (++J < PARAM)
-			{
-				if (I == J && J < PARAM)
-					++J;
-				if (A[I] == A[J] && I != J)
-					return (0);
-			}
+			if (I == J && J < PARAM)
+				++J;
+			if (A[I] == A[J] && I != J)
+				return (1);
 		}
 	}
-	else
-	{
-		while (++I + 1 < PARAM)
-		{
-			if (A[I] >= A[I + 1])
-				return (0);
-		}
-	}
-	return (1);
+	return (0);
 }
 
-static void		get_instructions(t_stack *env)
+static void		get_min_med_max(t_stack *env)
 {
-	char		*line;
-	int			ret;
-	int			i;
-
-	while ((ret = get_next_line(0, &line)))
+	(PARAM % 2 == 0) ? (MED_RANK = PARAM / 2) : (MED_RANK = (PARAM + 1) / 2);
+	I = -1;
+	while (++I < LEN_A)
 	{
-		if (ret == -1)
-			exit(ft_end(3, NULL));
-		OP_OK = 0;
-		if (!get_operations(line, env))
-			exit(ft_end(1, NULL));
-		i = 0;
-		ft_printf("STACK A: \n");
-		while (i < LEN_A)
-		{
-			ft_printf("%d\n", A[i]);
-			i++;
-		}
-		i = 0;
-		ft_printf("\nSTACK B: \n");
-		while (i < LEN_B)
-		{
-			ft_printf("%d\n", B[i]);
-			i++;
-		}
-		ft_putchar('\n');
-		free(line);
+		if (A[I] < MIN)
+			MIN = A[I];
+		if (A[I] > MAX)
+			MAX = A[I];
 	}
+	I = -1;
+	while (++I < LEN_A)
+	{
+		DIST = 0;
+		J = -1;
+		while (++J < LEN_A)
+		{
+			if (A[J] > A[I])
+				DIST++;
+		}
+		if (DIST == MED_RANK - 1)
+		{
+			MED = A[I];
+			break ;
+		}
+	}
+	printf("MIN = %d\nMED = %zd\nMAX = %d\n", MIN, MED, MAX);
 }
 
-static void		checker(char **arg, int param)
+static void		get_specs(char **arg, int param)
 {
 	int			i;
 	t_stack		*env;
@@ -81,7 +68,7 @@ static void		checker(char **arg, int param)
 		exit(ft_end(4, NULL));
 	PARAM = param;
 	if (!(A = ft_memalloc(sizeof(int) * PARAM)) ||
-		!(B = ft_memalloc(sizeof(int) * PARAM)))
+			!(B = ft_memalloc(sizeof(int) * PARAM)))
 		exit(ft_end(4, NULL));
 	LEN_A = PARAM;
 	i = -1;
@@ -91,10 +78,11 @@ static void		checker(char **arg, int param)
 		free(arg[i]);
 	}
 	free(arg);
-	if (!check_stack(env, 1))
+	if (find_dup(env))
 		exit(ft_end(1, NULL));
-	get_instructions(env);
-	check_stack(env, 0) && LEN_B == 0 ? exit(ft_end(0, env)) : exit(ft_end(2, NULL));
+	MIN = INT_MAX;
+	MAX = INT_MIN;
+	get_min_med_max(env);
 }
 
 static int		get_format(char **arg)
@@ -143,6 +131,7 @@ int				main(int argc, char **argv)
 	}
 	if (!(param = get_format(arg)))
 		exit(ft_end(1, NULL));
-	checker(arg, param);
+	get_specs(arg, param);
+	push_swap(env);
 	return (0);
 }
