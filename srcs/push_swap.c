@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 18:03:52 by ljoly             #+#    #+#             */
-/*   Updated: 2017/04/27 19:07:48 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/04/29 19:02:15 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,24 +38,82 @@ static void		print_instruction(int op)
 		ft_putendl("rrr");
 }
 
-static void		is_sort(char *tab)
+static int		is_sort(int *st, int len, int inc)
 {
-	I = -1;
-	while (++I + 1 < PARAM)
+	int			i;
+
+	i = -1;
+	if (inc)
 	{
-		if (A[I] >= A[I + 1])
-			return (0);
+		while (++i + 1 < len)
+		{
+			if (st[i] >= st[i + 1])
+				return (0);
+		}
+		return (1);
 	}
-	return (1);
+	else
+	{
+		while (++i + 1 < len)
+		{
+			if (st[i] <= st[i + 1])
+				return (0);
+		}
+		return (1);
+	}
+}
+
+static int		next_target(int *st, int len, int target)
+{
+	int			i;
+	int			j;
+
+	i = -1;
+	j = len;
+	while (++i < len && --j > i)
+	{
+		if (st[i] < target)
+			return (i);
+		else if (st[j] < target)
+			return (j);
+	}
+	return (INT_MIN);
+}
+
+static void		put_to_b(t_stack *env)
+{
+	int			index;
+	int			op;
+
+	
+	if (LEN_B > 1 && B[0] < B[1] && B[0] < B[LEN_B - 1] &&  B[0] - B[1] > B[0] - B[LEN_B - 1] &&  
+	if (LEN_B > 1 && !index && A[1] < A[0] && (op = PB))
+		operate(env, PB);
+	else if (LEN_B > 1 && A[1] < MED && (op == SA))
+		operate(env, SA);
+	index = next_target(A, LEN_A, MED);
+	if (index <= MED_RANK)
+	{
+	}
+	else if (index > MED_RANK)
+	{
+	}
+	print_instrucion(op);
 }
 
 void			push_swap(t_stack *env)
 {
-	while (LEN_A < PARAM || !is_sort(A))
+	int			op;
+
+	while (LEN_B < MED_RANK || !is_sort(B, 0))
+		put_to_b(env);
+	while (LEN_A < PARAM || !is_sort(A, 1))
 	{
-		if (LEN_A > 1 && LEN_B > 1 && A[0] > A[1] && B[0] > B[1])
-			operate(SS);
-		
-		print_instruction();
+//		while (
+		if (LEN_A > 1 && LEN_B > 1 && A[0] > A[1] && B[0] > B[1] && (op = SS))
+			operate(env, SS);
+		else if (LEN_A > 1 && A[0] > A[1] && (op = SA))
+			operate(env, SA);
+		print_instruction(op);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 18:02:04 by ljoly             #+#    #+#             */
-/*   Updated: 2017/04/27 18:46:37 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/04/29 17:12:17 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ static void		get_specs(char **arg, int param)
 	MIN = INT_MAX;
 	MAX = INT_MIN;
 	get_min_med_max(env);
+	push_swap(env);
+	exit(ft_end(10, env));
 }
 
 static int		get_format(char **arg)
@@ -132,6 +134,5 @@ int				main(int argc, char **argv)
 	if (!(param = get_format(arg)))
 		exit(ft_end(1, NULL));
 	get_specs(arg, param);
-	push_swap(env);
 	return (0);
 }

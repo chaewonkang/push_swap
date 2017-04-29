@@ -6,13 +6,13 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 14:00:13 by ljoly             #+#    #+#             */
-/*   Updated: 2017/04/27 18:55:45 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/04/29 17:24:20 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void     reverse_rotate(t_stack *env, int *st, int len)
+static void     reverse_rotate(int *st, int len)
 {
 	int         i;
 	int         j;
@@ -27,7 +27,7 @@ static void     reverse_rotate(t_stack *env, int *st, int len)
 	}
 }
 
-static void     rotate(t_stack *env, int *st, int len)
+static void     rotate(int *st, int len)
 {
 	int         i;
 	int         j;
@@ -62,7 +62,7 @@ static void     push(int *st1, int *st2, int *len1, int *len2)
 	}
 }
 
-static void     swap(t_stack *env, int *tab, int len)
+static void     swap(int *tab, int len)
 {
 	int         i;
 
@@ -75,22 +75,22 @@ static void     swap(t_stack *env, int *tab, int len)
 }
 
 
-void		operate(int op)
+void		operate(t_stack *env, int op)
 {
 	if (op == SA || op == SS)
-		swap(env, A, LEN_A);
+		swap(A, LEN_A);
 	if (op ==SB || op == SS)
-		swap(env, B, LEN_B);
+		swap(B, LEN_B);
 	else if (op == PA)
 		push(A, B, &LEN_A, &LEN_B);
 	else if (op == PB)
 		push(B, A, &LEN_B, &LEN_A);
 	else if (op == RA || op == RR)
-		rotate(env, A, LEN_A);
+		rotate(A, LEN_A);
 	if (op == RB || op == RR)
-		rotate(env, B, LEN_B);
+		rotate(B, LEN_B);
 	else if (op == RRA || op == RRR)
-		reverse_rotate(env, A, LEN_A);
+		reverse_rotate(A, LEN_A);
 	if (op == RRB || op == RRR)
-		reverse_rotate(env, B, LEN_B);	
+		reverse_rotate(B, LEN_B);	
 }

@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 13:54:40 by ljoly             #+#    #+#             */
-/*   Updated: 2017/04/27 18:17:31 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/04/29 17:23:00 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int				get_operations(char *line, t_stack *env);
 ** Non-static functions for push_swap
 */
 void			push_swap(t_stack *env);
-int				operate(t_stack *env);
+void			operate(t_stack *env, int op);
 
 /*
 ** Non-static functions for both programs
