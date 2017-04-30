@@ -81,7 +81,7 @@ static void		checker(char **arg, int param)
 		exit(ft_end(4, NULL));
 	PARAM = param;
 	if (!(A = ft_memalloc(sizeof(int) * PARAM)) ||
-		!(B = ft_memalloc(sizeof(int) * PARAM)))
+			!(B = ft_memalloc(sizeof(int) * PARAM)))
 		exit(ft_end(4, NULL));
 	LEN_A = PARAM;
 	i = -1;

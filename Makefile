@@ -13,7 +13,7 @@
 NAME = push_swap
 NAME_C = checker
 
-SRCS = get_specs.c push_swap.c op.c end.c
+SRCS = get_specs.c push_swap.c op.c send_instruction.c end.c
 SRCS_C = checker.c checker_op.c end.c
 
 FLAGS = -Wall -Werror -Wextra

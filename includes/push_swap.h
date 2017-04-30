@@ -79,6 +79,7 @@ int				get_operations(char *line, t_stack *env);
 */
 void			push_swap(t_stack *env);
 void			operate(t_stack *env, int op);
+void			print_instruction(int op);
 
 /*
 ** Non-static functions for both programs

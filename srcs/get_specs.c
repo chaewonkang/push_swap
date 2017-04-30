@@ -83,7 +83,7 @@ static void		get_specs(char **arg, int param)
 	MIN = INT_MAX;
 	MAX = INT_MIN;
 	get_min_med_max(env);
-	push_swap(env);
+//	push_swap(env);
 	exit(ft_end(10, env));
 }
 
