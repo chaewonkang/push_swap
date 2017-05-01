@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 18:02:04 by ljoly             #+#    #+#             */
-/*   Updated: 2017/04/29 17:12:17 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/01 17:08:11 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void		get_min_med_max(t_stack *env)
 			break ;
 		}
 	}
-	printf("MIN = %d\nMED = %zd\nMAX = %d\n", MIN, MED, MAX);
+//	printf("MIN = %d\nMED = %zd\nMAX = %d\n", MIN, MED, MAX);
 }
 
 static void		get_specs(char **arg, int param)
@@ -83,7 +83,7 @@ static void		get_specs(char **arg, int param)
 	MIN = INT_MAX;
 	MAX = INT_MIN;
 	get_min_med_max(env);
-//	push_swap(env);
+	push_swap(env);
 	exit(ft_end(10, env));
 }
 

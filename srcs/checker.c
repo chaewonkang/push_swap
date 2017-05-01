@@ -6,38 +6,27 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:19:19 by ljoly             #+#    #+#             */
-/*   Updated: 2017/04/27 18:48:01 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/01 17:36:38 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static int		check_stack(t_stack *env, int find_dup)
+static int		find_dup(t_stack *env)
 {
 	I = -1;
-	if (find_dup)
+	while (++I + 1 < PARAM)
 	{
-		while (++I + 1 < PARAM)
+		J = -1;
+		while (++J < PARAM)
 		{
-			J = -1;
-			while (++J < PARAM)
-			{
-				if (I == J && J < PARAM)
-					++J;
-				if (A[I] == A[J] && I != J)
-					return (0);
-			}
+			if (I == J && J < PARAM)
+				++J;
+			if (A[I] == A[J] && I != J)
+				return (1);
 		}
 	}
-	else
-	{
-		while (++I + 1 < PARAM)
-		{
-			if (A[I] >= A[I + 1])
-				return (0);
-		}
-	}
-	return (1);
+	return (0);
 }
 
 static void		get_instructions(t_stack *env)
@@ -54,7 +43,7 @@ static void		get_instructions(t_stack *env)
 		if (!get_operations(line, env))
 			exit(ft_end(1, NULL));
 		i = 0;
-		ft_printf("STACK A: \n");
+/*		ft_printf("STACK A: \n");
 		while (i < LEN_A)
 		{
 			ft_printf("%d\n", A[i]);
@@ -67,7 +56,7 @@ static void		get_instructions(t_stack *env)
 			ft_printf("%d\n", B[i]);
 			i++;
 		}
-		ft_putchar('\n');
+		ft_putchar('\n');*/
 		free(line);
 	}
 }
@@ -91,10 +80,10 @@ static void		checker(char **arg, int param)
 		free(arg[i]);
 	}
 	free(arg);
-	if (!check_stack(env, 1))
+	if (find_dup(env))
 		exit(ft_end(1, NULL));
 	get_instructions(env);
-	check_stack(env, 0) && LEN_B == 0 ? exit(ft_end(0, env)) : exit(ft_end(2, NULL));
+	is_sort(A, LEN_A, 1) && LEN_B == 0 ? exit(ft_end(0, env)) : exit(ft_end(2, NULL));
 }
 
 static int		get_format(char **arg)

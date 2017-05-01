@@ -6,11 +6,11 @@
 #    By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/24 16:13:48 by ljoly             #+#    #+#              #
-#    Updated: 2017/04/18 16:05:50 by ljoly            ###   ########.fr        #
+#    Updated: 2017/05/01 20:23:08 by ljoly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: $(NAME) all clean fclean re
+.PHONY: all clean fclean re
 
 NAME = libft.a
 

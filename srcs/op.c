@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 14:00:13 by ljoly             #+#    #+#             */
-/*   Updated: 2017/04/29 17:24:20 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/01 19:26:54 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,5 @@ void		operate(t_stack *env, int op)
 	else if (op == RRA || op == RRR)
 		reverse_rotate(A, LEN_A);
 	if (op == RRB || op == RRR)
-		reverse_rotate(B, LEN_B);	
+		reverse_rotate(B, LEN_B);
 }

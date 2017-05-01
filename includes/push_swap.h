@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 13:54:40 by ljoly             #+#    #+#             */
-/*   Updated: 2017/04/29 17:23:00 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/01 19:30:45 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,17 @@
 /*
 ** Defining instructions for push_swap
 */
-# define SA 0
-# define SB 1
-# define SS 2
-# define PA 3
-# define PB 4
-# define RA 5
-# define RB 6
-# define RR 7
-# define RRA 8
-# define RRB 9
-# define RRR 10
+# define SA 1
+# define SB 2
+# define SS 3
+# define PA 4
+# define PB 5
+# define RA 6
+# define RB 7
+# define RR 8
+# define RRA 9
+# define RRB 10
+# define RRR 11
 
 /*
 ** Storing environment - both programs will use a 't_stack' type
@@ -79,11 +79,12 @@ int				get_operations(char *line, t_stack *env);
 */
 void			push_swap(t_stack *env);
 void			operate(t_stack *env, int op);
-void			print_instruction(int op);
+void			send_instruction(t_stack *env, int op);
 
 /*
 ** Non-static functions for both programs
 */
+int				is_sort(int *st, int len, int inc);
 int				ft_end(int status, t_stack *env);
 
 #endif
