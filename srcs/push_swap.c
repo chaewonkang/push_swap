@@ -6,94 +6,75 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 18:03:52 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/01 20:12:39 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/02 21:11:42 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void		move(t_stack *env, int start, int end, int op)
-{
-	I = start - 1;
-	while (++I <= end)
-	{
-		operate(env, op);
-		send_instruction(env, op);
-	}
-}
-
-static int		next_target(int *st, int len, int target)
+static void		send_op(t_stack *env, int op)
 {
 	int			i;
-	int			j;
 
-	i = -1;
-	j = len;
-	while (++i < len && --j > i)
+	if (op == SA)
+		ft_putendl("sa");
+	else if (op == SB)
+		ft_putendl("sb");
+	else if (op == SS)
+		ft_putendl("ss");
+	else if (op == PA)
+		ft_putendl("pa");
+	else if (op == PB)
+		ft_putendl("pb");
+	else if (op == RA)
+		ft_putendl("ra");
+	else if (op == RB)
+		ft_putendl("rb");
+	else if (op == RR)
+		ft_putendl("rr");
+	else if (op == RRA)
+		ft_putendl("rra");
+	else if (op == RRB)
+		ft_putendl("rrb");
+	else if (op == RRR)
+		ft_putendl("rrr");
+	/*i = 0;
+	ft_printf("STACK A: \n");
+	while (i < LEN_A)
 	{
-		if (st[i] < target)
-			return (i);
-		else if (st[j] < target)
-			return (j);
+		ft_printf("%d\n", A[i]);
+		i++;
 	}
-	return (-1);
+	i = 0;
+	ft_printf("\nSTACK B: \n");
+	while (i < LEN_B)
+	{
+		ft_printf("%d\n", B[i]);
+		i++;
+	}
+	ft_putchar('\n');
 }
 
-//static void		sort_a(t_stack *env)
-//{
-//}
-
-static void		use_b(t_stack *env)
+static void		read_op(t_stack *env, int idiot)
 {
-	int			op;
+	t_algo		*tmp;
 
-	op = 0;
-	if (!(I = next_target(A, LEN_A, MED)) && (op = PB))
-		operate(env, PB);
-	else if (LEN_B > 1 && A[0] > A[1] && B[0] < B[1] && (op = SS))
-		operate(env, SS);
-	else if (I > -1 && I <= MED_RANK && LEN_B > 1 && B[0] < B[LEN_B - 1])
-		operate(env, RR);
-	else if (I > MED_RANK && LEN_B > 1 && B[0] < B[LEN_B - 1])
-		operate(env, RRR);
-	else if (LEN_B > 1 && B[0] < B[1] && (op = SB))
-		operate(env, SB);
-	else if ((I == 1 || (A[0] > A[1] && A[0] > A[LEN_A - 1] &&
-				A[0] - A[1] < A[0] - A[LEN_A - 1])) && (op = SA))
-		operate(env, SA);
-	else if (I > -1 && I <= MED_RANK)
-		move(env, 0, I, RA);
-	else if ((I > -1 && I > MED_RANK) || A[0] > A[LEN_A - 1])
-		move(env, I, LEN_A, RRA);
-	else if (LEN_B > 1 && B[0] > B[1] && B[0] > B[LEN_B - 1] &&
-			B[0] - B[1] < B[0] - B[LEN_B - 1] && (op = RB))
-		operate(env, RB);
-	else if (((LEN_B > 1 && B[0] > B[1] && B[0] > B[LEN_B - 1] &&
-			B[0] - B[1] > B[0] - B[LEN_B - 1]) ||
-			(LEN_B > 1 && B[0] > B[1] && B[0] < B[LEN_B - 1])) && (op = RRB))
-		operate(env, RRB);
-	op ? send_instruction(env, op) : (op = 1) ;
+	tmp = (idiot ? IDIOT : SMART);
+	while (tmp)
+	{
+		send_op(env, tmp->op);
+		tmp = tmp->next;
+	}
 }
 
 void			push_swap(t_stack *env)
 {
-
-	if (LEN_A > 3)
-	{
-		while (LEN_B < MED_RANK || !is_sort(B, LEN_B, 0))
-		{
-			LEN_B < MED_RANK ? ft_putendl("LEN_B < MED_RANK") : ft_putendl("!is_sort");
-			use_b(env);
-		}
-	}
-	while (!is_sort(A, LEN_A, 1))
-	{
-		ft_putendl("TAMERE");
-//		sort_a(env);
-	}
-	while (LEN_B > 0)
-	{
-		operate(env, PA);
-		send_instruction(env, PA);
-	}
+	if (is_sort(A, LEN_A, 1))
+		return ;
+//	idiot_push_swap(env);
+	smart_push_swap(env);
+//	if (IDIOT_MOVES < SMART_MOVES)
+//		read_op(env, 1);
+//	else
+	read_op(env, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 18:02:04 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/01 17:08:11 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/02 12:01:41 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void		get_min_med_max(t_stack *env)
 			break ;
 		}
 	}
-//	printf("MIN = %d\nMED = %zd\nMAX = %d\n", MIN, MED, MAX);
+	ft_printf("MED = %d\nMED_RANK = %d\n", MED, MED_RANK);
 }
 
 static void		get_specs(char **arg, int param)

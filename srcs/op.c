@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 14:00:13 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/01 19:26:54 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/02 14:48:45 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static void     swap(int *tab, int len)
 }
 
 
-void		operate(t_stack *env, int op)
+void		do_op(t_stack *env, int op)
 {
 	if (op == SA || op == SS)
 		swap(A, LEN_A);

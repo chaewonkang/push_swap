@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 13:54:40 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/01 19:30:45 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/02 20:08:14 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,16 @@
 # define MAX env->max
 
 /*
+** Counting algorithms' moves to choose the fastest
+*/
+# define IDIOT env->idiot
+# define LAST_IDIOT env->last_idiot
+# define SMART env->smart
+# define LAST_SMART env->last_smart
+# define IDIOT_MOVES env->idiot_moves
+# define SMART_MOVES env->smart_moves
+
+/*
 ** Defining instructions for push_swap
 */
 # define SA 1
@@ -49,24 +59,39 @@
 # define RRR 11
 
 /*
+** Storing operations for both algos
+*/
+typedef struct	s_algo
+{
+	int				op;
+	struct s_algo	*next;	
+}				t_algo;
+
+/*
 ** Storing environment - both programs will use a 't_stack' type
 */
 typedef struct	s_stack
 {
-	int		*stack_a;
-	int		*stack_b;
-	int		param;
-	int		len_a;
-	int		len_b;
-	int		index_i;
-	int		index_j;
-	int		op_ok;
-	int		display_stacks;
-	int		med;
-	int		med_rank;
-	int		dist;
-	int		min;
-	int		max;
+	int			*stack_a;
+	int			*stack_b;
+	int			param;
+	int			len_a;
+	int			len_b;
+	int			index_i;
+	int			index_j;
+	int			op_ok;
+	int			display_stacks;
+	int			med;
+	int			med_rank;
+	int			dist;
+	int			min;
+	int			max;
+	t_algo		*idiot;
+	t_algo		*last_idiot;
+	t_algo		*smart;
+	t_algo		*last_smart;
+	int			idiot_moves;
+	int			smart_moves;
 }				t_stack;
 
 /*
@@ -78,8 +103,10 @@ int				get_operations(char *line, t_stack *env);
 ** Non-static functions for push_swap
 */
 void			push_swap(t_stack *env);
-void			operate(t_stack *env, int op);
-void			send_instruction(t_stack *env, int op);
+void			smart_push_swap(t_stack *env);
+void			idiot_push_swap(t_stack *env);
+void			do_op(t_stack *env, int op);
+void			store_op(t_stack *env, int op, int idiot);
 
 /*
 ** Non-static functions for both programs
