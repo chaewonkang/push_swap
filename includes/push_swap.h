@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 13:54:40 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/02 20:08:14 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/03 17:30:32 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 # define LAST_IDIOT env->last_idiot
 # define SMART env->smart
 # define LAST_SMART env->last_smart
-# define IDIOT_MOVES env->idiot_moves
+# define MOVES env->idiot_moves
 # define SMART_MOVES env->smart_moves
 
 /*
@@ -106,7 +106,8 @@ void			push_swap(t_stack *env);
 void			smart_push_swap(t_stack *env);
 void			idiot_push_swap(t_stack *env);
 void			do_op(t_stack *env, int op);
-void			store_op(t_stack *env, int op, int idiot);
+//void			store_op(t_stack *env, int op, int idiot);
+void			send_op(t_stack *env, int op);
 
 /*
 ** Non-static functions for both programs

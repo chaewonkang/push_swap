@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:19:19 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/02 21:12:11 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/03 17:08:45 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,7 @@ static void		get_instructions(t_stack *env)
 static void		checker(char **arg, int param)
 {
 	int			i;
-	t
-		_stack		*env;
+	t_stack		*env;
 
 	if (!(env = ft_memalloc(sizeof(t_stack))))
 		exit(ft_end(4, NULL));
