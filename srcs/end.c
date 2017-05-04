@@ -6,44 +6,11 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 14:22:08 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/03 19:49:39 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/04 14:35:33 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-
-// CREER NOUVEAU FICHIER POUR LES FONTCIONS IS_SORT QUI N'ONT RIEN A VOIR AVEC "END"
-
-/*int				is_sort_not_ranked(int *st, int len, int inc)
-{
-
-}*/
-
-int				is_sort(int *st, int len, int inc)
-{
-	int			i;
-
-	i = -1;
-	if (inc)
-	{
-		while (++i + 1 < len)
-		{
-			if (st[i] >= st[i + 1])
-				return (0);
-		}
-		return (1);
-	}
-	else
-	{
-		while (++i + 1 < len)
-		{
-			if (st[i] <= st[i + 1])
-				return (0);
-		}
-		return (1);
-	}
-}
 
 static void		ft_free(t_stack *env)
 {

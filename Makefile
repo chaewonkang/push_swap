@@ -6,7 +6,7 @@
 #    By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/24 16:34:42 by ljoly             #+#    #+#              #
-#    Updated: 2017/05/03 19:50:07 by ljoly            ###   ########.fr        #
+#    Updated: 2017/05/04 14:36:37 by ljoly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,9 @@ NAME = push_swap
 NAME_C = checker
 
 SRCS = get_specs.c push_swap.c op.c smart_algo.c idiot_algo.c \
-	  end.c
+	  is_sort.c end.c
 
-SRCS_C = checker.c checker_op.c end.c
+SRCS_C = checker.c checker_op.c is_sort.c end.c
 
 FLAGS = -Wall -Werror -Wextra
 LIBFT = ./libft/

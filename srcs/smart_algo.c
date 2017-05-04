@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/02 14:51:47 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/03 19:34:35 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/04 21:28:20 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void		use_b(t_stack *env)
 	int			op;
 
 	op = 0;
-	if (!(I = next_target(A, LEN_A, MED)) && (op = PB))
+	if (!(I = next_target(A, LEN_A, MED)) && (op = PB)) // SI IS_SORT(A) ON ARRETE PB
 		do_op(env, PB);
 	else if (LEN_B > 1 && A[0] > A[1] && B[0] < B[1] && (op = SS))
 		do_op(env, SS);
@@ -82,7 +82,7 @@ void		smart_push_swap(t_stack *env)
 
 	if (LEN_A > 3)
 	{
-		while (LEN_B < MED_RANK - 1 || !is_sort(B, LEN_B, 0))
+		while (LEN_B < MED_RANK - 1 || !is_sort(B, LEN_B, 0, 0))
 		{
 			(LEN_B < MED_RANK - 1) ? ft_putendl("LEN_B < MED_RANK") : ft_putendl("!is_sort");
 			use_b(env);
