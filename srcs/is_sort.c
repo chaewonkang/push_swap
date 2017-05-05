@@ -6,13 +6,13 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 14:34:01 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/04 21:27:51 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/05 16:34:46 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-/*static int	not_ranked_dec(int *st, int len)
+static int	not_ranked_dec(t_stack *env, int *st, int len)
 {
 	int		i;
 	int		count;
@@ -25,15 +25,17 @@
 	{
 		if (count == 0 && st[i] < st[i + 1])
 		{
-			count++;
 			rank = i;
+			count++;
 			i++;
 		}
-		else if (st[i] < st[i + 1])
+		if (i + 1 < len && count > 0 &&
+				(st[i] < st[i + 1] || (st[i] > st[i - 1] && st[i] != MAX_B)))
 			return (-1);
 	}
+	ft_printf("RANK_TO_ROT = %d\n", rank);
 	return (rank);
-}*/
+}
 
 static int	not_ranked_inc(t_stack *env, int *st, int len)
 {
@@ -44,21 +46,16 @@ static int	not_ranked_inc(t_stack *env, int *st, int len)
 	i = -1;
 	count = 0;
 	rank = -1;
-	ft_putendl("OUI");
-	if (st[0] > st[1])
-		count++;
 	while (++i + 1 < len)
 	{
-		if (count == 0 && i > 0 && st[i] > st[i - 1] && st[i]  > st[i + 1])
+		if (count == 0 && st[i] > st[i + 1])
 		{
-			if ((i < MED_RANK && st[i] < MED) || (i > MED_RANK && st[i] > MED))
-			{
-				rank = i;
-				i++;
-			}
+			rank = i;
 			count++;
+			i++;
 		}
-		if (i + 1 < len && count == 1 && st[i] > st[i + 1])
+		if (i + 1 < len && count > 0 &&
+				(st[i] > st[i + 1] || (st[i] < st[i - 1] && st[i] != MIN)))
 			return (-1);
 	}
 	ft_printf("RANK_TO_ROT = %d\n", rank);
@@ -72,8 +69,8 @@ int			is_sort_not_ranked(t_stack *env, int inc)
 	rank = -1;
 	if (inc)
 		rank = not_ranked_inc(env, A, LEN_A);
-//	else
-//		rank = not_ranked_dec(env, B, LEN_B);
+	else
+		rank = not_ranked_dec(env, B, LEN_B);
 	return (rank);
 }
 
@@ -98,5 +95,6 @@ int			is_sort(int *st, int len, int start, int inc)
 				return (0);
 		}
 	}
+	ft_putendl("OUI");
 	return (1);
 }

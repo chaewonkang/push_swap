@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 13:54:40 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/04 21:30:50 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/05 17:07:13 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,14 @@
 # define DIST env->dist
 # define MIN env->min
 # define MAX env->max
+# define MAX_B env->max_b
+# define IS_SORT_A env->is_sort_a
 
 /*
 ** Counting algorithms' moves to choose the fastest
 */
 # define IDIOT env->idiot
 # define LAST_IDIOT env->last_idiot
-# define ROT_FOR_RANK env->rotate_for_rank
 # define SMART env->smart
 # define LAST_SMART env->last_smart
 # define MOVES env->idiot_moves
@@ -87,13 +88,14 @@ typedef struct	s_stack
 	int			dist;
 	int			min;
 	int			max;
+	int			max_b;
 	t_algo		*idiot;
 	t_algo		*last_idiot;
 	t_algo		*smart;
 	t_algo		*last_smart;
 	int			idiot_moves;
-	int			rotate_for_rank;
 	int			smart_moves;
+	int			is_sort_a;
 }				t_stack;
 
 /*
@@ -104,9 +106,10 @@ int				get_operations(char *line, t_stack *env);
 /*
 ** Non-static functions for push_swap
 */
+void			get_min_med_max(t_stack *env);
 void			push_swap(t_stack *env);
 void			smart_push_swap(t_stack *env);
-void			idiot_push_swap(t_stack *env);
+void			idiot_push_swap(t_stack *env, int min, int max);
 int				is_sort_not_ranked(t_stack *env, int inc);
 void			do_op(t_stack *env, int op);
 //void			store_op(t_stack *env, int op, int idiot);

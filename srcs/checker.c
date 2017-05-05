@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:19:19 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/03 17:08:45 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/05 16:00:23 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static void		get_instructions(t_stack *env)
 {
 	char		*line;
 	int			ret;
-	int			i;
 
 	while ((ret = get_next_line(0, &line)))
 	{
@@ -42,21 +41,6 @@ static void		get_instructions(t_stack *env)
 		OP_OK = 0;
 		if (!get_operations(line, env))
 			exit(ft_end(1, NULL));
-		i = 0;
-/*		ft_printf("STACK A: \n");
-		while (i < LEN_A)
-		{
-			ft_printf("%d\n", A[i]);
-			i++;
-		}
-		i = 0;
-		ft_printf("\nSTACK B: \n");
-		while (i < LEN_B)
-		{
-			ft_printf("%d\n", B[i]);
-			i++;
-		}
-		ft_putchar('\n');*/
 		free(line);
 	}
 }
@@ -83,7 +67,7 @@ static void		checker(char **arg, int param)
 	if (find_dup(env))
 		exit(ft_end(1, NULL));
 	get_instructions(env);
-	is_sort(A, LEN_A, 1) && LEN_B == 0 ? exit(ft_end(0, env)) : exit(ft_end(2, NULL));
+	is_sort(A, LEN_A, 0, 1) && LEN_B == 0 ? exit(ft_end(0, env)) : exit(ft_end(2, NULL));
 }
 
 static int		get_format(char **arg)

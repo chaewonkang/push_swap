@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 18:02:04 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/03 19:33:44 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/05 16:31:59 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,36 +27,6 @@ static int		find_dup(t_stack *env)
 		}
 	}
 	return (0);
-}
-
-static void		get_min_med_max(t_stack *env)
-{
-	MED_RANK = PARAM / 2;
-	I = -1;
-	while (++I < LEN_A)
-	{
-		if (A[I] < MIN)
-			MIN = A[I];
-		if (A[I] > MAX)
-			MAX = A[I];
-	}
-	I = -1;
-	while (++I < LEN_A)
-	{
-		DIST = 0;
-		J = -1;
-		while (++J < LEN_A)
-		{
-			if (A[J] > A[I])
-				DIST++;
-		}
-		if (DIST == (PARAM % 2 == 0 ? MED_RANK - 1 : MED_RANK))
-		{
-			MED = A[I];
-			break ;
-		}
-	}
-	ft_printf("MED = %d\nMED_RANK = %d\n", MED, MED_RANK);
 }
 
 static void		get_specs(char **arg, int param)
