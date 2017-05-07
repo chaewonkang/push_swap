@@ -62,7 +62,7 @@ static int	not_ranked_inc(t_stack *env, int *st, int len)
 	return (rank);
 }
 
-int			is_sort_not_ranked(t_stack *env, int inc)
+int			is_not_ranked(t_stack *env, int inc)
 {
 	int		rank;
 

@@ -80,11 +80,14 @@ void			push_swap(t_stack *env)
 	if (is_sort(A, LEN_A, 0, 1))
 		return ;
 //	idiot_push_swap(env, MIN, MAX);
-	smart_push_swap(env);
-	ft_printf("MOVES = %d\n", MOVES);
-//	if (IDIOT_MOVES < SMART_MOVES)
-//		read_op(env, 1);
+	if (PARAM > 3)
+	{
+		smart_push_swap(env);
+		ft_printf("MOVES = %d\n", MOVES);
+//		if (IDIOT_MOVES < SMART_MOVES)
+//			read_op(env, 1);
+	}
 //	else
-//	read_op(env, 0);
+//		read_op(env, 0);
 
 }

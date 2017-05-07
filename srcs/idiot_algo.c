@@ -12,9 +12,9 @@
 
 #include "../includes/push_swap.h"
 
-static void		shift(t_stack *env, int len, int rank)
+void			shift_a(t_stack *env, int len, int rank)
 {
-	if (rank < MED_RANK)
+	if (rank < LEN_A / 2)
 	{
 		while (rank > 0)
 		{
@@ -40,8 +40,8 @@ static void		sort_a(t_stack *env, int min, int max)
 	int			rank;
 
 	op = 0;
-	if ((rank = is_sort_not_ranked(env, 1)) > 0)
-		shift(env, LEN_A, rank);
+	if ((rank = is_not_ranked(env, 1)) > 0)
+		shift_a(env, LEN_A, rank);
 	else if (((A[0] != max && A[0] > A[1]) || (A[0] == min && A[1] == max))
 			&& (op = SA))
 		do_op(env, SA);
