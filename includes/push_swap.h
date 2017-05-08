@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 13:54:40 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/05 17:07:13 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/08 20:40:17 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void			push_swap(t_stack *env);
 void			smart_push_swap(t_stack *env);
 void			idiot_push_swap(t_stack *env, int min, int max);
 int			is_not_ranked(t_stack *env, int inc);
-void			shift_a(t_stack *env, int len, int rank);
+void			shift_a(t_stack *env, int len, int rank, int pb);
 void			do_op(t_stack *env, int op);
 //void			store_op(t_stack *env, int op, int idiot);
 void			send_op(t_stack *env, int op);

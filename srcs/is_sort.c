@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 14:34:01 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/05 16:34:46 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/08 20:40:04 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,6 @@ int			is_sort(int *st, int len, int start, int inc)
 				return (0);
 		}
 	}
-	ft_putendl("OUI");
+	ft_putendl("IS_SORT");
 	return (1);
 }
