@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 14:34:01 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/08 20:40:04 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/09 19:05:44 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ static int	not_ranked_dec(t_stack *env, int *st, int len)
 			i++;
 		}
 		if (i + 1 < len && count > 0 &&
-				(st[i] < st[i + 1] || (st[i] > st[i - 1] && st[i] != MAX_B)))
+				(st[i] < st[i + 1] || (st[i] > st[i - 1] &&
+									   (st[i] != MAX_B || st[i - 1] != MIN))))
 			return (-1);
 	}
 	ft_printf("RANK_TO_ROT = %d\n", rank);
@@ -55,7 +56,8 @@ static int	not_ranked_inc(t_stack *env, int *st, int len)
 			i++;
 		}
 		if (i + 1 < len && count > 0 &&
-				(st[i] > st[i + 1] || (st[i] < st[i - 1] && st[i] != MIN)))
+				(st[i] > st[i + 1] || (st[i] < st[i - 1] &&
+									   (st[i] != MIN || st[i - 1] != MAX))))
 			return (-1);
 	}
 	ft_printf("RANK_TO_ROT = %d\n", rank);
