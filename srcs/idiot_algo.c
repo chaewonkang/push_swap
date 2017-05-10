@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/02 14:51:31 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/08 21:08:10 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/10 16:35:51 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void		sort_a(t_stack *env, int min, int max)
 		send_op(env, op);
 }
 
-void			idiot_push_swap(t_stack *env, int min, int max)
+void			simple_push_swap(t_stack *env, int min, int max)
 {
 	while (!is_sort(A, LEN_A, 0, 1))
 		sort_a(env, min, max);

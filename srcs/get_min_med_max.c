@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/05 16:30:23 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/08 16:27:36 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/10 17:43:35 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,33 @@ static void		get_max_b(t_stack *env)
 			break ;
 	}
 }
+
+int				get_med(int *st, int len)
+{
+	int			i;
+	int			j;
+	int			dist;
+	int			med;
+
+	i = -1;
+	med = 0;
+	while (++i < len)
+	{
+		dist = 0;
+		j = -1;
+		while (++j < len)
+		{
+			if (st[j] > st[i])
+				dist++;
+		}
+		if (dist == (len % 2 == 0 ? (len / 2) - 1 : len / 2))
+		{
+			med = st[i];
+			break ;
+		}
+	}
+	return (med);
+}	
 
 void			get_min_med_max(t_stack *env)
 {

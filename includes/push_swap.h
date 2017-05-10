@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 13:54:40 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/08 20:40:17 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/10 17:33:38 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define DISPLAY env->display_stacks
 # define MED env->med
 # define MED_RANK env->med_rank
+# define MED_B env->med_b
 # define DIST env->dist
 # define MIN env->min
 # define MAX env->max
@@ -85,6 +86,7 @@ typedef struct	s_stack
 	int			display_stacks;
 	int			med;
 	int			med_rank;
+	int			med_b;
 	int			dist;
 	int			min;
 	int			max;
@@ -107,9 +109,11 @@ int				get_operations(char *line, t_stack *env);
 ** Non-static functions for push_swap
 */
 void			get_min_med_max(t_stack *env);
+int				get_med(int *st, int len);
+void			launch_algo(t_stack *env);
 void			push_swap(t_stack *env);
-void			smart_push_swap(t_stack *env);
-void			idiot_push_swap(t_stack *env, int min, int max);
+void			simple_push_swap(t_stack *env, int min, int max);
+void			alt_push_swap(t_stack *env);
 int			is_not_ranked(t_stack *env, int inc);
 void			shift_a(t_stack *env, int len, int rank, int pb);
 void			do_op(t_stack *env, int op);
