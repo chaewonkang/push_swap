@@ -6,30 +6,50 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/05 16:30:23 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/10 17:43:35 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/11 19:23:32 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void		get_max_b(t_stack *env)
+int				get_max(int *st, int len)
 {
-	I = -1;
-	while (++I < LEN_A)
+	int			i;
+	int			j;
+	int			max;
+
+	max = INT_MIN;
+	i = -1;
+	while (++i < len)
 	{
-		DIST = 0;
-		J = -1;                                                                                  while (++J < LEN_A)
+		j = -1;
+		while (++j < len)
 		{
-			if (A[J] > A[I])
-				DIST++;
+			if (st[j] > max)
+				max = st[j];
 		}
-		if (MAX_B == INT_MIN && DIST == (PARAM % 2 == 0 ? MED_RANK : MED_RANK + 1))
-			MAX_B = A[I];
-		if (DIST == (PARAM % 2 == 0 ? MED_RANK - 1 : MED_RANK))
-			MED = A[I];
-		if (MAX_B != INT_MIN && MED != INT_MIN)
-			break ;
 	}
+	return (max);
+}
+
+int				get_min(int *st, int len)
+{
+	int			i;
+	int			j;
+	int			min;
+
+	min = INT_MAX;
+	i = -1;
+	while (++i < len)
+	{
+		j = -1;
+		while (++j < len)
+		{
+			if (st[j] < min)
+				min = st[j];
+		}
+	}
+	return (min);
 }
 
 int				get_med(int *st, int len)
@@ -57,7 +77,29 @@ int				get_med(int *st, int len)
 		}
 	}
 	return (med);
-}	
+}
+
+static void		get_max_b(t_stack *env)
+{
+	I = -1;
+	while (++I < LEN_A)
+	{
+		DIST = 0;
+		J = -1;                                                                                  while (++J < LEN_A)
+		{
+			if (A[J] > A[I])
+				DIST++;
+		}
+		if (MAX_B == INT_MIN && DIST == (PARAM % 2 == 0 ? MED_RANK : MED_RANK + 1))
+			MAX_B = A[I];
+		if (DIST == (PARAM % 2 == 0 ? MED_RANK - 1 : MED_RANK))
+			MED = A[I];
+		if (MAX_B != INT_MIN && MED != INT_MIN)
+			break ;
+	}
+}
+
+
 
 void			get_min_med_max(t_stack *env)
 {

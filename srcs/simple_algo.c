@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   idiot_algo.c                                       :+:      :+:    :+:   */
+/*   simple_algo.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/02 14:51:31 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/10 16:35:51 by ljoly            ###   ########.fr       */
+/*   Created: 2017/05/11 17:52:53 by ljoly             #+#    #+#             */
+/*   Updated: 2017/05/11 18:13:07 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void		sort_a(t_stack *env, int min, int max)
 		send_op(env, op);
 }
 
-void			simple_push_swap(t_stack *env, int min, int max)
+void			simple_sort(t_stack *env, int min, int max)
 {
 	while (!is_sort(A, LEN_A, 0, 1))
 		sort_a(env, min, max);

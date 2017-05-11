@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 18:02:04 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/10 15:26:48 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/11 17:44:15 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void		get_specs(char **arg, int param)
 	MIN = INT_MAX;
 	MAX = INT_MIN;
 	get_min_med_max(env);
-	launch_algo(env);
+	push_swap(env);
 	exit(ft_end(10, env));
 }
 

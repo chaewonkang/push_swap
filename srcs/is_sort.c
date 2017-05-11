@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 14:34:01 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/09 19:05:44 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/11 19:44:10 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,23 @@ int			is_sort(int *st, int len, int start, int inc)
 	}
 	ft_putendl("IS_SORT");
 	return (1);
+}
+
+int			*bubble_sort(int *st, int len)
+{
+	int		i;
+	int		swap;
+	
+	i = -1;
+	while (++i + 1 < len)
+	{
+		if (st[i] > st[i + 1])
+		{
+			swap = st[i];
+			st[i] = st[i + 1];
+			st[i + 1] = swap;
+			i = -1;
+		}
+	}
+	return (st);
 }

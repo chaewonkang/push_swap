@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 18:03:52 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/10 15:27:46 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/11 20:02:33 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,19 +75,15 @@ static void		read_op(t_stack *env, int idiot)
 	}
 }*/
 
-void			launch_algo(t_stack *env)
+void			push_swap(t_stack *env)
 {
 //	if (is_sort(A, LEN_A, 0, 1))
 //		return ;
-	push_swap(env);
-//	alt_push_swap(env);
-	ft_printf("MOVES = %d\n", MOVES);
-	if (PARAM > 3)
-	{
-//		if (IDIOT_MOVES < SMART_MOVES)
-//			read_op(env, 1);
-	}
+//	if (PARAM < 6)	
+//	simple_sort(env, MIN, MAX);
+//	else if (PARAM < 11)
+//	few_values_sort(env);
 //	else
-//		read_op(env, 0);
-
+	quick_sort(env);
+	ft_printf("MOVES = %d\n", MOVES);
 }
