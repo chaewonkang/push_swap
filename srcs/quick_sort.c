@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 18:25:08 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/12 18:35:48 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/12 19:06:59 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,10 @@ static void		push_b(t_stack *env)
 	int			first;
 	int			second;
 
+	ft_printf("LEN_A = %d\nTAB[I + 1] = %d\nTAB[J - 1] = %d\n", LEN_A, TAB[I + 1], TAB[J - 1]);
 	while (LEN_A > 0 && TAB[++I] < PARAM && TAB[--J] > 0)
 	{
+		ft_putendl("OUAIS");
 		rank_up = next_target(A, LEN_A, TAB[I], 2);
 		rank_down = next_target(A, LEN_A, TAB[J], 2);
 		first = targets_hierarchy(env, rank_up, rank_down);
@@ -63,6 +65,7 @@ void		quick_sort(t_stack *env)
 	send_op(env, PB);
 	I = MED_RANK;
 	J = MED_RANK;
+	ft_putendl("SAMERE");
 	push_b(env);
 	//ensuite PA;
 }

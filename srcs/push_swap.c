@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 18:03:52 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/12 18:50:19 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/12 19:23:59 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,36 @@ static void		read_op(t_stack *env, int idiot)
 
 void			push_swap(t_stack *env)
 {
+	int			i;
+
 	if (is_sort(A, LEN_A, 0, 1))
 		return ;
-	TAB = bubble_sort(A, LEN_A);
+	//PROBLEME D'ALLOCATION POUR TAB;
+	TAB = ft_memalloc(sizeof(int) * PARAM);
+	TAB = ft_memcpy(TAB, A, LEN_A);
+	i = 0;
+	while (i < LEN_A)
+	{
+		ft_putnbr(TAB[i]);
+		ft_putchar('\n');
+		i++;
+	}
+	TAB = bubble_sort(TAB, PARAM);
+	i = 0;
+	while (i < LEN_A)
+	{
+		ft_putnbr(A[i]);
+		ft_putchar('\n');
+		i++;
+	}
+	i = 0;
+	while (i < LEN_A)
+	{
+		ft_putnbr(TAB[i]);
+		ft_putchar('\n');
+		i++;
+	}
+	exit(0);
 //CHECKER SI SORT_NOT_RANKED ET BALANCER DANS FEW VALUES;
 //	if (is_sort(A, LEN_A, 0, 1))
 //		return ;
@@ -89,6 +116,5 @@ void			push_swap(t_stack *env)
 //	few_values_sort(env);
 //	else
 	quick_sort(env);
-	ft_putendl("COUCOU");
 	ft_printf("MOVES = %d\n", MOVES);
 }
