@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 18:03:52 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/11 20:02:33 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/12 18:50:19 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,10 @@ static void		read_op(t_stack *env, int idiot)
 
 void			push_swap(t_stack *env)
 {
+	if (is_sort(A, LEN_A, 0, 1))
+		return ;
+	TAB = bubble_sort(A, LEN_A);
+//CHECKER SI SORT_NOT_RANKED ET BALANCER DANS FEW VALUES;
 //	if (is_sort(A, LEN_A, 0, 1))
 //		return ;
 //	if (PARAM < 6)	
@@ -85,5 +89,6 @@ void			push_swap(t_stack *env)
 //	few_values_sort(env);
 //	else
 	quick_sort(env);
+	ft_putendl("COUCOU");
 	ft_printf("MOVES = %d\n", MOVES);
 }
