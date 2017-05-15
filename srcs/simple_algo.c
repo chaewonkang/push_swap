@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 17:52:53 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/11 18:13:07 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/15 15:01:55 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void			shift_a(t_stack *env, int len, int rank, int pb)
 {
 	ft_putendl("SHIFT_A");
-	ft_printf("RANK = %d\n", rank);
+//	ft_printf("RANK = %d\n", rank);
 	if (rank < LEN_A / 2)
 	{
 		while (rank > 0)

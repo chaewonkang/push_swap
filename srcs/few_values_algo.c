@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 18:15:12 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/11 20:14:13 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/15 14:52:01 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int				next_target(int *st, int len, int target, int comp)
 	}
 	else if (comp == 2)
 	{
-		while (++i < len && --j > i)
+		while (++i < len && --j >= i)
 		{
 			if (st[i] == target)
 				return (i);
@@ -153,9 +153,9 @@ void		few_values_sort(t_stack *env)
 	while (LEN_B > 0)
 	{
 		do_op(env, PA);
+		send_op(env, PA);
 		//		store_op(env, PA, 0);
 		while (!is_sort(A, LEN_A, 0, 1))
 			simple_sort(env, MED, MAX);
-		send_op(env, PA);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 18:03:52 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/12 19:23:59 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/15 11:28:09 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,35 +81,15 @@ void			push_swap(t_stack *env)
 
 	if (is_sort(A, LEN_A, 0, 1))
 		return ;
-	//PROBLEME D'ALLOCATION POUR TAB;
 	TAB = ft_memalloc(sizeof(int) * PARAM);
-	TAB = ft_memcpy(TAB, A, LEN_A);
 	i = 0;
 	while (i < LEN_A)
 	{
-		ft_putnbr(TAB[i]);
-		ft_putchar('\n');
+		TAB[i] = A[i];
 		i++;
 	}
 	TAB = bubble_sort(TAB, PARAM);
-	i = 0;
-	while (i < LEN_A)
-	{
-		ft_putnbr(A[i]);
-		ft_putchar('\n');
-		i++;
-	}
-	i = 0;
-	while (i < LEN_A)
-	{
-		ft_putnbr(TAB[i]);
-		ft_putchar('\n');
-		i++;
-	}
-	exit(0);
 //CHECKER SI SORT_NOT_RANKED ET BALANCER DANS FEW VALUES;
-//	if (is_sort(A, LEN_A, 0, 1))
-//		return ;
 //	if (PARAM < 6)	
 //	simple_sort(env, MIN, MAX);
 //	else if (PARAM < 11)
