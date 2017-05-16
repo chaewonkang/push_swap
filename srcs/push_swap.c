@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 18:03:52 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/15 11:28:09 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/16 20:14:09 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,20 @@ static void		read_op(t_stack *env, int idiot)
 	}
 }*/
 
+
+/*
+//CHECKER LE DEGRE DE DIFF
+static int      ft_comp(t_stack *env)
+{
+	    MIN = get_min(A, LEN_A);
+
+}*/
+
 void			push_swap(t_stack *env)
 {
 	int			i;
 
+	//CHECKER LE DEGRE DE DIF >> SI PEU DE DIFF GO FEW_VALUES_ALGO;
 	if (is_sort(A, LEN_A, 0, 1))
 		return ;
 	TAB = ft_memalloc(sizeof(int) * PARAM);
