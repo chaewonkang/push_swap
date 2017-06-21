@@ -6,20 +6,11 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 18:25:08 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/15 16:46:47 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/05/16 20:15:47 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-/*
-//CHECKER LE DEGRE DE DIFF
-static int		ft_comp(t_stack *env)
-{
-	MIN = get_min(A, LEN_A);
-
-
-}*/
 
 static int		targets_hierarchy(t_stack *env, int rank_up, int rank_down)
 {

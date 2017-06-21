@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 18:03:52 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/16 20:14:09 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/06/21 20:33:23 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,10 +101,10 @@ void			push_swap(t_stack *env)
 	TAB = bubble_sort(TAB, PARAM);
 //CHECKER SI SORT_NOT_RANKED ET BALANCER DANS FEW VALUES;
 //	if (PARAM < 6)	
-//	simple_sort(env, MIN, MAX);
-//	else if (PARAM < 11)
-//	few_values_sort(env);
-//	else
-	quick_sort(env);
+//		simple_sort(env, MIN, MAX);
+	if (PARAM < 11)
+		few_values_sort(env);
+	else
+		quick_sort(env);
 	ft_printf("MOVES = %d\n", MOVES);
 }

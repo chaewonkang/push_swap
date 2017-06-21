@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:19:19 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/05 16:00:23 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/06/21 19:08:00 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,23 @@ static void		get_instructions(t_stack *env)
 {
 	char		*line;
 	int			ret;
+	int			i;
 
+	i = 0;
+	ft_printf("STACK A: \n");
+	while (i < LEN_A)
+	{
+		ft_printf("%d\n", A[i]);
+		i++;
+	}
+	i = 0;
+	ft_printf("\nSTACK B: \n");
+	while (i < LEN_B)
+	{
+		ft_printf("%d\n", B[i]);
+		i++;
+	}
+	ft_putchar('\n');
 	while ((ret = get_next_line(0, &line)))
 	{
 		if (ret == -1)
@@ -41,8 +57,25 @@ static void		get_instructions(t_stack *env)
 		OP_OK = 0;
 		if (!get_operations(line, env))
 			exit(ft_end(1, NULL));
+		i = 0;
+		ft_printf("STACK A: \n");
+		while (i < LEN_A)
+		{
+			ft_printf("%d\n", A[i]);
+			i++;
+		}
+		i = 0;
+		ft_printf("\nSTACK B: \n");
+		while (i < LEN_B)
+		{
+			ft_printf("%d\n", B[i]);
+			i++;
+		}
+		ft_putchar('\n');
 		free(line);
+		MOVES++;
 	}
+	ft_printf("MOVES = %d\n", MOVES);
 }
 
 static void		checker(char **arg, int param)
