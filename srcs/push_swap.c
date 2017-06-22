@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 18:03:52 by ljoly             #+#    #+#             */
-/*   Updated: 2017/06/21 20:33:23 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/06/22 20:04:47 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,20 +63,6 @@ void		send_op(t_stack *env, int op)
 }
 
 /*
-static void		read_op(t_stack *env, int idiot)
-{
-	t_algo		*tmp;
-
-	tmp = (idiot ? IDIOT : SMART);
-	while (tmp)
-	{
-		send_op(env, tmp->op);
-		tmp = tmp->next;
-	}
-}*/
-
-
-/*
 //CHECKER LE DEGRE DE DIFF
 static int      ft_comp(t_stack *env)
 {
@@ -91,7 +77,8 @@ void			push_swap(t_stack *env)
 	//CHECKER LE DEGRE DE DIF >> SI PEU DE DIFF GO FEW_VALUES_ALGO;
 	if (is_sort(A, LEN_A, 0, 1))
 		return ;
-	TAB = ft_memalloc(sizeof(int) * PARAM);
+	if (!(TAB = ft_memalloc(sizeof(int) * PARAM)))
+		exit(ft_end(4, env));
 	i = 0;
 	while (i < LEN_A)
 	{
@@ -100,10 +87,10 @@ void			push_swap(t_stack *env)
 	}
 	TAB = bubble_sort(TAB, PARAM);
 //CHECKER SI SORT_NOT_RANKED ET BALANCER DANS FEW VALUES;
-//	if (PARAM < 6)	
-//		simple_sort(env, MIN, MAX);
-	if (PARAM < 11)
-		few_values_sort(env);
+	if (PARAM < 6)	
+		simple_sort(env, MIN, MAX);
+//	if (PARAM < 11)
+//		few_values_sort(env);
 	else
 		quick_sort(env);
 	ft_printf("MOVES = %d\n", MOVES);

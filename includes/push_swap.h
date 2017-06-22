@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 13:54:40 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/12 18:54:35 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/06/22 19:50:36 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,7 @@
 /*
 ** Counting algorithms' moves to choose the fastest
 */
-# define IDIOT env->idiot
-# define LAST_IDIOT env->last_idiot
-# define SMART env->smart
-# define LAST_SMART env->last_smart
-# define MOVES env->idiot_moves
-# define SMART_MOVES env->smart_moves
+# define MOVES env->moves
 
 /*
 ** Defining instructions for push_swap
@@ -62,14 +57,14 @@
 # define RRB 10
 # define RRR 11
 
-/*
-** Storing operations for both algos
-*/
-typedef struct	s_algo
+typedef	struct s_med	t_med;
+
+struct					s_med
 {
-	int				op;
-	struct s_algo	*next;	
-}				t_algo;
+	int					rank;
+	char				med;
+	t_med				*next;
+};
 
 /*
 ** Storing environment - both programs will use a 't_stack' type
@@ -85,7 +80,6 @@ typedef struct	s_stack
 	int			index_i;
 	int			index_j;
 	int			op_ok;
-	int			display_stacks;
 	int			med;
 	int			med_rank;
 	int			med_b;
@@ -93,13 +87,9 @@ typedef struct	s_stack
 	int			min;
 	int			max;
 	int			max_b;
-	t_algo		*idiot;
-	t_algo		*last_idiot;
-	t_algo		*smart;
-	t_algo		*last_smart;
-	int			idiot_moves;
-	int			smart_moves;
+	int			moves;
 	int			is_sort_a;
+	int			display_stacks;
 }				t_stack;
 
 /*
@@ -120,10 +110,9 @@ void			simple_sort(t_stack *env, int min, int max);
 void			few_values_sort(t_stack *env);
 int				next_target(int *st, int len, int target, int comp);
 void			quick_sort(t_stack *env);
-int			is_not_ranked(t_stack *env, int inc);
+int				is_not_ranked(t_stack *env, int inc);
 void			shift_a(t_stack *env, int len, int rank, int pb);
 void			do_op(t_stack *env, int op);
-//void			store_op(t_stack *env, int op, int idiot);
 void			send_op(t_stack *env, int op);
 
 /*
