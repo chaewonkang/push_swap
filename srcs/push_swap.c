@@ -87,10 +87,10 @@ void			push_swap(t_stack *env)
 	}
 	TAB = bubble_sort(TAB, PARAM);
 //CHECKER SI SORT_NOT_RANKED ET BALANCER DANS FEW VALUES;
-	if (PARAM < 6)	
+	if (PARAM < 3)	
 		simple_sort(env, MIN, MAX);
-//	if (PARAM < 11)
-//		few_values_sort(env);
+	if (PARAM < 11)
+		few_values_sort(env);
 	else
 		quick_sort(env);
 	ft_printf("MOVES = %d\n", MOVES);

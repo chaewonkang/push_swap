@@ -57,13 +57,13 @@
 # define RRB 10
 # define RRR 11
 
-typedef	struct s_med	t_med;
+typedef	struct s_val	t_val;
 
-struct					s_med
+struct					s_val
 {
 	int					rank;
 	char				med;
-	t_med				*next;
+	t_val				*next;
 };
 
 /*
