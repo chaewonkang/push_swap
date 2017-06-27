@@ -12,7 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-static int	not_ranked_dec(t_stack *env, int *st, int len)
+static int	not_ranked_dec(t_stack *e, int *st, int len)
 {
 	int		i;
 	int		count;
@@ -38,7 +38,7 @@ static int	not_ranked_dec(t_stack *env, int *st, int len)
 	return (rank);
 }
 
-static int	not_ranked_inc(t_stack *env, int *st, int len)
+static int	not_ranked_inc(t_stack *e, int *st, int len)
 {
 	int		i;
 	int		count;
@@ -64,15 +64,15 @@ static int	not_ranked_inc(t_stack *env, int *st, int len)
 	return (rank);
 }
 
-int			is_not_ranked(t_stack *env, int inc)
+int			is_not_ranked(t_stack *e, int inc)
 {
 	int		rank;
 
 	rank = -1;
 	if (inc)
-		rank = not_ranked_inc(env, A, LEN_A);
+		rank = not_ranked_inc(e, A, LEN_A);
 	else
-		rank = not_ranked_dec(env, B, LEN_B);
+		rank = not_ranked_dec(e, B, LEN_B);
 	return (rank);
 }
 

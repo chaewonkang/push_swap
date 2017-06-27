@@ -12,7 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-static void		new_link(t_algo **last, t_algo *new, t_stack *env, int idiot)
+static void		new_link(t_algo **last, t_algo *new, t_stack *e, int idiot)
 {
 	if (*last)
 		*last->next = new;
@@ -26,13 +26,13 @@ static void		new_link(t_algo **last, t_algo *new, t_stack *env, int idiot)
 	}
 }
 
-static int      list_input(t_env *env, char **line, t_room **room)
+static int      list_input(t_e *e, char **line, t_room **room)
 {
 	t_input     *last;
 
-	if (!env->input)
+	if (!e->input)
 	{
-		if (!(env->input = store_input(env, line, room)))
+		if (!(e->input = store_input(e, line, room)))
 		{
 			free(*line);
 			return (0);
@@ -40,17 +40,17 @@ static int      list_input(t_env *env, char **line, t_room **room)
 	}
 	else
 	{
-		if (!(last = store_input(env, line, room)))
+		if (!(last = store_input(e, line, room)))
 		{
 			free(*line);
 			return (0);
 		}
-		ft_push_bck(&env->input, last);
+		ft_push_bck(&e->input, last);
 	}
 	return (1);
 }
 
-void		store_op(t_stack *env, int op, int idiot)
+void		store_op(t_stack *e, int op, int idiot)
 {
 	t_algo		*algo;
 	t_algo		*new;
@@ -59,7 +59,7 @@ void		store_op(t_stack *env, int op, int idiot)
 	if (!(new = ft_memalloc(sizeof(t_algo))))
 		exit(ft_end(4, NULL));
 	new->op = op;
-	new_link(&algo, new, env, idiot);
+	new_link(&algo, new, e, idiot);
 	ft_printf("STACK A: \n");
 	while (i < LEN_A)
 	{

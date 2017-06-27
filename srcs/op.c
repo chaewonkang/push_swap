@@ -75,7 +75,7 @@ static void     swap(int *tab, int len)
 }
 
 
-void		do_op(t_stack *env, int op)
+void		do_op(t_stack *e, int op)
 {
 	if (op == SA || op == SS)
 		swap(A, LEN_A);

@@ -12,7 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-static int		find_dup(t_stack *env)
+static int		find_dup(t_stack *e)
 {
 	I = -1;
 	while (++I + 1 < PARAM)
@@ -29,7 +29,7 @@ static int		find_dup(t_stack *env)
 	return (0);
 }
 
-static void		get_instructions(t_stack *env)
+static void		get_instructions(t_stack *e)
 {
 	char		*line;
 	int			ret;
@@ -55,7 +55,7 @@ static void		get_instructions(t_stack *env)
 		if (ret == -1)
 			exit(ft_end(3, NULL));
 		OP_OK = 0;
-		if (!get_operations(line, env))
+		if (!get_operations(line, e))
 			exit(ft_end(1, NULL));
 		i = 0;
 		ft_printf("STACK A: \n");
@@ -81,9 +81,9 @@ static void		get_instructions(t_stack *env)
 static void		checker(char **arg, int param)
 {
 	int			i;
-	t_stack		*env;
+	t_stack		*e;
 
-	if (!(env = ft_memalloc(sizeof(t_stack))))
+	if (!(e = ft_memalloc(sizeof(t_stack))))
 		exit(ft_end(4, NULL));
 	PARAM = param;
 	if (!(A = ft_memalloc(sizeof(int) * PARAM)) ||
@@ -97,10 +97,10 @@ static void		checker(char **arg, int param)
 		free(arg[i]);
 	}
 	free(arg);
-	if (find_dup(env))
+	if (find_dup(e))
 		exit(ft_end(1, NULL));
-	get_instructions(env);
-	is_sort(A, LEN_A, 0, 1) && LEN_B == 0 ? exit(ft_end(0, env)) : exit(ft_end(2, NULL));
+	get_instructions(e);
+	is_sort(A, LEN_A, 0, 1) && LEN_B == 0 ? exit(ft_end(0, e)) : exit(ft_end(2, NULL));
 }
 
 static int		get_format(char **arg)

@@ -6,13 +6,13 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 18:03:52 by ljoly             #+#    #+#             */
-/*   Updated: 2017/06/22 20:04:47 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/06/27 19:16:55 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void		display_stacks(t_stack *env)
+static void		display_stacks(t_stack *e)
 {
 	int		i;
 
@@ -33,7 +33,7 @@ static void		display_stacks(t_stack *env)
 	ft_putchar('\n');
 }
 
-void		send_op(t_stack *env, int op)
+void		send_op(t_stack *e, int op)
 {
 	if (op == SA)
 		ft_putendl("sa");
@@ -58,40 +58,40 @@ void		send_op(t_stack *env, int op)
 	else if (op == RRR)
 		ft_putendl("rrr");
 //	if (DISPLAY)
-	display_stacks(env);
+	display_stacks(e);
 	MOVES++;
 }
 
 /*
 //CHECKER LE DEGRE DE DIFF
-static int      ft_comp(t_stack *env)
+static int      ft_comp(t_stack *e)
 {
 	    MIN = get_min(A, LEN_A);
 
 }*/
 
-void			push_swap(t_stack *env)
+void			push_swap(t_stack *e)
 {
 	int			i;
 
 	//CHECKER LE DEGRE DE DIF >> SI PEU DE DIFF GO FEW_VALUES_ALGO;
-	if (is_sort(A, LEN_A, 0, 1))
+	if (is_sort(e->stack_a, e->len_a, 0, 1))
 		return ;
-	if (!(TAB = ft_memalloc(sizeof(int) * PARAM)))
-		exit(ft_end(4, env));
+	if (!(e->tab = ft_memalloc(sizeof(int) * e->param)))
+		exit(ft_end(4, e));
 	i = 0;
-	while (i < LEN_A)
+	while (i < e->len_a)
 	{
-		TAB[i] = A[i];
+		e->tab[i] = e->stack_a[i];
 		i++;
 	}
 	TAB = bubble_sort(TAB, PARAM);
 //CHECKER SI SORT_NOT_RANKED ET BALANCER DANS FEW VALUES;
 	if (PARAM < 3)	
-		simple_sort(env, MIN, MAX);
+		simple_sort(e, MIN, MAX);
 	if (PARAM < 11)
-		few_values_sort(env);
+		few_values_sort(e);
 	else
-		quick_sort(env);
+		quick_sort(e);
 	ft_printf("MOVES = %d\n", MOVES);
 }

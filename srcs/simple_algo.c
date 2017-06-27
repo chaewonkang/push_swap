@@ -12,7 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-void			shift_a(t_stack *env, int len, int rank, int pb)
+void			shift_a(t_stack *e, int len, int rank, int pb)
 {
 	ft_putendl("SHIFT_A");
 //	ft_printf("RANK = %d\n", rank);
@@ -20,8 +20,8 @@ void			shift_a(t_stack *env, int len, int rank, int pb)
 	{
 		while (rank > 0)
 		{
-			do_op(env, RA);
-			send_op(env, RA);
+			do_op(e, RA);
+			send_op(e, RA);
 			rank--;
 		}
 	}
@@ -31,32 +31,32 @@ void			shift_a(t_stack *env, int len, int rank, int pb)
 			rank--;
 		while (rank + 1 < len)
 		{
-			do_op(env, RRA);
-			send_op(env, RRA);
+			do_op(e, RRA);
+			send_op(e, RRA);
 			rank++;
 		}	
 	}
 }
 
-static void		sort_a(t_stack *env, int min, int max)
+static void		sort_a(t_stack *e, int min, int max)
 {
 	int			op;
 	int			rank;
 
 	op = 0;
-	if ((rank = is_not_ranked(env, 1)) > 0)
-		shift_a(env, LEN_A, rank, 0);
+	if ((rank = is_not_ranked(e, 1)) > 0)
+		shift_a(e, LEN_A, rank, 0);
 	else if (((A[0] != max && A[0] > A[1]) || (A[0] == min && A[1] == max))
 			&& (op = SA))
-		do_op(env, SA);
+		do_op(e, SA);
 	else if ((op = RA))
-		do_op(env, RA);
+		do_op(e, RA);
 	if (op)
-		send_op(env, op);
+		send_op(e, op);
 }
 
-void			simple_sort(t_stack *env, int min, int max)
+void			simple_sort(t_stack *e, int min, int max)
 {
 	while (!is_sort(A, LEN_A, 0, 1))
-		sort_a(env, min, max);
+		sort_a(e, min, max);
 }

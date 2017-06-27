@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 18:25:08 by ljoly             #+#    #+#             */
-/*   Updated: 2017/06/21 18:33:45 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/06/27 19:36:11 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,57 @@
 
 //GET_MED
 
-
-void		ft_add_op(t_op **op, t_op *new)
+static void		proceed_op(t_stack *e, int op)
 {
-	t_op	*tmp;
+	do_op(e, op);
+	send_op(e, op);
+}
 
-	if (*op)
+static void		add_med(int **tab, int size, int val)
+{
+	int		i;
+
+	i = 0;
+	val = 12;
+	size = 15;
+	*tab[0] = 18;
+/*	while (i < size)
 	{
-		tmp = *op;
-		while (tmp->next != NULL)
-			tmp = tmp->next;
-		tmp->next = new;
+		if (tab[i] != 0) 
+			i++;
+		else
+			tab[i] = val;
+	}*/
+}
+
+void			quick_sort(t_stack *e)
+{
+	int			i;
+	int			op;
+	int			is_med;
+	int			med_pushed;
+
+	e->tab_med = (int*)ft_memalloc(sizeof(int) * e->param);
+//	ft_bzero(e->tab_med, e->param);
+	add_med(&e->tab_med, e->param, get_med(e->stack_a, e->len_a));
+	i = 0;
+	e->med = e->tab[i];
+	ft_printf("tab[0] = %d\n", e->tab[i]);
+	while (e->len_a > 3)
+	{
+		is_med = 0;
+		med_pushed = 0;
+		if (e->len_a < 5 && is_sort(e->stack_a, e->len_a, 0, 1))
+			break ;
+		if (e->stack_a[0] < e->med || (e->stack_a[0] == e->med &&
+					(is_med = 1) && (med_pushed = 1)))
+			op = PB;
+		else
+			op = RA; 
+		proceed_op(e, op);
+		if (is_med && next_target(e->stack_a, e->len_a, e->med, 1) != -1)
+			proceed_op(e, RB);
+		else if (!is_med && next_target(e->stack_a, e->len_a, e->med, 1) == -1)
+			proceed_op(e, RRB);
 	}
-	else
-		*op = new;
-}
-
-
-static void	proceed_op(t_stack *env, int op)
-{
-	do_op(env, op);
-	send_op(env, op);
-}
-
-void		quick_sort(t_stack *env)
-{
-
-
-	rank = next_target(A, LEN_A, MED, 2);
-	shift_a(env, LEN_A, rank, 1);
-	//	proceed_op(env, PB);
-	I = MED_RANK + 2;
-	J = MED_RANK - 2;
-	//	push_b(env);
-	//	if (B[0] < B[1])
-	//		proceed_op(env, RB);
-	//	proceed_op(env, PB);
-	//	proceed_op(env, RB);
-	//	while (LEN_B > 0)
-	//		proceed_op(env, PA);
 }

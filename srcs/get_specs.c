@@ -12,7 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-static int		find_dup(t_stack *env)
+static int		find_dup(t_stack *e)
 {
 	I = -1;
 	while (++I + 1 < PARAM)
@@ -32,9 +32,9 @@ static int		find_dup(t_stack *env)
 static void		get_specs(char **arg, int param)
 {
 	int			i;
-	t_stack		*env;
+	t_stack		*e;
 
-	if (!(env = ft_memalloc(sizeof(t_stack))))
+	if (!(e = ft_memalloc(sizeof(t_stack))))
 		exit(ft_end(4, NULL));
 	PARAM = param;
 	if (!(A = ft_memalloc(sizeof(int) * PARAM)) ||
@@ -48,13 +48,13 @@ static void		get_specs(char **arg, int param)
 		free(arg[i]);
 	}
 	free(arg);
-	if (find_dup(env))
+	if (find_dup(e))
 		exit(ft_end(1, NULL));
 	MIN = INT_MAX;
 	MAX = INT_MIN;
-	get_min_med_max(env);
-	push_swap(env);
-	exit(ft_end(10, env));
+	get_min_med_max(e);
+	push_swap(e);
+	exit(ft_end(10, e));
 }
 
 static int		get_format(char **arg)

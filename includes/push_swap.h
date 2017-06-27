@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 13:54:40 by ljoly             #+#    #+#             */
-/*   Updated: 2017/06/22 19:50:36 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/06/27 19:13:17 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,31 @@
 # include "../libft/includes/libft.h"
 
 /*
-** Defining environment features
+** Defining eironment features
 */
-# define A env->stack_a
-# define B env->stack_b
-# define TAB env->tab
-# define PARAM env->param
-# define LEN_A env->len_a
-# define LEN_B env->len_b
-# define I env->index_i
-# define J env->index_j
-# define OP_OK env->op_ok
-# define DISPLAY env->display_stacks
-# define MED env->med
-# define MED_RANK env->med_rank
-# define MED_B env->med_b
-# define DIST env->dist
-# define MIN env->min
-# define MAX env->max
-# define MAX_B env->max_b
-# define IS_SORT_A env->is_sort_a
+# define A e->stack_a
+# define B e->stack_b
+# define TAB e->tab
+# define PARAM e->param
+# define LEN_A e->len_a
+# define LEN_B e->len_b
+# define I e->i
+# define J e->j
+# define OP_OK e->op_ok
+# define DISPLAY e->display_stacks
+# define MED e->med
+# define MED_RANK e->med_rank
+# define MED_B e->med_b
+# define DIST e->dist
+# define MIN e->min
+# define MAX e->max
+# define MAX_B e->max_b
+# define IS_SORT_A e->is_sort_a
 
 /*
 ** Counting algorithms' moves to choose the fastest
 */
-# define MOVES env->moves
+# define MOVES e->moves
 
 /*
 ** Defining instructions for push_swap
@@ -67,18 +67,19 @@ struct					s_val
 };
 
 /*
-** Storing environment - both programs will use a 't_stack' type
+** Storing eironment - both programs will use a 't_stack' type
 */
 typedef struct	s_stack
 {
 	int			*stack_a;
 	int			*stack_b;
 	int			*tab;
+	int			*tab_med;
 	int			param;
 	int			len_a;
 	int			len_b;
-	int			index_i;
-	int			index_j;
+	int			i;
+	int			j;
 	int			op_ok;
 	int			med;
 	int			med_rank;
@@ -95,30 +96,30 @@ typedef struct	s_stack
 /*
 ** Non-static functions for checker
 */
-int				get_operations(char *line, t_stack *env);
+int				get_operations(char *line, t_stack *e);
 
 /*
 ** Non-static functions for push_swap
 */
-void			get_min_med_max(t_stack *env);
+void			get_min_med_max(t_stack *e);
 int				get_med(int *st, int len);
 int				get_min(int *st, int len);
 int				get_max(int *st, int len);
-void			push_swap(t_stack *env);
+void			push_swap(t_stack *e);
 int				*bubble_sort(int *st, int len);
-void			simple_sort(t_stack *env, int min, int max);
-void			few_values_sort(t_stack *env);
+void			simple_sort(t_stack *e, int min, int max);
+void			few_values_sort(t_stack *e);
 int				next_target(int *st, int len, int target, int comp);
-void			quick_sort(t_stack *env);
-int				is_not_ranked(t_stack *env, int inc);
-void			shift_a(t_stack *env, int len, int rank, int pb);
-void			do_op(t_stack *env, int op);
-void			send_op(t_stack *env, int op);
+void			quick_sort(t_stack *e);
+int				is_not_ranked(t_stack *e, int inc);
+void			shift_a(t_stack *e, int len, int rank, int pb);
+void			do_op(t_stack *e, int op);
+void			send_op(t_stack *e, int op);
 
 /*
 ** Non-static functions for both programs
 */
 int				is_sort(int *st, int len, int start, int inc);
-int				ft_end(int status, t_stack *env);
+int				ft_end(int status, t_stack *e);
 
 #endif
