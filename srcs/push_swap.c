@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 18:03:52 by ljoly             #+#    #+#             */
-/*   Updated: 2017/06/27 19:16:55 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/06/28 17:57:58 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,6 @@ void		send_op(t_stack *e, int op)
 	MOVES++;
 }
 
-/*
-//CHECKER LE DEGRE DE DIFF
-static int      ft_comp(t_stack *e)
-{
-	    MIN = get_min(A, LEN_A);
-
-}*/
-
 void			push_swap(t_stack *e)
 {
 	int			i;
@@ -87,11 +79,11 @@ void			push_swap(t_stack *e)
 	}
 	TAB = bubble_sort(TAB, PARAM);
 //CHECKER SI SORT_NOT_RANKED ET BALANCER DANS FEW VALUES;
-	if (PARAM < 3)	
-		simple_sort(e, MIN, MAX);
-	if (PARAM < 11)
-		few_values_sort(e);
-	else
+//	if (PARAM < 3)	
+//		simple_sort(e, MIN, MAX);
+//	if (PARAM < 11)
+//		few_values_sort(e);
+//	else
 		quick_sort(e);
 	ft_printf("MOVES = %d\n", MOVES);
 }

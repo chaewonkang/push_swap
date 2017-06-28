@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 13:54:40 by ljoly             #+#    #+#             */
-/*   Updated: 2017/06/27 19:13:17 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/06/28 14:42:56 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct	s_stack
 	int			j;
 	int			op_ok;
 	int			med;
+	int			len_to_med;
 	int			med_rank;
 	int			med_b;
 	int			dist;

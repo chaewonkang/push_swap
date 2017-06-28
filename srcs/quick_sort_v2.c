@@ -6,13 +6,11 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 18:25:08 by ljoly             #+#    #+#             */
-/*   Updated: 2017/06/27 19:36:11 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/06/28 19:59:17 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-//GET_MED
 
 static void		proceed_op(t_stack *e, int op)
 {
@@ -20,51 +18,165 @@ static void		proceed_op(t_stack *e, int op)
 	send_op(e, op);
 }
 
-static void		add_med(int **tab, int size, int val)
-{
-	int		i;
-
-	i = 0;
-	val = 12;
-	size = 15;
-	*tab[0] = 18;
-/*	while (i < size)
-	{
-		if (tab[i] != 0) 
-			i++;
-		else
-			tab[i] = val;
-	}*/
-}
-
-void			quick_sort(t_stack *e)
+static int		get_dist_to_med(int *st, int size, int next_med)
 {
 	int			i;
-	int			op;
-	int			is_med;
-	int			med_pushed;
 
-	e->tab_med = (int*)ft_memalloc(sizeof(int) * e->param);
-//	ft_bzero(e->tab_med, e->param);
-	add_med(&e->tab_med, e->param, get_med(e->stack_a, e->len_a));
 	i = 0;
-	e->med = e->tab[i];
-	ft_printf("tab[0] = %d\n", e->tab[i]);
-	while (e->len_a > 3)
+	while (i < size && st[i] != next_med)
+		i++;
+	return (i);
+}
+
+static int		get_next_med(t_stack *e, int *st, int size)
+{
+	int			i;
+	int			j;
+
+	i = 0;
+	while (i < size)
+	{
+		j = 0;
+		while (j < e->param && e->tab_med[j])
+		{
+			if (st[i] == e->tab_med[j])
+				return (e->tab_med[j]);
+			else if (!e->tab_med[j])
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}	
+
+static void		add_med(int **tab_med, int size, int val)
+{
+	int		i;
+	int		*tab;
+
+	tab = *tab_med;
+	i = 0;
+	while (i < size)
+	{
+		if (!tab[i])
+		{
+			tab[i] = val;
+			return ;
+		}
+		i++;
+	}
+}
+
+static void		split_b(t_stack *e, int *st, int dist)
+{
+	int			med_pushed;
+	int			is_med;
+	int			op;
+
+	med_pushed = 0;
+	while (!med_pushed || next_target(st, dist, e->med, 3) != -1)
 	{
 		is_med = 0;
-		med_pushed = 0;
-		if (e->len_a < 5 && is_sort(e->stack_a, e->len_a, 0, 1))
+		if (dist < 3 && is_sort(st, dist, 0, 0))
 			break ;
-		if (e->stack_a[0] < e->med || (e->stack_a[0] == e->med &&
-					(is_med = 1) && (med_pushed = 1)))
+		if (st[0] > e->med || (st[0] == e->med &&
+					(is_med = 1)))
+			op = PA;
+		else
+			op = RB;
+		proceed_op(e, op);
+		if (is_med && next_target(st, dist, e->med, 1) != -1
+				&& (med_pushed = 1))
+			proceed_op(e, RA);
+		else if (is_med && next_target(st, dist, e->med, 2) == -1)
+			med_pushed = 1;
+		else if (med_pushed && next_target(st, dist, e->med, 1) == -1)
+			proceed_op(e, RRA);
+	}
+}
+
+static void		split_a(t_stack *e, int *st, int dist)
+{
+	int			med_pushed;
+	int			is_med;
+	int			op;
+
+	med_pushed = 0;
+	while (!med_pushed || next_target(st, dist, e->med, 1) != -1)
+	{
+		is_med = 0;
+		if (dist < 3 && is_sort(st, dist, 0, 1))
+			break ;
+		if (st[0] < e->med || (st[0] == e->med &&
+					(is_med = 1)))
 			op = PB;
 		else
 			op = RA; 
 		proceed_op(e, op);
-		if (is_med && next_target(e->stack_a, e->len_a, e->med, 1) != -1)
+		if (is_med && next_target(st, dist, e->med, 1) != -1
+				&& (med_pushed = 1))
 			proceed_op(e, RB);
-		else if (!is_med && next_target(e->stack_a, e->len_a, e->med, 1) == -1)
+		else if (is_med && next_target(st, dist, e->med, 2) == -1)
+			med_pushed = 1;
+		else if (med_pushed && next_target(st, dist, e->med, 1) == -1)
 			proceed_op(e, RRB);
+	}
+}	
+
+void			quick_sort(t_stack *e)
+{
+	int			i;
+	int			dist;
+
+	e->tab_med = (int*)ft_memalloc(sizeof(int) * e->param);
+	i = 0;
+	while (e->len_b || !is_sort(e->stack_a, e->len_a, 0, 1))
+	{
+		while (!is_sort(e->stack_a, e->len_a, 0, 1))
+		{
+			e->med = get_next_med(e, e->stack_a, e->len_a);
+			dist = get_dist_to_med(e->stack_a, e->len_a, e->med);
+			if (!e->med)
+			{
+				add_med(&e->tab_med, e->param, get_med(e->stack_a, e->len_a));
+				e->med = e->tab_med[i];
+				dist = e->len_a;
+				i++;
+			}
+			else
+				add_med(&e->tab_med, e->param, get_med(e->stack_a, dist));
+			split_a(e, e->stack_a, dist);
+			if (e->stack_a[1] == get_min(e->stack_a, dist))
+				proceed_op(e, SA);
+		}
+		while (e->len_b)
+		{
+			e->med = get_next_med(e, e->stack_b, e->len_b);
+			ft_printf("next_med_1 = %d\n", e->med);
+			dist = get_dist_to_med(e->stack_b, e->len_b, e->med);
+			if (e->med && !dist)
+			{
+				proceed_op(e, PA);
+				break ;
+			}
+			else if (dist > 2)
+			{
+				add_med(&e->tab_med, e->param, get_med(e->stack_b, dist));
+				e->med = get_next_med(e, e->stack_b, dist);
+			}
+			else if (!e->med)
+			{
+				add_med(&e->tab_med, e->param, get_med(e->stack_b, e->len_b));
+				e->med = e->tab_med[i];
+				dist = e->len_b;
+				i++;
+			}
+			ft_printf("next_med_2 = %d\n", e->med);
+			split_b(e, e->stack_b, dist);
+			
+			if (e->stack_b[1] == get_max(e->stack_b, e->len_b))
+				proceed_op(e, SB);
+		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 18:15:12 by ljoly             #+#    #+#             */
-/*   Updated: 2017/06/21 20:31:53 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/06/28 19:08:47 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,28 +69,30 @@ static void		shift_both(t_stack *e, int rank_a, int rank_b, int pb)
 int				next_target(int *st, int len, int target, int comp)
 {
 	int			i;
-	int			j;
 
 	i = -1;
-	j = len;
 	if (comp == 1)
 	{
-		while (++i < len && --j > i)
+		while (++i < len)
 		{
 			if (st[i] < target)
 				return (i);
-			else if (st[j] < target)
-				return (j);
 		}
 	}
 	else if (comp == 2)
 	{
-		while (++i < len && --j >= i)
+		while (++i < len)
 		{
 			if (st[i] == target)
 				return (i);
-			else if (st[j] == target)
-				return (j);
+		}
+	}
+	else if (comp == 3)
+	{
+		while (++i < len)
+		{
+			if (st[i] > target)
+				return (i);
 		}
 	}
 	return (-1);
