@@ -84,7 +84,10 @@ static void		split_b(t_stack *e, int *st, int dist)
 		is_med = 0;
 		if (st[0] > e->med || (st[0] == e->med &&
 					(is_med = 1)))
+		{
+			dist--;
 			op = PA;
+		}
 		else
 		{
 			back_in_order++;
@@ -117,10 +120,15 @@ static void		split_a(t_stack *e, int *st, int dist, int first_round)
 	back_in_order = 0;
 	while (!med_pushed || next_target(st, dist, e->med, 1) != -1)
 	{
+		if (next_target(st, dist, e->med, 1) != -1)
+			ft_printf("dist = %d\ne->med = %d\nnext target = %d\n", dist, e->med, next_target(st, dist, e->med, 1));
 		is_med = 0;
 		if (st[0] < e->med || (st[0] == e->med &&
 					(is_med = 1)))
+		{
+			dist--;
 			op = PB;
+		}
 		else
 		{
 			back_in_order++;
@@ -158,7 +166,7 @@ void			quick_sort(t_stack *e)
 			e->med = get_next_med(e, e->stack_a, e->len_a);
 			ft_printf("A: next_med_1 = %d\n", e->med);
 			dist = get_dist_to_med(e->stack_a, e->len_a, e->med);
-			if (e->med && dist > 3 && !is_sort(e->stack_a, dist, 0, 1))
+			if (e->med && dist > 2 && !is_sort(e->stack_a, dist, 0, 1))
 			{
 				add_med(&e->tab_med, e->param, get_med(e->stack_a, dist));
 				e->med = get_next_med(e, e->stack_a, dist);
@@ -178,12 +186,12 @@ void			quick_sort(t_stack *e)
 		}
 		first_round = 1;
 		ft_putendl("ON SORT DE A");
-		while (!is_sort(e->stack_b, e->len_b, 0, 0))
+		while (is_sort(e->stack_a, e->len_a, 0, 1) && !is_sort(e->stack_b, e->len_b, 0, 0))
 		{
 			e->med = get_next_med(e, e->stack_b, e->len_b);
 			ft_printf("B: next_med_1 = %d\n", e->med);
 			dist = get_dist_to_med(e->stack_b, e->len_b, e->med);
-			if (e->med && dist > 3 && !is_sort(e->stack_b, dist, 0, 2))
+			if (e->med && dist > 2 && !is_sort(e->stack_b, dist, 0, 2))
 			{
 				add_med(&e->tab_med, e->param, get_med(e->stack_b, dist));
 				e->med = get_next_med(e, e->stack_b, dist);
