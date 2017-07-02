@@ -14,7 +14,7 @@ NAME = push_swap
 NAME_C = checker
 
 SRCS = get_specs.c get_min_med_max.c push_swap.c op.c simple_algo.c \
-	  few_values_algo.c quick_sort_v2.c is_sort.c end.c
+	  few_values_algo.c quick_sort.c is_sort.c end.c
 
 SRCS_C = checker.c checker_op.c is_sort.c end.c
 

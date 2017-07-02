@@ -34,7 +34,7 @@ static int	not_ranked_dec(t_stack *e, int *st, int len)
 									   (st[i] != MAX_B || st[i - 1] != MIN))))
 			return (-1);
 	}
-	ft_printf("RANK_TO_ROT = %d\n", rank);
+//	ft_printf("RANK_TO_ROT = %d\n", rank);
 	return (rank);
 }
 
@@ -60,7 +60,7 @@ static int	not_ranked_inc(t_stack *e, int *st, int len)
 									   (st[i] != MIN || st[i - 1] != MAX))))
 			return (-1);
 	}
-	ft_printf("RANK_TO_ROT = %d\n", rank);
+//	ft_printf("RANK_TO_ROT = %d\n", rank);
 	return (rank);
 }
 
@@ -97,7 +97,7 @@ int			is_sort(int *st, int len, int start, int inc)
 				return (0);
 		}
 	}
-	ft_putendl("IS_SORT");
+//	ft_putendl("IS_SORT");
 	return (1);
 }
 

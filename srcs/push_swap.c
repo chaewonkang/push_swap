@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
+/*
 static void		display_stacks(t_stack *e)
 {
 	int		i;
@@ -31,7 +31,7 @@ static void		display_stacks(t_stack *e)
 		i++;
 	}
 	ft_putchar('\n');
-}
+}*/
 
 void		send_op(t_stack *e, int op)
 {
@@ -58,7 +58,7 @@ void		send_op(t_stack *e, int op)
 	else if (op == RRR)
 		ft_putendl("rrr");
 //	if (DISPLAY)
-	display_stacks(e);
+//	display_stacks(e);
 	MOVES++;
 }
 
@@ -66,11 +66,10 @@ void			push_swap(t_stack *e)
 {
 	int			i;
 
-	//CHECKER LE DEGRE DE DIF >> SI PEU DE DIFF GO FEW_VALUES_ALGO;
 	if (is_sort(e->stack_a, e->len_a, 0, 1))
 		return ;
 	if (!(e->tab = ft_memalloc(sizeof(int) * e->param)))
-		exit(ft_end(4, e));
+		exit(ft_end(4));
 	i = 0;
 	while (i < e->len_a)
 	{
@@ -78,12 +77,11 @@ void			push_swap(t_stack *e)
 		i++;
 	}
 	TAB = bubble_sort(TAB, PARAM);
-//CHECKER SI SORT_NOT_RANKED ET BALANCER DANS FEW VALUES;
-//	if (PARAM < 3)	
-//		simple_sort(e, MIN, MAX);
-//	if (PARAM < 11)
-//		few_values_sort(e);
-//	else
+	if (PARAM < 5)	
+		simple_sort(e, MIN, MAX);
+	else if (PARAM < 11)
+		few_values_sort(e);
+	else
 		quick_sort(e);
 	ft_printf("MOVES = %d\n", MOVES);
 }

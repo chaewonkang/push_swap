@@ -16,7 +16,7 @@
 # include "../libft/includes/libft.h"
 
 /*
-** Defining eironment features
+** Defining environment features
 */
 # define A e->stack_a
 # define B e->stack_b
@@ -36,10 +36,6 @@
 # define MAX e->max
 # define MAX_B e->max_b
 # define IS_SORT_A e->is_sort_a
-
-/*
-** Counting algorithms' moves to choose the fastest
-*/
 # define MOVES e->moves
 
 /*
@@ -67,7 +63,7 @@ struct					s_val
 };
 
 /*
-** Storing eironment - both programs will use a 't_stack' type
+** Storing environment - both programs will use a 't_stack' type
 */
 typedef struct	s_stack
 {
@@ -121,6 +117,6 @@ void			send_op(t_stack *e, int op);
 ** Non-static functions for both programs
 */
 int				is_sort(int *st, int len, int start, int inc);
-int				ft_end(int status, t_stack *e);
+int				ft_end(int status);
 
 #endif

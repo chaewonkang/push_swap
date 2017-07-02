@@ -12,18 +12,10 @@
 
 #include "../includes/push_swap.h"
 
-static void		ft_free(t_stack *e)
-{
-	free(A);
-	free(B);
-	free(e);
-}
-
-int				ft_end(int status, t_stack *e)
+int				ft_end(int status)
 {
 	if (status == 0 || status == 10)
 	{
-		ft_free(e);
 		if (status == 0)
 			ft_putendl("OK");
 		return (0);

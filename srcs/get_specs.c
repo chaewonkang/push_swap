@@ -32,29 +32,30 @@ static int		find_dup(t_stack *e)
 static void		get_specs(char **arg, int param)
 {
 	int			i;
-	t_stack		*e;
+	t_stack		e;
 
-	if (!(e = ft_memalloc(sizeof(t_stack))))
-		exit(ft_end(4, NULL));
-	PARAM = param;
-	if (!(A = ft_memalloc(sizeof(int) * PARAM)) ||
-			!(B = ft_memalloc(sizeof(int) * PARAM)))
-		exit(ft_end(4, NULL));
-	LEN_A = PARAM;
+	e.param = param;
+	if (!(e.stack_a = ft_memalloc(sizeof(int) * e.param)) ||
+			!(e.stack_b = ft_memalloc(sizeof(int) * e.param)))
+		exit(ft_end(4));
+	e.len_a = e.param;
+	e.len_b = 0;
+	e.moves = 0;
+	e.is_sort_a = 0;
 	i = -1;
 	while (arg[++i])
 	{
-		A[i] = ft_atoi(arg[i]);
+		e.stack_a[i] = ft_atoi(arg[i]);
 		free(arg[i]);
 	}
 	free(arg);
-	if (find_dup(e))
-		exit(ft_end(1, NULL));
-	MIN = INT_MAX;
-	MAX = INT_MIN;
-	get_min_med_max(e);
-	push_swap(e);
-	exit(ft_end(10, e));
+	if (find_dup(&e))
+		exit(ft_end(1));
+	e.min = INT_MAX;
+	e.max = INT_MIN;
+	get_min_med_max(&e);
+	push_swap(&e);
+	exit(ft_end(10));
 }
 
 static int		get_format(char **arg)
@@ -95,14 +96,14 @@ int				main(int argc, char **argv)
 	else
 	{
 		if (!(arg = (char**)malloc(sizeof(char*) * (argc))))
-			exit(ft_end(4, NULL));
+			exit(ft_end(4));
 		i = -1;
 		while (++i + 1 < argc)
 			arg[i] = ft_strdup(argv[i + 1]);
 		arg[i] = NULL;
 	}
 	if (!(param = get_format(arg)))
-		exit(ft_end(1, NULL));
+		exit(ft_end(1));
 	get_specs(arg, param);
 	return (0);
 }

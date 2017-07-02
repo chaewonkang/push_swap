@@ -14,7 +14,7 @@
 
 static void     	shift_b(t_stack *e, int len, int rank)
 {
-	ft_putendl("SHIFT_B");
+//	ft_putendl("SHIFT_B");
 	if (rank < LEN_B / 2)
 	{
 		while (rank > 0)
@@ -40,7 +40,7 @@ static void		shift_both(t_stack *e, int rank_a, int rank_b, int pb)
 	int		rank;
 	int		len;
 
-	ft_putendl("SHIFT_BOTH");
+//	ft_putendl("SHIFT_BOTH");
 	if (rank_a < LEN_A / 2 && rank_b < LEN_B / 2)
 	{
 		rank = (rank_a < rank_b ? rank_a : rank_b);
@@ -145,7 +145,7 @@ void		few_values_sort(t_stack *e)
 	{
 		if (!IS_SORT_A && is_sort(A, LEN_A, 0, 1) && (IS_SORT_A = 1))
 			break;
-		(LEN_B < MED_RANK - 1) ? ft_putendl("LEN_B < MED_RANK") : ft_putendl("!is_sort");
+//		(LEN_B < MED_RANK - 1) ? ft_putendl("LEN_B < MED_RANK") : ft_putendl("!is_sort");
 		use_b(e);
 	}
 	while (!is_sort(B, LEN_B, 0, 0))

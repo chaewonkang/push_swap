@@ -12,17 +12,20 @@
 
 #include "../includes/push_swap.h"
 
-static int		find_dup(t_stack *e)
+static int		find_dup(t_stack e)
 {
-	I = -1;
-	while (++I + 1 < PARAM)
+	int		i;
+	int		j;
+
+	i = -1;
+	while (++i + 1 < e.param)
 	{
-		J = -1;
-		while (++J < PARAM)
+		j = -1;
+		while (++j < e.param)
 		{
-			if (I == J && J < PARAM)
-				++J;
-			if (A[I] == A[J] && I != J)
+			if (i == j && j < e.param)
+				++j;
+			if (e.stack_a[i] == e.stack_a[j] && i != j)
 				return (1);
 		}
 	}
@@ -53,10 +56,10 @@ static void		get_instructions(t_stack *e)
 	while ((ret = get_next_line(0, &line)))
 	{
 		if (ret == -1)
-			exit(ft_end(3, NULL));
+			exit(ft_end(3));
 		OP_OK = 0;
 		if (!get_operations(line, e))
-			exit(ft_end(1, NULL));
+			exit(ft_end(1));
 		i = 0;
 		ft_printf("STACK A: \n");
 		while (i < LEN_A)
@@ -81,26 +84,25 @@ static void		get_instructions(t_stack *e)
 static void		checker(char **arg, int param)
 {
 	int			i;
-	t_stack		*e;
+	t_stack		e;
 
-	if (!(e = ft_memalloc(sizeof(t_stack))))
-		exit(ft_end(4, NULL));
-	PARAM = param;
-	if (!(A = ft_memalloc(sizeof(int) * PARAM)) ||
-			!(B = ft_memalloc(sizeof(int) * PARAM)))
-		exit(ft_end(4, NULL));
-	LEN_A = PARAM;
+	e.param = param;
+	if (!(e.stack_a = ft_memalloc(sizeof(int) * e.param)) ||
+			!(e.stack_b = ft_memalloc(sizeof(int) * e.param)))
+		exit(ft_end(4));
+	e.len_a = e.param;
+	e.len_b = 0;
 	i = -1;
 	while (arg[++i])
 	{
-		A[i] = ft_atoi(arg[i]);
+		e.stack_a[i] = ft_atoi(arg[i]);
 		free(arg[i]);
 	}
 	free(arg);
 	if (find_dup(e))
-		exit(ft_end(1, NULL));
-	get_instructions(e);
-	is_sort(A, LEN_A, 0, 1) && LEN_B == 0 ? exit(ft_end(0, e)) : exit(ft_end(2, NULL));
+		exit(ft_end(1));
+	get_instructions(&e);
+	is_sort(e.stack_a, e.len_a, 0, 1) && e.len_b == 0 ? exit(ft_end(0)) : exit(ft_end(2));
 }
 
 static int		get_format(char **arg)
@@ -141,14 +143,14 @@ int				main(int argc, char **argv)
 	else
 	{
 		if (!(arg = (char**)malloc(sizeof(char*) * (argc))))
-			exit(ft_end(4, NULL));
+			exit(ft_end(4));
 		i = -1;
 		while (++i + 1 < argc)
 			arg[i] = ft_strdup(argv[i + 1]);
 		arg[i] = NULL;
 	}
 	if (!(param = get_format(arg)))
-		exit(ft_end(1, NULL));
+		exit(ft_end(1));
 	checker(arg, param);
 	return (0);
 }

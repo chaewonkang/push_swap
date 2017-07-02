@@ -115,5 +115,5 @@ void			get_min_med_max(t_stack *e)
 	MAX_B = INT_MIN;
 	MED = INT_MIN;
 	get_max_b(e);
-	ft_printf("MED = %d\nMED_RANK = %d\nMAX_B = %d\n", MED, MED_RANK, MAX_B);
+//	ft_printf("MED = %d\nMED_RANK = %d\nMAX_B = %d\n", MED, MED_RANK, MAX_B);
 }
