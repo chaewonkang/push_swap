@@ -57,8 +57,8 @@ void		send_op(t_stack *e, int op)
 		ft_putendl("rrb");
 	else if (op == RRR)
 		ft_putendl("rrr");
-//	if (DISPLAY)
-	display_stacks(e);
+	if (e->display_stacks)
+		display_stacks(e);
 	MOVES++;
 }
 
@@ -77,11 +77,11 @@ void			push_swap(t_stack *e)
 		i++;
 	}
 	TAB = bubble_sort(TAB, PARAM);
-//	if (PARAM < 5)	
+	if (PARAM < 5)	
 		simple_sort(e, MIN, MAX);
-//	else if (PARAM < 11)
-//		few_values_sort(e);
-//	else
-//		quick_sort(e);
+	else if (PARAM < 11)
+		few_values_sort(e);
+	else
+		quick_sort(e);
 	ft_printf("MOVES = %d\n", MOVES);
 }

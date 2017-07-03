@@ -29,7 +29,7 @@ static int		find_dup(t_stack *e)
 	return (0);
 }
 
-static void		get_specs(char **arg, int param)
+static void		get_specs(char **arg, int param, int dsp)
 {
 	int			i;
 	t_stack		e;
@@ -42,6 +42,7 @@ static void		get_specs(char **arg, int param)
 	e.len_b = 0;
 	e.moves = 0;
 	e.is_sort_a = 0;
+	e.display_stacks = dsp;
 	i = -1;
 	while (arg[++i])
 	{
@@ -88,22 +89,26 @@ int				main(int argc, char **argv)
 	char		**arg;
 	int			i;
 	int			param;
+	int			dsp;
 
 	if (argc < 2)
 		return (-1);
-	if (argc == 2)
-		arg = ft_strsplit(argv[1], ' ');
+	dsp = 0;
+	if (ft_strequ(argv[1], "-v"))
+		dsp = 1;
+	if (argc == 2 + dsp)
+		arg = ft_strsplit(argv[1 + dsp], ' ');
 	else
 	{
-		if (!(arg = (char**)malloc(sizeof(char*) * (argc))))
+		if (!(arg = (char**)malloc(sizeof(char*) * (argc - dsp))))
 			exit(ft_end(4));
 		i = -1;
-		while (++i + 1 < argc)
-			arg[i] = ft_strdup(argv[i + 1]);
+		while (++i + 1 + dsp < argc)
+			arg[i] = ft_strdup(argv[i + 1 + dsp]);
 		arg[i] = NULL;
 	}
 	if (!(param = get_format(arg)))
 		exit(ft_end(1));
-	get_specs(arg, param);
+	get_specs(arg, param, dsp);
 	return (0);
 }

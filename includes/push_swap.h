@@ -27,7 +27,6 @@
 # define I e->i
 # define J e->j
 # define OP_OK e->op_ok
-# define DISPLAY e->display_stacks
 # define MED e->med
 # define MED_RANK e->med_rank
 # define MED_B e->med_b
@@ -53,13 +52,13 @@
 # define RRB 10
 # define RRR 11
 
-typedef	struct s_val	t_val;
+typedef	struct s_op	t_op;
 
-struct					s_val
+struct				s_op
 {
-	int					rank;
-	char				med;
-	t_val				*next;
+	int			op;
+	t_op			*prev;
+	t_op			*next;
 };
 
 /*
