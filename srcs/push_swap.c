@@ -18,16 +18,16 @@ static void		display_stacks(t_stack *e)
 
 	i = 0;
 	ft_printf("STACK A: \n");
-	while (i < LEN_A)
+	while (i < e->len_a)
 	{
-		ft_printf("%d\n", A[i]);
+		ft_printf("%d\n", e->stack_a[i]);
 		i++;
 	}
 	i = 0;
 	ft_printf("\nSTACK B: \n");
-	while (i < LEN_B)
+	while (i < e->len_b)
 	{
-		ft_printf("%d\n", B[i]);
+		ft_printf("%d\n", e->stack_b[i]);
 		i++;
 	}
 	ft_putchar('\n');
@@ -59,29 +59,25 @@ void		send_op(t_stack *e, int op)
 		ft_putendl("rrr");
 	if (e->display_stacks)
 		display_stacks(e);
-	MOVES++;
+	e->moves++;
+}
+
+void			proceed_op(t_stack *e, int op)
+{
+	do_op(e, op);
+	send_op(e, op);
 }
 
 void			push_swap(t_stack *e)
 {
-	int			i;
-
 	if (is_sort(e->stack_a, e->len_a, 0, 1))
 		return ;
-	if (!(e->tab = ft_memalloc(sizeof(int) * e->param)))
-		exit(ft_end(4));
-	i = 0;
-	while (i < e->len_a)
-	{
-		e->tab[i] = e->stack_a[i];
-		i++;
-	}
-	TAB = bubble_sort(TAB, PARAM);
-	if (PARAM < 5)	
-		simple_sort(e, MIN, MAX);
-	else if (PARAM < 11)
-		few_values_sort(e);
+	e->moves = 0;
+	if (e->param < 5)	
+		simple_sort(e, e->min, e->max);
+//	else if (PARAM < 11)
+//		few_values_sort(e);
 	else
 		quick_sort(e);
-	ft_printf("MOVES = %d\n", MOVES);
+	ft_printf("MOVES = %d\n", e->moves);
 }

@@ -12,12 +12,6 @@
 
 #include "../includes/push_swap.h"
 
-static void		proceed_op(t_stack *e, int op)
-{
-	do_op(e, op);
-	send_op(e, op);
-}
-
 static int		get_dist_to_med(int *st, int size, int next_med)
 {
 	int			i;
@@ -101,6 +95,8 @@ static void		split_b(t_stack *e, int *st, int dist)
 			med_pushed = 1;
 		else if (med_pushed && next_target(st, dist, e->med, 3) == -1)
 			proceed_op(e, RRA);
+		if (e->stack_b[1] == get_max(e->stack_b, e->len_b))
+			proceed_op(e, SB);
 	}
 	while (back_in_order && !is_sort(st, e->len_b, 0, 0))
 	{
@@ -142,6 +138,8 @@ static void		split_a(t_stack *e, int *st, int dist, int first_round)
 			med_pushed = 1;
 		else if (med_pushed && next_target(st, dist, e->med, 1) == -1)
 			proceed_op(e, RRB);
+		if (e->stack_a[1] == get_min(e->stack_a, e->len_a))
+			proceed_op(e, SA);
 	}
 	while (first_round && back_in_order && !is_sort(st, e->len_a, 0, 1))
 	{
@@ -163,7 +161,7 @@ void			quick_sort(t_stack *e)
 	{
 		while (!is_sort(e->stack_a, e->len_a, 0, 1))
 		{
-			if (e->stack_a[1] == get_min(e->stack_a, dist))
+			if (e->stack_a[1] == get_min(e->stack_a, e->len_a))
 				proceed_op(e, SA);
 			if (is_sort(e->stack_a, e->len_a, 0, 1))
 				break ;
@@ -185,7 +183,7 @@ void			quick_sort(t_stack *e)
 			}
 	//		ft_printf("A: next_med_2 = %d\n", e->med);
 			split_a(e, e->stack_a, dist, first_round);
-			if (e->stack_a[1] == get_min(e->stack_a, dist))
+			if (e->stack_a[1] == get_min(e->stack_a, e->len_a))
 				proceed_op(e, SA);
 		}
 		first_round = 1;

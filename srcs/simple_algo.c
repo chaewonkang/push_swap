@@ -14,8 +14,6 @@
 
 void			shift_a(t_stack *e, int len, int rank, int pb)
 {
-//	ft_putendl("SHIFT_A");
-//	ft_printf("RANK = %d\n", rank);
 	if (rank < LEN_A / 2)
 	{
 		while (rank > 0)

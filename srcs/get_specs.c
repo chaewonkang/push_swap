@@ -40,7 +40,6 @@ static void		get_specs(char **arg, int param, int dsp)
 		exit(ft_end(4));
 	e.len_a = e.param;
 	e.len_b = 0;
-	e.moves = 0;
 	e.is_sort_a = 0;
 	e.display_stacks = dsp;
 	i = -1;

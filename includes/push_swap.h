@@ -20,7 +20,6 @@
 */
 # define A e->stack_a
 # define B e->stack_b
-# define TAB e->tab
 # define PARAM e->param
 # define LEN_A e->len_a
 # define LEN_B e->len_b
@@ -68,7 +67,6 @@ typedef struct	s_stack
 {
 	int			*stack_a;
 	int			*stack_b;
-	int			*tab;
 	int			*tab_med;
 	int			param;
 	int			len_a;
@@ -77,7 +75,6 @@ typedef struct	s_stack
 	int			j;
 	int			op_ok;
 	int			med;
-	int			len_to_med;
 	int			med_rank;
 	int			med_b;
 	int			dist;
@@ -111,6 +108,7 @@ int				is_not_ranked(t_stack *e, int inc);
 void			shift_a(t_stack *e, int len, int rank, int pb);
 void			do_op(t_stack *e, int op);
 void			send_op(t_stack *e, int op);
+void			proceed_op(t_stack *e, int op);
 
 /*
 ** Non-static functions for both programs
