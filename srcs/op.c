@@ -78,19 +78,19 @@ static void     swap(int *tab, int len)
 void		do_op(t_stack *e, int op)
 {
 	if (op == SA || op == SS)
-		swap(A, LEN_A);
+		swap(e->stack_a, e->len_a);
 	if (op ==SB || op == SS)
-		swap(B, LEN_B);
+		swap(e->stack_b, e->len_b);
 	else if (op == PA)
-		push(A, B, &LEN_A, &LEN_B);
+		push(e->stack_a, e->stack_b, &e->len_a, &e->len_b);
 	else if (op == PB)
-		push(B, A, &LEN_B, &LEN_A);
+		push(e->stack_b, e->stack_a, &e->len_b, &e->len_a);
 	else if (op == RA || op == RR)
-		rotate(A, LEN_A);
+		rotate(e->stack_a, e->len_a);
 	if (op == RB || op == RR)
-		rotate(B, LEN_B);
+		rotate(e->stack_b, e->len_b);
 	else if (op == RRA || op == RRR)
-		reverse_rotate(A, LEN_A);
+		reverse_rotate(e->stack_a, e->len_a);
 	if (op == RRB || op == RRR)
-		reverse_rotate(B, LEN_B);
+		reverse_rotate(e->stack_b, e->len_b);
 }

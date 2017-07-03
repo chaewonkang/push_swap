@@ -25,7 +25,7 @@ static void		reverse_rotate(t_stack *e, int *st, int len)
 			st[j] = st[j - 1];
 		st[j] = i;
 	}
-	OP_OK = 1;
+	e->op_ok = 1;
 }
 
 static void		rotate(t_stack *e, int *st, int len)
@@ -41,7 +41,7 @@ static void		rotate(t_stack *e, int *st, int len)
 			st[j] = st[j + 1];
 		st[j] = i;
 	}
-	OP_OK = 1;
+	e->op_ok = 1;
 }
 
 static void		push(int *st1, int *st2, int *len1, int *len2)
@@ -74,28 +74,28 @@ static void		swap(t_stack *e, int *tab, int len)
 		tab[0] = tab[1];
 		tab[1] = i;
 	}
-	OP_OK = 1;
+	e->op_ok = 1;
 }
 
 int		get_operations(char *line, t_stack *e)
 {
 	if (ft_strequ(line, "sa") || ft_strequ(line, "ss"))
-		swap(e, A, LEN_A);
+		swap(e, e->stack_a, e->len_a);
 	if (ft_strequ(line, "sb") || ft_strequ(line, "ss"))
-		swap(e, B, LEN_B);
-	else if (ft_strequ(line, "pa") && (OP_OK = 1))
-		push(A, B, &LEN_A, &LEN_B);
-	else if (ft_strequ(line, "pb") && (OP_OK = 1))
-		push(B, A, &LEN_B, &LEN_A);
+		swap(e, e->stack_b, e->len_b);
+	else if (ft_strequ(line, "pa") && (e->op_ok = 1))
+		push(e->stack_a, e->stack_b, &e->len_a, &e->len_b);
+	else if (ft_strequ(line, "pb") && (e->op_ok = 1))
+		push(e->stack_b, e->stack_a, &e->len_b, &e->len_a);
 	else if (ft_strequ(line, "ra") || ft_strequ(line, "rr"))
-		rotate(e, A, LEN_A);
+		rotate(e, e->stack_a, e->len_a);
 	if (ft_strequ(line, "rb") || ft_strequ(line, "rr"))
-		rotate(e, B, LEN_B);
+		rotate(e, e->stack_b, e->len_b);
 	else if (ft_strequ(line, "rra") || ft_strequ(line, "rrr"))
-		reverse_rotate(e, A, LEN_A);
+		reverse_rotate(e, e->stack_a, e->len_a);
 	if (ft_strequ(line, "rrb") || ft_strequ(line, "rrr"))
-		reverse_rotate(e, B, LEN_B);
-	if (!OP_OK)
+		reverse_rotate(e, e->stack_b, e->len_b);
+	if (!e->op_ok)
 		return (0);
 	ft_putendl(line);
 	return (1);

@@ -14,15 +14,18 @@
 
 static int		find_dup(t_stack *e)
 {
-	I = -1;
-	while (++I + 1 < PARAM)
+	int		i;
+	int		j;
+
+	i = -1;
+	while (++i + 1 < e->param)
 	{
-		J = -1;
-		while (++J < PARAM)
+		j = -1;
+		while (++j < e->param)
 		{
-			if (I == J && J < PARAM)
-				++J;
-			if (A[I] == A[J] && I != J)
+			if (i == j && j < e->param)
+				++j;
+			if (e->stack_a[i] == e->stack_a[j] && i != j)
 				return (1);
 		}
 	}
@@ -40,7 +43,6 @@ static void		get_specs(char **arg, int param, int dsp)
 		exit(ft_end(4));
 	e.len_a = e.param;
 	e.len_b = 0;
-	e.is_sort_a = 0;
 	e.display_stacks = dsp;
 	i = -1;
 	while (arg[++i])
@@ -51,9 +53,6 @@ static void		get_specs(char **arg, int param, int dsp)
 	free(arg);
 	if (find_dup(&e))
 		exit(ft_end(1));
-	e.min = INT_MAX;
-	e.max = INT_MIN;
-	get_min_med_max(&e);
 	push_swap(&e);
 	exit(ft_end(10));
 }

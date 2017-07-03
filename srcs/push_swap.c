@@ -74,10 +74,9 @@ void			push_swap(t_stack *e)
 		return ;
 	e->moves = 0;
 	if (e->param < 5)	
-		simple_sort(e, e->min, e->max);
-//	else if (PARAM < 11)
-//		few_values_sort(e);
+		simple_sort(e);
 	else
 		quick_sort(e);
-	ft_printf("MOVES = %d\n", e->moves);
+//	if (e->display_stacks)
+		ft_printf("MOVES = %d\n", e->moves);
 }

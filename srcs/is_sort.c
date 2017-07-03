@@ -12,33 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-static int	not_ranked_dec(t_stack *e, int *st, int len)
-{
-	int		i;
-	int		count;
-	int		rank;
-
-	i = -1;
-	count = 0;
-	rank = -1;
-	while(++i + 1 < len)
-	{
-		if (count == 0 && st[i] < st[i + 1])
-		{
-			rank = i;
-			count++;
-			i++;
-		}
-		if (i + 1 < len && count > 0 &&
-				(st[i] < st[i + 1] || (st[i] > st[i - 1] &&
-									   (st[i] != MAX_B || st[i - 1] != MIN))))
-			return (-1);
-	}
-//	ft_printf("RANK_TO_ROT = %d\n", rank);
-	return (rank);
-}
-
-static int	not_ranked_inc(t_stack *e, int *st, int len)
+int			is_not_ranked(t_stack *e, int *st, int len)
 {
 	int		i;
 	int		count;
@@ -56,23 +30,11 @@ static int	not_ranked_inc(t_stack *e, int *st, int len)
 			i++;
 		}
 		if (i + 1 < len && count > 0 &&
-				(st[i] > st[i + 1] || (st[i] < st[i - 1] &&
-									   (st[i] != MIN || st[i - 1] != MAX))))
+				(st[i] > st[i + 1] ||
+				(st[i] < st[i - 1] &&
+				(st[i] != e->min || st[i - 1] != e->max))))
 			return (-1);
 	}
-//	ft_printf("RANK_TO_ROT = %d\n", rank);
-	return (rank);
-}
-
-int			is_not_ranked(t_stack *e, int inc)
-{
-	int		rank;
-
-	rank = -1;
-	if (inc)
-		rank = not_ranked_inc(e, A, LEN_A);
-	else
-		rank = not_ranked_dec(e, B, LEN_B);
 	return (rank);
 }
 
@@ -97,25 +59,5 @@ int			is_sort(int *st, int len, int start, int inc)
 				return (0);
 		}
 	}
-//	ft_putendl("IS_SORT");
 	return (1);
-}
-
-int			*bubble_sort(int *st, int len)
-{
-	int		i;
-	int		swap;
-	
-	i = -1;
-	while (++i + 1 < len)
-	{
-		if (st[i] > st[i + 1])
-		{
-			swap = st[i];
-			st[i] = st[i + 1];
-			st[i + 1] = swap;
-			i = -1;
-		}
-	}
-	return (st);
 }

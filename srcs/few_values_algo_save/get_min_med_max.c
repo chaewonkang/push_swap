@@ -12,40 +12,6 @@
 
 #include "../includes/push_swap.h"
 
-int			get_dist_to_med(int *st, int size, int next_med)
-{
-	int                     i;
-
-	i = 0;
-	while (i < size && st[i] != next_med)
-		i++;
-	if (i == size)
-		return (0);
-	return (i);
-}
-
-int				get_next_med(t_stack *e, int *st, int size)
-{
-	int                     i;
-	int                     j;
-
-	i = 0;
-	while (i < size)
-	{
-		j = 0;
-		while (j < e->param && e->tab_med[j])
-		{
-			if (st[i] == e->tab_med[j])
-				return (e->tab_med[j]);
-			else if (!e->tab_med[j])
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
-
 int				get_max(int *st, int len)
 {
 	int			i;
@@ -111,4 +77,43 @@ int				get_med(int *st, int len)
 		}
 	}
 	return (med);
+}
+
+static void		get_max_b(t_stack *e)
+{
+	I = -1;
+	while (++I < LEN_A)
+	{
+		DIST = 0;
+		J = -1;                                                                                  while (++J < LEN_A)
+		{
+			if (A[J] > A[I])
+				DIST++;
+		}
+		if (MAX_B == INT_MIN && DIST == (PARAM % 2 == 0 ? MED_RANK : MED_RANK + 1))
+			MAX_B = A[I];
+		if (DIST == (PARAM % 2 == 0 ? MED_RANK - 1 : MED_RANK))
+			MED = A[I];
+		if (MAX_B != INT_MIN && MED != INT_MIN)
+			break ;
+	}
+}
+
+
+
+void			get_min_med_max(t_stack *e)
+{
+	MED_RANK = PARAM / 2;
+	I = -1;
+	while (++I < LEN_A)
+	{
+		if (A[I] < MIN)
+			MIN = A[I];
+		if (A[I] > MAX)
+			MAX = A[I];
+	}
+	MAX_B = INT_MIN;
+	MED = INT_MIN;
+	get_max_b(e);
+//	ft_printf("MED = %d\nMED_RANK = %d\nMAX_B = %d\n", MED, MED_RANK, MAX_B);
 }

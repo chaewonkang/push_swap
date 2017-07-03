@@ -39,46 +39,16 @@ static void		get_instructions(t_stack *e)
 	int			i;
 
 	i = 0;
-	ft_printf("STACK A: \n");
-	while (i < LEN_A)
-	{
-		ft_printf("%d\n", A[i]);
-		i++;
-	}
-	i = 0;
-	ft_printf("\nSTACK B: \n");
-	while (i < LEN_B)
-	{
-		ft_printf("%d\n", B[i]);
-		i++;
-	}
-	ft_putchar('\n');
 	while ((ret = get_next_line(0, &line)))
 	{
 		if (ret == -1)
 			exit(ft_end(3));
-		OP_OK = 0;
+		e->op_ok = 0;
 		if (!get_operations(line, e))
 			exit(ft_end(1));
 		i = 0;
-		ft_printf("STACK A: \n");
-		while (i < LEN_A)
-		{
-			ft_printf("%d\n", A[i]);
-			i++;
-		}
-		i = 0;
-		ft_printf("\nSTACK B: \n");
-		while (i < LEN_B)
-		{
-			ft_printf("%d\n", B[i]);
-			i++;
-		}
-		ft_putchar('\n');
 		free(line);
-		MOVES++;
 	}
-	ft_printf("MOVES = %d\n", MOVES);
 }
 
 static void		checker(char **arg, int param)
@@ -102,7 +72,8 @@ static void		checker(char **arg, int param)
 	if (find_dup(e))
 		exit(ft_end(1));
 	get_instructions(&e);
-	is_sort(e.stack_a, e.len_a, 0, 1) && e.len_b == 0 ? exit(ft_end(0)) : exit(ft_end(2));
+	is_sort(e.stack_a, e.len_a, 0, 1) &&
+	e.len_b == 0 ? exit(ft_end(0)) : exit(ft_end(2));
 }
 
 static int		get_format(char **arg)

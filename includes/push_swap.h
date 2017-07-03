@@ -16,27 +16,6 @@
 # include "../libft/includes/libft.h"
 
 /*
-** Defining environment features
-*/
-# define A e->stack_a
-# define B e->stack_b
-# define PARAM e->param
-# define LEN_A e->len_a
-# define LEN_B e->len_b
-# define I e->i
-# define J e->j
-# define OP_OK e->op_ok
-# define MED e->med
-# define MED_RANK e->med_rank
-# define MED_B e->med_b
-# define DIST e->dist
-# define MIN e->min
-# define MAX e->max
-# define MAX_B e->max_b
-# define IS_SORT_A e->is_sort_a
-# define MOVES e->moves
-
-/*
 ** Defining instructions for push_swap
 */
 # define SA 1
@@ -71,41 +50,34 @@ typedef struct	s_stack
 	int			param;
 	int			len_a;
 	int			len_b;
-	int			i;
-	int			j;
 	int			op_ok;
 	int			med;
-	int			med_rank;
-	int			med_b;
 	int			dist;
 	int			min;
 	int			max;
-	int			max_b;
 	int			moves;
-	int			is_sort_a;
 	int			display_stacks;
 }				t_stack;
 
 /*
-** Non-static functions for checker
+** Non-static function for checker
 */
 int				get_operations(char *line, t_stack *e);
 
 /*
-** Non-static functions for push_swap
+** PUSH_SWAP
 */
-void			get_min_med_max(t_stack *e);
+void			push_swap(t_stack *e);
+
 int				get_med(int *st, int len);
 int				get_min(int *st, int len);
 int				get_max(int *st, int len);
-void			push_swap(t_stack *e);
-int				*bubble_sort(int *st, int len);
-void			simple_sort(t_stack *e, int min, int max);
-void			few_values_sort(t_stack *e);
+int				get_next_med(t_stack *e, int *st, int size);
+int				get_dist_to_med(int *st, int size, int next_med);
+void			simple_sort(t_stack *e);
 int				next_target(int *st, int len, int target, int comp);
 void			quick_sort(t_stack *e);
-int				is_not_ranked(t_stack *e, int inc);
-void			shift_a(t_stack *e, int len, int rank, int pb);
+int				is_not_ranked(t_stack *e, int *st, int len);
 void			do_op(t_stack *e, int op);
 void			send_op(t_stack *e, int op);
 void			proceed_op(t_stack *e, int op);

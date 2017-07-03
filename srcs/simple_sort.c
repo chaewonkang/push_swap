@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   simple_algo.c                                      :+:      :+:    :+:   */
+/*   simple_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,14 +12,13 @@
 
 #include "../includes/push_swap.h"
 
-void			shift_a(t_stack *e, int len, int rank, int pb)
+static void		shift_a(t_stack *e, int len, int rank, int pb)
 {
-	if (rank < LEN_A / 2)
+	if (rank < e->len_a / 2)
 	{
 		while (rank > 0)
 		{
-			do_op(e, RA);
-			send_op(e, RA);
+			proceed_op(e, RA);
 			rank--;
 		}
 	}
@@ -29,22 +28,22 @@ void			shift_a(t_stack *e, int len, int rank, int pb)
 			rank--;
 		while (rank + 1 < len)
 		{
-			do_op(e, RRA);
-			send_op(e, RRA);
+			proceed_op(e, RA);
 			rank++;
 		}	
 	}
 }
 
-static void		sort_a(t_stack *e, int min, int max)
+static void		sort_a(t_stack *e)
 {
 	int			op;
 	int			rank;
 
 	op = 0;
-	if ((rank = is_not_ranked(e, 1)) > 0)
-		shift_a(e, LEN_A, rank, 0);
-	else if (((A[0] != max && A[0] > A[1]) || (A[0] == min && A[1] == max))
+	if ((rank = is_not_ranked(e, e->stack_a, e->len_a)) > 0)
+		shift_a(e, e->len_a, rank, 0);
+	else if (((e->stack_a[0] != e->max && e->stack_a[0] > e->stack_a[1])
+		|| (e->stack_a[0] == e->min && e->stack_a[1] == e->max))
 			&& (op = SA))
 		do_op(e, SA);
 	else if ((op = RA))
@@ -53,8 +52,10 @@ static void		sort_a(t_stack *e, int min, int max)
 		send_op(e, op);
 }
 
-void			simple_sort(t_stack *e, int min, int max)
+void			simple_sort(t_stack *e)
 {
-	while (!is_sort(A, LEN_A, 0, 1))
-		sort_a(e, min, max);
+	e->min = get_min(e->stack_a, e->len_a);
+	e->max = get_max(e->stack_a, e->len_a);
+	while (!is_sort(e->stack_a, e->len_a, 0, 1))
+		sort_a(e);
 }
