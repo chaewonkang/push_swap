@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/05 16:30:23 by ljoly             #+#    #+#             */
-/*   Updated: 2017/06/27 19:34:46 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/07/04 18:17:34 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,15 @@ int				get_next_med(t_stack *e, int *st, int size)
 	while (i < size)
 	{
 		j = 0;
-		while (j < e->param && e->tab_med[j])
+		while (j < e->param && e->tab_med[j] != INT_MIN)
 		{
 			if (st[i] == e->tab_med[j])
 				return (e->tab_med[j]);
-			else if (!e->tab_med[j])
-				return (0);
 			j++;
 		}
 		i++;
 	}
-	return (0);
+	return (INT_MIN);
 }
 
 int				get_max(int *st, int len)
@@ -94,7 +92,7 @@ int				get_med(int *st, int len)
 	int			med;
 
 	i = -1;
-	med = 0;
+	med = INT_MIN;
 	while (++i < len)
 	{
 		dist = 0;

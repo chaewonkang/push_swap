@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 18:25:08 by ljoly             #+#    #+#             */
-/*   Updated: 2017/07/04 18:23:18 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/06/29 17:13:24 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void		add_med(int **tab_med, int size, int val)
 	i = 0;
 	while (i < size)
 	{
-		if (tab[i] == INT_MIN)
+		if (!tab[i])
 		{
 			tab[i] = val;
 			return ;
@@ -39,7 +39,7 @@ static void		split_b(t_stack *e, int *st, int dist)
 
 	med_pushed = 0;
 	back_in_order = 0;
-	while (!med_pushed || next_target(st, dist, e->med, 3) != INT_MIN)
+	while (!med_pushed || next_target(st, dist, e->med, 3) != -1)
 	{
 		is_med = 0;
 		if (st[0] > e->med || (st[0] == e->med &&
@@ -54,12 +54,12 @@ static void		split_b(t_stack *e, int *st, int dist)
 			op = RB;
 		}
 		proceed_op(e, op);
-		if (is_med && next_target(st, dist, e->med, 3) != INT_MIN
+		if (is_med && next_target(st, dist, e->med, 3) != -1
 				&& (med_pushed = 1) && e->len_a > 1)
 			proceed_op(e, RA);
-		else if (is_med && next_target(st, dist, e->med, 2) == INT_MIN)
+		else if (is_med && next_target(st, dist, e->med, 2) == -1)
 			med_pushed = 1;
-		else if (med_pushed && next_target(st, dist, e->med, 3) == INT_MIN)
+		else if (med_pushed && next_target(st, dist, e->med, 3) == -1)
 			proceed_op(e, RRA);
 		if (e->len_b > 1 && e->stack_b[1] == get_max(e->stack_b, e->len_b))
 			proceed_op(e, SB);
@@ -80,7 +80,7 @@ static void		split_a(t_stack *e, int *st, int dist, int first_round)
 
 	med_pushed = 0;
 	back_in_order = 0;
-	while (!med_pushed || next_target(st, dist, e->med, 1) != INT_MAX)
+	while (!med_pushed || next_target(st, dist, e->med, 1) != -1)
 	{
 		is_med = 0;
 		if (st[0] < e->med || (st[0] == e->med &&
@@ -92,15 +92,15 @@ static void		split_a(t_stack *e, int *st, int dist, int first_round)
 		else
 		{
 			back_in_order++;
-			op = RA;
+			op = RA; 
 		}
 		proceed_op(e, op);
-		if (is_med && next_target(st, dist, e->med, 1) != INT_MAX
+		if (is_med && next_target(st, dist, e->med, 1) != -1
 				&& (med_pushed = 1) && e->len_b > 1)
 			proceed_op(e, RB);
-		else if (is_med && next_target(st, dist, e->med, 2) == INT_MIN)
+		else if (is_med && next_target(st, dist, e->med, 2) == -1)
 			med_pushed = 1;
-		else if (med_pushed && next_target(st, dist, e->med, 1) == INT_MAX)
+		else if (med_pushed && next_target(st, dist, e->med, 1) == -1)
 			proceed_op(e, RRB);
 		if (e->len_a > 1 && e->stack_a[1] == get_min(e->stack_a, e->len_a))
 			proceed_op(e, SA);
@@ -119,28 +119,25 @@ void			quick_sort(t_stack *e)
 	int			first_round;
 
 	e->tab_med = (int*)ft_memalloc(sizeof(int) * e->param);
-	i = -1;
-	while (++i < e->param)
-		e->tab_med[i] = INT_MIN;
 	i = 0;
 	first_round = 0;
 	while (!is_sort(e->stack_a, e->len_a, 0, 1) || !is_sort(e->stack_b, e->len_b, 0, 0))
 	{
 		while (!is_sort(e->stack_a, e->len_a, 0, 1))
 		{
-			if (e->len_a > 1 && e->stack_a[1] == get_min(e->stack_a, e->len_a))
+			if (e->stack_a[1] == get_min(e->stack_a, e->len_a))
 				proceed_op(e, SA);
 			if (is_sort(e->stack_a, e->len_a, 0, 1))
 				break ;
 			e->med = get_next_med(e, e->stack_a, e->len_a);
 			dist = get_dist_to_med(e->stack_a, e->len_a, e->med);
-			if (e->med != INT_MIN && dist > 2 && !is_sort(e->stack_a, dist, 0, 1))
+			if (e->med && dist > 2 && !is_sort(e->stack_a, dist, 0, 1))
 			{
 				add_med(&e->tab_med, e->param, get_med(e->stack_a, dist));
 				e->med = get_next_med(e, e->stack_a, dist);
 				i++;
 			}
-			else if (e->med == INT_MIN)
+			else if (!e->med)
 			{
 				add_med(&e->tab_med, e->param, get_med(e->stack_a, e->len_a));
 				e->med = e->tab_med[i];
@@ -148,25 +145,25 @@ void			quick_sort(t_stack *e)
 				i++;
 			}
 			split_a(e, e->stack_a, dist, first_round);
-			if (e->len_a > 1 && e->stack_a[1] == get_min(e->stack_a, e->len_a))
+			if (e->stack_a[1] == get_min(e->stack_a, e->len_a))
 				proceed_op(e, SA);
 		}
 		first_round = 1;
 		while (is_sort(e->stack_a, e->len_a, 0, 1) && !is_sort(e->stack_b, e->len_b, 0, 0))
 		{
-			if (e->len_b > 1 && e->stack_b[1] == get_max(e->stack_b, e->len_b))
+			if (e->stack_b[1] == get_max(e->stack_b, e->len_b))
 				proceed_op(e, SB);
 			if (is_sort(e->stack_b, e->len_b, 0, 0))
 				break ;
 			e->med = get_next_med(e, e->stack_b, e->len_b);
 			dist = get_dist_to_med(e->stack_b, e->len_b, e->med);
-			if (e->med != INT_MIN && dist > 2 && !is_sort(e->stack_b, dist, 0, 2))
+			if (e->med && dist > 2 && !is_sort(e->stack_b, dist, 0, 2))
 			{
 				add_med(&e->tab_med, e->param, get_med(e->stack_b, dist));
 				e->med = get_next_med(e, e->stack_b, dist);
 				i++;
 			}
-			else if (e->med == INT_MIN)
+			else if (!e->med)
 			{
 				add_med(&e->tab_med, e->param, get_med(e->stack_b, e->len_b));
 				e->med = e->tab_med[i];
@@ -174,7 +171,7 @@ void			quick_sort(t_stack *e)
 				i++;
 			}
 			split_b(e, e->stack_b, dist);
-			if (e->len_b > 1 && e->stack_b[1] == get_max(e->stack_b, e->len_b))
+			if (e->stack_b[1] == get_max(e->stack_b, e->len_b))
 				proceed_op(e, SB);
 		}
 	}

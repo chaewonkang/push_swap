@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 13:54:40 by ljoly             #+#    #+#             */
-/*   Updated: 2017/06/28 14:42:56 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/07/04 15:34:02 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,14 @@ typedef struct	s_stack
 	int			param;
 	int			len_a;
 	int			len_b;
-	int			op_ok;
+	char		op_ok;
 	int			med;
 	int			dist;
 	int			min;
 	int			max;
+	char		first_round;
 	int			moves;
-	int			display_stacks;
+	char		display_stacks;
 }				t_stack;
 
 /*
