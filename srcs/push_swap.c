@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 18:03:52 by ljoly             #+#    #+#             */
-/*   Updated: 2017/06/28 17:57:58 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/07/04 18:57:15 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void		display_stacks(t_stack *e)
 	ft_putchar('\n');
 }
 
-void		send_op(t_stack *e, int op)
+void		send_op(t_stack *e, char op)
 {
 	if (op == SA)
 		ft_putendl("sa");
@@ -62,15 +62,20 @@ void		send_op(t_stack *e, int op)
 	e->moves++;
 }
 
-void			proceed_op(t_stack *e, int op)
+void			proceed_op(t_stack *e, char op, int store)
 {
-	do_op(e, op);
-	send_op(e, op);
+	if (store)
+		store_op(e, op);
+	else
+	{
+		do_op(e, op);
+		send_op(e, op);
+	}
 }
 
 void			push_swap(t_stack *e)
 {
-	if (is_sort(e->stack_a, e->len_a, 0, 1))
+	if (is_sorted(e->stack_a, e->len_a, 0, 1))
 		return ;
 	e->moves = 0;
 	if (e->param < 5)	

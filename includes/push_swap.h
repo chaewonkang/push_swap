@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 13:54:40 by ljoly             #+#    #+#             */
-/*   Updated: 2017/07/04 15:34:02 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/07/04 18:56:13 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef	struct s_op	t_op;
 
 struct				s_op
 {
-	int			op;
+	char			op;
 	t_op			*prev;
 	t_op			*next;
 };
@@ -56,6 +56,7 @@ typedef struct	s_stack
 	int			min;
 	int			max;
 	char		first_round;
+	t_op		**op;
 	int			moves;
 	char		display_stacks;
 }				t_stack;
@@ -70,23 +71,29 @@ int				get_operations(char *line, t_stack *e);
 */
 void			push_swap(t_stack *e);
 
+/*
+** Get stacks' features
+*/
 int				get_med(int *st, int len);
 int				get_min(int *st, int len);
 int				get_max(int *st, int len);
 int				get_next_med(t_stack *e, int *st, int size);
 int				get_dist_to_med(int *st, int size, int next_med);
-void			simple_sort(t_stack *e);
-int				next_target(int *st, int len, int target, int comp);
-void			quick_sort(t_stack *e);
 int				is_not_ranked(t_stack *e, int *st, int len);
-void			do_op(t_stack *e, int op);
-void			send_op(t_stack *e, int op);
-void			proceed_op(t_stack *e, int op);
+int				is_sorted(int *st, int len, int start, int inc);
 
 /*
-** Non-static functions for both programs
+** Two sorting algorithms
 */
-int				is_sort(int *st, int len, int start, int inc);
+void			simple_sort(t_stack *e);
+void			quick_sort(t_stack *e);
+
+int				next_target(int *st, int len, int target, char comp);
+void			do_op(t_stack *e, char op);
+void			send_op(t_stack *e, char op);
+void			proceed_op(t_stack *e, char op, int store);
+void			store_op(t_stack *e, char op);
+
 int				ft_end(int status);
 
 #endif

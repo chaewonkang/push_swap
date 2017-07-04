@@ -1,45 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   next_target.c                                      :+:      :+:    :+:   */
+/*   store_op.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/04 14:58:36 by ljoly             #+#    #+#             */
-/*   Updated: 2017/07/04 18:49:56 by ljoly            ###   ########.fr       */
+/*   Created: 2017/07/04 18:38:06 by ljoly             #+#    #+#             */
+/*   Updated: 2017/07/04 19:34:02 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int				next_target(int *st, int len, int target, char comp)
+static void		new_link(t_op **op, t_op *new)
 {
-	int			i;
+	new->next = *op;
+	*op->prev = new;
+	*op = new;
+}
 
-	i = -1;
-	if (comp == 1)
+void			store_op(t_stack *e, char op)
+{
+	t_op		*new;
+
+	if (!e->op)
 	{
-		while (++i < len)
-		{
-			if (st[i] < target)
-				return (i);
-		}
+		if (!(e->op = (t_op**)ft_memalloc(sizeof(t_op*))))
+			exit(ft_end(4));
 	}
-	else if (comp == 2)
-	{
-		while (++i < len)
-		{
-			if (st[i] == target)
-				return (i);
-		}
-	}
-	else if (comp == 3)
-	{
-		while (++i < len)
-		{
-			if (st[i] > target)
-				return (i);
-		}
-	}
-	return (comp == 1 ? INT_MAX : INT_MIN);
+	if (!(new = ft_memalloc(sizeof(t_op))))
+		exit(ft_end(4));
+	new->op = op;
+	new_link(e->op, new);
 }

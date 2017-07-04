@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:19:19 by ljoly             #+#    #+#             */
-/*   Updated: 2017/07/04 14:46:05 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/07/04 18:54:28 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void		checker(char **arg, int param)
 	if (find_dup(e))
 		exit(ft_end(1));
 	get_instructions(&e);
-	is_sort(e.stack_a, e.len_a, 0, 1) &&
+	is_sorted(e.stack_a, e.len_a, 0, 1) &&
 	e.len_b == 0 ? exit(ft_end(0)) : exit(ft_end(2));
 }
 

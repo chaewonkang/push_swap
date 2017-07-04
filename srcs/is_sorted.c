@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_sort.c                                          :+:      :+:    :+:   */
+/*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/04 14:34:01 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/12 19:15:32 by ljoly            ###   ########.fr       */
+/*   Created: 2017/07/04 18:54:05 by ljoly             #+#    #+#             */
+/*   Updated: 2017/07/04 18:54:11 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int			is_not_ranked(t_stack *e, int *st, int len)
 	return (rank);
 }
 
-int			is_sort(int *st, int len, int start, int inc)
+int			is_sorted(int *st, int len, int start, int inc)
 {
 	int		i;
 

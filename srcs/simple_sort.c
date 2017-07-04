@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 17:52:53 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/15 15:01:55 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/07/04 18:57:42 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void		shift_a(t_stack *e, int len, int rank, int pb)
 	{
 		while (rank > 0)
 		{
-			proceed_op(e, RA);
+			proceed_op(e, RA, 0);
 			rank--;
 		}
 	}
@@ -28,7 +28,7 @@ static void		shift_a(t_stack *e, int len, int rank, int pb)
 			rank--;
 		while (rank + 1 < len)
 		{
-			proceed_op(e, RA);
+			proceed_op(e, RA, 0);
 			rank++;
 		}	
 	}
@@ -56,6 +56,6 @@ void			simple_sort(t_stack *e)
 {
 	e->min = get_min(e->stack_a, e->len_a);
 	e->max = get_max(e->stack_a, e->len_a);
-	while (!is_sort(e->stack_a, e->len_a, 0, 1))
+	while (!is_sorted(e->stack_a, e->len_a, 0, 1))
 		sort_a(e);
 }
