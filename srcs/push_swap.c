@@ -6,11 +6,11 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 18:03:52 by ljoly             #+#    #+#             */
-/*   Updated: 2017/07/04 18:57:15 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/07/05 21:10:30 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 static void		display_stacks(t_stack *e)
 {
@@ -35,6 +35,8 @@ static void		display_stacks(t_stack *e)
 
 void		send_op(t_stack *e, char op)
 {
+//	nanosleep(&(struct timespec){0, 100000000}, 0);
+//	ft_putstr("\e[1;1H\e[2J");
 	if (op == SA)
 		ft_putendl("sa");
 	else if (op == SB)
@@ -57,19 +59,33 @@ void		send_op(t_stack *e, char op)
 		ft_putendl("rrb");
 	else if (op == RRR)
 		ft_putendl("rrr");
-	if (e->display_stacks)
+	if (e->bonus.stacks)
 		display_stacks(e);
-	e->moves++;
 }
 
-void			proceed_op(t_stack *e, char op, int store)
+void			proceed_op(t_stack *e, char op)
 {
-	if (store)
-		store_op(e, op);
-	else
+	t_op		*tmp;
+
+	if (op)
 	{
 		do_op(e, op);
-		send_op(e, op);
+		store_op(e, op);
+	}
+	else
+	{
+		e->moves = 0;
+		delete_ops(e->op);
+		replace_ops(e->op);
+		tmp = *e->op;
+		while (tmp->prev)
+			tmp = tmp->prev;
+		while (tmp)
+		{
+			send_op(e, tmp->op);
+			tmp = tmp->next;
+			e->bonus.moves++;
+		}
 	}
 }
 
@@ -81,7 +97,10 @@ void			push_swap(t_stack *e)
 	if (e->param < 5)	
 		simple_sort(e);
 	else
+	{
 		quick_sort(e);
-//	if (e->display_stacks)
-		ft_printf("MOVES = %d\n", e->moves);
+		proceed_op(e, NOPE);
+	}
+	if (e->bonus.is_moves)
+		ft_printf("MOVES = %d\n", e->bonus.moves);
 }

@@ -6,11 +6,11 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 18:02:04 by ljoly             #+#    #+#             */
-/*   Updated: 2017/05/11 17:44:15 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/07/05 21:03:30 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 static int		find_dup(t_stack *e)
 {
@@ -32,7 +32,7 @@ static int		find_dup(t_stack *e)
 	return (0);
 }
 
-static void		get_specs(char **arg, int param, int dsp)
+static void		get_specs(char **arg, int param, t_display dsp)
 {
 	int			i;
 	t_stack		e;
@@ -43,7 +43,9 @@ static void		get_specs(char **arg, int param, int dsp)
 		exit(ft_end(4));
 	e.len_a = e.param;
 	e.len_b = 0;
-	e.display_stacks = dsp;
+	e.bonus = dsp;
+	if (!(e.op = (t_op**)ft_memalloc(sizeof(t_op*))))
+		exit(ft_end(4));
 	i = -1;
 	while (arg[++i])
 	{
@@ -87,22 +89,20 @@ int				main(int argc, char **argv)
 	char		**arg;
 	int			i;
 	int			param;
-	int			dsp;
+	t_display	dsp;
 
 	if (argc < 2)
 		return (-1);
-	dsp = 0;
-	if (ft_strequ(argv[1], "-v"))
-		dsp = 1;
-	if (argc == 2 + dsp)
-		arg = ft_strsplit(argv[1 + dsp], ' ');
+	parse_display(argv, &dsp);
+	if (argc == 2 + dsp.flags)
+		arg = ft_strsplit(argv[1 + dsp.flags], ' ');
 	else
 	{
-		if (!(arg = (char**)malloc(sizeof(char*) * (argc - dsp))))
+		if (!(arg = (char**)malloc(sizeof(char*) * (argc - dsp.flags))))
 			exit(ft_end(4));
 		i = -1;
-		while (++i + 1 + dsp < argc)
-			arg[i] = ft_strdup(argv[i + 1 + dsp]);
+		while (++i + 1 + dsp.flags < argc)
+			arg[i] = ft_strdup(argv[i + 1 + dsp.flags]);
 		arg[i] = NULL;
 	}
 	if (!(param = get_format(arg)))

@@ -6,11 +6,11 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 17:52:53 by ljoly             #+#    #+#             */
-/*   Updated: 2017/07/04 18:57:42 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/07/05 12:39:41 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 static void		shift_a(t_stack *e, int len, int rank, int pb)
 {
@@ -18,7 +18,7 @@ static void		shift_a(t_stack *e, int len, int rank, int pb)
 	{
 		while (rank > 0)
 		{
-			proceed_op(e, RA, 0);
+			proceed_op(e, RA);
 			rank--;
 		}
 	}
@@ -28,7 +28,7 @@ static void		shift_a(t_stack *e, int len, int rank, int pb)
 			rank--;
 		while (rank + 1 < len)
 		{
-			proceed_op(e, RA, 0);
+			proceed_op(e, RA);
 			rank++;
 		}	
 	}

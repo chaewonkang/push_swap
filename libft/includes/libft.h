@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/24 16:14:13 by ljoly             #+#    #+#             */
-/*   Updated: 2017/04/18 16:03:55 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/07/05 16:56:34 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,18 @@
 # include <string.h>
 # include <stdio.h>
 # include <limits.h>
+# include <time.h>
 # include "get_next_line.h"
 # include "ft_printf.h"
+
+# define BLACK "\033[0;30m"
+# define RED "\033[0;31m"
+# define GREEN "\033[0;32m"
+# define YELLOW "\033[0;33m"
+# define BLUE "\033[0;34m"
+# define PURPLE "\033[0;35m"
+# define CYAN "\033[0;36m"
+# define WHITE "\033[0;37m"
 
 typedef struct	s_list
 {
