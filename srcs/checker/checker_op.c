@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 13:53:56 by ljoly             #+#    #+#             */
-/*   Updated: 2017/07/04 14:46:18 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/07/06 16:22:15 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static void		swap(t_stack *e, int *tab, int len)
 	e->op_ok = 1;
 }
 
-int		get_operations(char *line, t_stack *e)
+int				get_operations(char *line, t_stack *e)
 {
 	if (ft_strequ(line, "sa") || ft_strequ(line, "ss"))
 		swap(e, e->stack_a, e->len_a);
@@ -97,6 +97,5 @@ int		get_operations(char *line, t_stack *e)
 		reverse_rotate(e, e->stack_b, e->len_b);
 	if (!e->op_ok)
 		return (0);
-	ft_putendl(line);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/04 18:38:06 by ljoly             #+#    #+#             */
-/*   Updated: 2017/07/05 20:08:50 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/07/06 17:23:08 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void		new_link(t_op **op, t_op *new)
 {
-
 	new->prev = *op;
 	(*op)->next = new;
 	*op = new;

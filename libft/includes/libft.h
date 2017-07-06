@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/24 16:14:13 by ljoly             #+#    #+#             */
-/*   Updated: 2017/07/05 16:56:34 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/07/06 15:12:44 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define PURPLE "\033[0;35m"
 # define CYAN "\033[0;36m"
 # define WHITE "\033[0;37m"
+# define NC "\033[0m"
 
 typedef struct	s_list
 {

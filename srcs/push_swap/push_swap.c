@@ -6,37 +6,40 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 18:03:52 by ljoly             #+#    #+#             */
-/*   Updated: 2017/07/05 21:10:30 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/07/06 16:50:20 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void		display_stacks(t_stack *e)
+static void		bonus(t_stack *e, char begin, char op, char algo)
 {
-	int		i;
-
-	i = 0;
-	ft_printf("STACK A: \n");
-	while (i < e->len_a)
+	if (begin)
 	{
-		ft_printf("%d\n", e->stack_a[i]);
-		i++;
+		if (e->bonus.refresh)
+		{
+			nanosleep(&(struct timespec){0, 100000000}, 0);
+			ft_putstr("\e[1;1H\e[2J");
+		}
+		if (begin && e->bonus.colors)
+			ft_putstr(RED);
+		else if (e->bonus.colors)
+			ft_putstr(NC);
 	}
-	i = 0;
-	ft_printf("\nSTACK B: \n");
-	while (i < e->len_b)
+	else
 	{
-		ft_printf("%d\n", e->stack_b[i]);
-		i++;
+		if (e->bonus.colors)
+			ft_putstr(NC);
+		if (e->bonus.stacks)
+			display_stacks(e, e->bonus.colors, op);
+		if (algo)
+			e->bonus.moves++;
 	}
-	ft_putchar('\n');
 }
 
-void		send_op(t_stack *e, char op, char algo)
+void			send_op(t_stack *e, char op, char algo)
 {
-//	nanosleep(&(struct timespec){0, 100000000}, 0);
-//	ft_putstr("\e[1;1H\e[2J");
+	bonus(e, 1, op, 0);
 	if (op == SA)
 		ft_putendl("sa");
 	else if (op == SB)
@@ -59,10 +62,7 @@ void		send_op(t_stack *e, char op, char algo)
 		ft_putendl("rrb");
 	else if (op == RRR)
 		ft_putendl("rrr");
-	if (e->bonus.stacks)
-		display_stacks(e);
-	if (algo)
-		e->bonus.moves++;
+	bonus(e, 0, op, algo);
 }
 
 void			proceed_op(t_stack *e, char op)
@@ -84,10 +84,24 @@ void			proceed_op(t_stack *e, char op)
 			tmp = tmp->prev;
 		while (tmp)
 		{
+			if (e->bonus.stacks)
+				do_op(e, tmp->op);
 			send_op(e, tmp->op, 0);
 			tmp = tmp->next;
 			e->bonus.moves++;
 		}
+	}
+}
+
+static void		init_stack_a(t_stack *e)
+{
+	int			i;
+
+	i = 0;
+	while (i < e->param)
+	{
+		e->stack_a[i] = e->bonus.stack[i];
+		i++;
 	}
 }
 
@@ -99,11 +113,13 @@ void			push_swap(t_stack *e)
 	if (is_sorted(e->stack_a, e->len_a, 0, 1))
 		return ;
 	e->moves = 0;
-	if (e->param < 5 && (algo = 1))	
+	if (e->param < 5 && (algo = 1))
 		simple_sort(e);
 	else
 	{
 		quick_sort(e);
+		if (e->bonus.stacks)
+			init_stack_a(e);
 		proceed_op(e, NOPE);
 		algo = 2;
 	}
@@ -114,5 +130,5 @@ void			push_swap(t_stack *e)
 		e->bonus.moves);
 	if (e->bonus.algo)
 		algo == 1 ? ft_putendl("Algorithm used: simple sort") :
-		ft_putendl("Algorithm used: quick sort");
+		ft_putendl("Algorithm used: quick sort\n");
 }

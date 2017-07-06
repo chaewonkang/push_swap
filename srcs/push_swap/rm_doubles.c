@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/05 14:15:51 by ljoly             #+#    #+#             */
-/*   Updated: 2017/07/05 20:31:02 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/07/06 17:21:25 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,70 +43,67 @@ static void		replace(t_op *tmp, t_op *tmp2, char op)
 	free(tmp);
 }
 
+static void		doit(t_op **op, t_rm *r, char del)
+{
+	r->tmp = *op;
+	r->doit = 0;
+	if (del)
+		free(r->tmp2);
+}
+
 void			replace_ops(t_op **op)
 {
-	t_op		*tmp;
-	t_op		*tmp2;
-	int			rep;
+	t_rm		r;
 
-	rep = 0;
+	r.doit = 0;
 	if (*op)
 	{
-		tmp = *op;
-		while (tmp && tmp->next)
+		r.tmp = *op;
+		while (r.tmp && r.tmp->next)
 		{
-			tmp2 = tmp->next;
-			if (((tmp->op == RA && tmp2->op == RB) ||
-					(tmp->op == RB && tmp2->op == RA)) && (rep = 1))
-				replace(tmp, tmp2, RR);
-			else if (((tmp->op == RRA && tmp2->op == RRB) ||
-					(tmp->op == RRB && tmp2->op == RRA)) && (rep = 1))
-				replace(tmp, tmp2, RRR);
-			else if (((tmp->op == SA && tmp2->op == SB) ||
-					(tmp->op == SB && tmp2->op == SA)) && (rep = 1))
-				replace(tmp, tmp2, SS);
-			if (rep)
-			{
-				tmp = *op;
-				rep = 0;
-			}
+			r.tmp2 = r.tmp->next;
+			if (((r.tmp->op == RA && r.tmp2->op == RB) ||
+					(r.tmp->op == RB && r.tmp2->op == RA)) && (r.doit = 1))
+				replace(r.tmp, r.tmp2, RR);
+			else if (((r.tmp->op == RRA && r.tmp2->op == RRB) ||
+					(r.tmp->op == RRB && r.tmp2->op == RRA)) && (r.doit = 1))
+				replace(r.tmp, r.tmp2, RRR);
+			else if (((r.tmp->op == SA && r.tmp2->op == SB) ||
+					(r.tmp->op == SB && r.tmp2->op == SA)) && (r.doit = 1))
+				replace(r.tmp, r.tmp2, SS);
+			if (r.doit)
+				doit(op, &r, 0);
 			else
-				tmp = tmp2;
+				r.tmp = r.tmp2;
 		}
 	}
 }
 
 void			delete_ops(t_op **op)
 {
-	t_op		*tmp;
-	t_op		*tmp2;
-	int			del;
+	t_rm		r;
 
-	del = 0;
+	r.doit = 0;
 	if (*op)
 	{
-		tmp = *op;
-		while (tmp && tmp->prev)
+		r.tmp = *op;
+		while (r.tmp && r.tmp->prev)
 		{
-			tmp2 = tmp->prev;
-			if (((tmp->op == PA && tmp2->op == PB) ||
-						(tmp->op == PB && tmp2->op == PA)) && (del = 1))
-				delete(op, tmp, tmp2);
-			else if (((tmp->op == RA && tmp2->op == RRA) ||
-						(tmp->op == RRA && tmp2->op == RA)) && (del = 1))
-				delete(op, tmp, tmp2);
-			else if (((tmp->op == RB && tmp2->op == RRB) ||
-						(tmp->op == RRB && tmp2->op == RB)) && (del = 1))
-				delete(op, tmp, tmp2);
-			if (del)
-			{
-				tmp = *op;
-				free(tmp2);
-				del = 0;
-			}
+			r.tmp2 = r.tmp->prev;
+			if (((r.tmp->op == PA && r.tmp2->op == PB) ||
+						(r.tmp->op == PB && r.tmp2->op == PA)) && (r.doit = 1))
+				delete(op, r.tmp, r.tmp2);
+			else if (((r.tmp->op == RA && r.tmp2->op == RRA) ||
+						(r.tmp->op == RRA && r.tmp2->op == RA)) && (r.doit = 1))
+				delete(op, r.tmp, r.tmp2);
+			else if (((r.tmp->op == RB && r.tmp2->op == RRB) ||
+						(r.tmp->op == RRB && r.tmp2->op == RB)) && (r.doit = 1))
+				delete(op, r.tmp, r.tmp2);
+			if (r.doit)
+				doit(op, &r, 1);
 			else
-				tmp = tmp2;
+				r.tmp = r.tmp2;
 		}
-		*op = tmp;
+		*op = r.tmp;
 	}
 }

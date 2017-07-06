@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 17:52:53 by ljoly             #+#    #+#             */
-/*   Updated: 2017/07/05 12:39:41 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/07/06 17:22:42 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void		shift_a(t_stack *e, int len, int rank, int pb)
 			do_op(e, RA);
 			send_op(e, RA, 1);
 			rank++;
-		}	
+		}
 	}
 }
 

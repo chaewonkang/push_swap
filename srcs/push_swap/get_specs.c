@@ -6,7 +6,7 @@
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 18:02:04 by ljoly             #+#    #+#             */
-/*   Updated: 2017/07/05 21:03:30 by ljoly            ###   ########.fr       */
+/*   Updated: 2017/07/06 14:15:10 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,21 @@ static void		get_specs(char **arg, int param, t_display dsp)
 	int			i;
 	t_stack		e;
 
+	e.bonus = dsp;
 	e.param = param;
 	if (!(e.stack_a = ft_memalloc(sizeof(int) * e.param)) ||
-			!(e.stack_b = ft_memalloc(sizeof(int) * e.param)))
+			!(e.stack_b = ft_memalloc(sizeof(int) * e.param)) ||
+			!(e.bonus.stack = ft_memalloc(sizeof(int) * e.param)))
 		exit(ft_end(4));
 	e.len_a = e.param;
 	e.len_b = 0;
-	e.bonus = dsp;
 	if (!(e.op = (t_op**)ft_memalloc(sizeof(t_op*))))
 		exit(ft_end(4));
 	i = -1;
 	while (arg[++i])
 	{
 		e.stack_a[i] = ft_atoi(arg[i]);
+		e.bonus.stack[i] = ft_atoi(arg[i]);
 		free(arg[i]);
 	}
 	free(arg);

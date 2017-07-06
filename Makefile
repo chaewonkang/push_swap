@@ -6,7 +6,7 @@
 #    By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/24 16:34:42 by ljoly             #+#    #+#              #
-#    Updated: 2017/07/05 21:04:23 by ljoly            ###   ########.fr        #
+#    Updated: 2017/07/06 17:27:02 by ljoly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME = push_swap
 NAME_C = checker
 
 SRC_PS = get_specs.c get_min_med_max.c push_swap.c op.c simple_sort.c \
-	  next_target.c quick_sort.c is_sorted.c store_op.c rm_doubles.c end.c \
-	  display.c
+	  next_target.c quick_sort.c split.c is_sorted.c store_op.c rm_doubles.c \
+	  end.c display.c
 
 SRC_C = checker.c checker_op.c is_sorted.c end.c
 
