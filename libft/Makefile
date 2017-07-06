@@ -10,12 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: all clean fclean re
-
 NAME = libft.a
 
-SRC_IN = $(addprefix ./srcs/, $(SRC))
-SRC = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
+SRC_LIBFT = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 	  ft_memchr.c ft_memcmp.c ft_strlen.c ft_strdup.c ft_strcpy.c \
 	  ft_strncpy.c ft_strcat.c ft_strncat.c ft_strlcat.c ft_strchr.c \
 	  ft_strrchr.c ft_strstr.c ft_strnstr.c ft_strcmp.c ft_strncmp.c \
@@ -34,7 +31,6 @@ SRC = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 	  ft_print_octal.c ft_putwchar.c ft_putwstr.c ft_wstrlen.c ft_wchar_size.c \
 	  ft_wstr_size.c ft_print_binary.c ft_count_w.c ft_atoss.c
 
-SRC_IN_PRINTF = $(addprefix ./srcs/ft_printf/srcs/, $(SRC_PRINTF))
 SRC_PRINTF = deal_flags_char.c deal_flags_int.c deal_with_it_bro.c \
 			 deal_with_it_bro_2.c ft_printf.c get_info.c initialize_struct.c \
 			 put_blanks_and_zeros.c print_char_c.c print_int_d_i.c \
@@ -53,31 +49,44 @@ SRC_PRINTF = deal_flags_char.c deal_flags_int.c deal_with_it_bro.c \
 			 print_binary_char_hhb.c print_binary_short_hb.c \
 			 print_binary_long_lb.c print_binary_long_long_llb.c
 
+LIBFT_PATH = ./srcs/
+PRINTF_PATH = ./srcs/ft_printf/
 
-OBJ = ${SRC:c=o}
-OBJ_PRINTF = ${SRC_PRINTF:c=o}
+SRC = $(addprefix $(LIBFT_PATH), $(SRC_LIBFT)) \
+	$(addprefix $(PRINTF_PATH), $(SRC_PRINTF))
+
+OBJ = ${SRC:.c=.o}
 
 HEADERS = ./includes
-
 FLAGS = -Wall -Wextra -Werror
 
 RED=\033[1;31m
 GREEN=\033[1;32m
 NC=\033[0m
 
+.SILENT:
+
 all: $(NAME)
 
-$(NAME):
-	@gcc $(FLAGS) -c $(SRC_IN) $(SRC_IN_PRINTF) -I $(HEADERS)
-	@ar rc $(NAME) $(OBJ) $(OBJ_PRINTF)
+$(NAME): libft $(OBJ)
+	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
-	@echo "$(GREEN)[✓]$(NC) Library $(NAME) built..."
+	@printf "\n$(GREEN)[✓]$(NC) \x1B[32mLibrary $(NAME) built !\n\x1B[37m"
+
+libft:
+	@printf "\n\x1B[33mCompiling lib...\n\x1b[37m"
+
+%.o : %.c
+	@printf "\e[33m▒\e[0m"
+	@gcc -o $@ -c -I $(HEADERS) $(FLAGS) $^
 
 clean:
-	@rm -f $(OBJ) $(OBJ_PRINTF)
+	@rm -f $(OBJ)
+	@printf "$(RED)[-]$(NC) Lib obj files deleted\x1B[37m\n"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "$(RED)[-]$(NC) Library $(NAME) cleaned..."
+	@printf "$(RED)[-]$(NC) $(NAME) deleted\x1B[37m\n"
 
 re: fclean all
+.PHONY: all clean fclean re

@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.c                                           :+:      :+:    :+:   */
+/*   initialize_struct.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/24 16:14:35 by ljoly             #+#    #+#             */
-/*   Updated: 2017/03/10 12:01:54 by ljoly            ###   ########.fr       */
+/*   Created: 2017/03/13 20:16:17 by ljoly             #+#    #+#             */
+/*   Updated: 2017/03/13 20:16:20 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-ssize_t		ft_abs(ssize_t nb)
+void		ft_initialize_struct(t_info *info)
 {
-	int	i;
-
-	i = 0;
-	nb < 0 ? nb *= -1 : nb;
-	return (nb);
+	SPEC = 0;
+	ft_bzero(FLAGS, 7);
+	WIDTH = 0;
+	IS_PRECISION = 0;
+	PRECISION = 0;
+	MOD = NO_MOD;
+	LEFT_Z = 0;
+	LEFT_B = 0;
+	RIGHT_B = 0;
+	FILL_L = 0;
+	FILL_R = 0;
+	HEX_UPPER = 0;
 }

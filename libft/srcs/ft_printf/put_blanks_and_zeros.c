@@ -1,22 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.c                                           :+:      :+:    :+:   */
+/*   put_blanks_and_zeros.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/24 16:14:35 by ljoly             #+#    #+#             */
-/*   Updated: 2017/03/10 12:01:54 by ljoly            ###   ########.fr       */
+/*   Created: 2017/03/13 20:22:32 by ljoly             #+#    #+#             */
+/*   Updated: 2017/03/13 20:22:33 by ljoly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-ssize_t		ft_abs(ssize_t nb)
+void		ft_print_blanks(int n)
 {
-	int	i;
+	int		i;
 
 	i = 0;
-	nb < 0 ? nb *= -1 : nb;
-	return (nb);
+	while (i < n)
+	{
+		ft_putchar(' ');
+		i++;
+	}
+}
+
+void		ft_print_zeros(int n)
+{
+	int		i;
+
+	i = 0;
+	while (i < n)
+	{
+		ft_putchar('0');
+		i++;
+	}
 }

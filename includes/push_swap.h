@@ -13,7 +13,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../libft/includes/libft.h"
+# include "libft.h"
 
 /*
  ** Defining instructions for push_swap
@@ -104,7 +104,7 @@ void			quick_sort(t_stack *e);
 
 int				next_target(int *st, int len, int target, char comp);
 void			do_op(t_stack *e, char op);
-void			send_op(t_stack *e, char op);
+void			send_op(t_stack *e, char op, char algo);
 void			proceed_op(t_stack *e, char op);
 void			store_op(t_stack *e, char op);
 
