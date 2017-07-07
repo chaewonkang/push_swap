@@ -14,7 +14,7 @@
 
 int				get_dist_to_med(int *st, int size, int next_med)
 {
-	int		i;
+	int			i;
 
 	i = 0;
 	while (i < size && st[i] != next_med)
@@ -26,8 +26,8 @@ int				get_dist_to_med(int *st, int size, int next_med)
 
 int				get_next_med(t_stack *e, int *st, int size)
 {
-	int		i;
-	int		j;
+	int			i;
+	int			j;
 
 	i = 0;
 	while (i < size)
@@ -46,9 +46,9 @@ int				get_next_med(t_stack *e, int *st, int size)
 
 int				get_max(int *st, int len)
 {
-	int		i;
-	int		j;
-	int		max;
+	int			i;
+	int			j;
+	int			max;
 
 	max = INT_MIN;
 	i = -1;
@@ -66,9 +66,9 @@ int				get_max(int *st, int len)
 
 int				get_min(int *st, int len)
 {
-	int		i;
-	int		j;
-	int		min;
+	int			i;
+	int			j;
+	int			min;
 
 	min = INT_MAX;
 	i = -1;
@@ -86,10 +86,10 @@ int				get_min(int *st, int len)
 
 int				get_med(int *st, int len)
 {
-	int		i;
-	int		j;
-	int		dist;
-	int		med;
+	int			i;
+	int			j;
+	int			dist;
+	int			med;
 
 	i = -1;
 	med = INT_MIN;

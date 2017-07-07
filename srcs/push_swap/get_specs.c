@@ -14,8 +14,8 @@
 
 static int		find_dup(t_stack *e)
 {
-	int		i;
-	int		j;
+	int			i;
+	int			j;
 
 	i = -1;
 	while (++i + 1 < e->param)

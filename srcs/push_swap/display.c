@@ -14,7 +14,7 @@
 
 static int			get_st(char op)
 {
-	int			st;
+	int				st;
 
 	st = 0;
 	if (op == SA || op == SS || op == PA || op == PB || op == RA || op == RR ||
@@ -28,8 +28,8 @@ static int			get_st(char op)
 
 static void			display_colors(t_stack *e, char op)
 {
-	int		i;
-	int		st;
+	int				i;
+	int				st;
 
 	st = get_st(op);
 	ft_printf(""BLUE"%s"NC"\n", "STACK A: ");
@@ -55,7 +55,7 @@ static void			display_colors(t_stack *e, char op)
 
 void				display_stacks(t_stack *e, char c, char op)
 {
-	int		i;
+	int				i;
 
 	i = 0;
 	if (c)
@@ -92,7 +92,7 @@ static void			init_display(t_display *dsp)
 
 void				parse_display(char **argv, t_display *dsp)
 {
-	int			i;
+	int				i;
 
 	init_display(dsp);
 	i = 1;

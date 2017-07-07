@@ -94,7 +94,7 @@ typedef struct		s_rm
 }					t_rm;
 
 /*
-** Non-static function for checker
+** CHECKER
 */
 int					get_operations(char *line, t_stack *e);
 

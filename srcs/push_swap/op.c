@@ -14,8 +14,8 @@
 
 static void		reverse_rotate(int *st, int len)
 {
-	int		i;
-	int		j;
+	int			i;
+	int			j;
 
 	if (len > 1)
 	{
@@ -29,8 +29,8 @@ static void		reverse_rotate(int *st, int len)
 
 static void		rotate(int *st, int len)
 {
-	int		i;
-	int		j;
+	int			i;
+	int			j;
 
 	if (len > 1)
 	{
@@ -44,8 +44,8 @@ static void		rotate(int *st, int len)
 
 static void		push(int *st1, int *st2, int *len1, int *len2)
 {
-	int		i;
-	int		j;
+	int			i;
+	int			j;
 
 	if (*len2 > 0)
 	{
@@ -64,7 +64,7 @@ static void		push(int *st1, int *st2, int *len1, int *len2)
 
 static void		swap(int *tab, int len)
 {
-	int		i;
+	int			i;
 
 	if (len > 1)
 	{

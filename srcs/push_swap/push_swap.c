@@ -107,7 +107,7 @@ static void		init_stack_a(t_stack *e)
 
 void			push_swap(t_stack *e)
 {
-	int		algo;
+	int			algo;
 
 	algo = 0;
 	if (is_sorted(e->stack_a, e->len_a, 0, 1))

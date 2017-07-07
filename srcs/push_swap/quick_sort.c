@@ -14,8 +14,8 @@
 
 static void		add_med(int **tab_med, int size, int val)
 {
-	int		i;
-	int		*tab;
+	int			i;
+	int			*tab;
 
 	tab = *tab_med;
 	i = 0;

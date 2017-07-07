@@ -40,8 +40,8 @@ static void		check_med(t_stack *e, int *st, int a)
 
 void			split_b(t_stack *e, int *st)
 {
-	int		op;
-	int		back_in_order;
+	int			op;
+	int			back_in_order;
 
 	e->med_pushed = 0;
 	back_in_order = 1;
@@ -68,8 +68,8 @@ void			split_b(t_stack *e, int *st)
 
 void			split_a(t_stack *e, int *st)
 {
-	int		op;
-	int		back_in_order;
+	int			op;
+	int			back_in_order;
 
 	e->med_pushed = 0;
 	back_in_order = 1;
