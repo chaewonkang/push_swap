@@ -50,19 +50,19 @@ $(NAME_C): obj_c $(OBJ_C)
 
 obj:
 	@make -C $(LIBFT)
-	@printf "\n\x1B[33mCompiling $(NAME)...\n\x1b[37m"
+	@printf "\n\x1B[38;5;208mCompiling $(NAME)...\n\x1b[37m"
 	@mkdir -p $(OBJ_PS_PATH)
 
 obj_c:
-	@printf "\n\x1B[33mCompiling $(NAME_C)...\n\x1b[37m"
+	@printf "\n\x1B[38;5;208mCompiling $(NAME_C)...\n\x1b[37m"
 
 $(OBJ_PS_PATH)%.o: $(SRC_PS_PATH)%.c
 	@gcc $(FLAGS) -I $(LIBFT) -I $(HEADER_LIB) -I $(HEADER) -o $@ -c $<
-	@printf "\e[33m▒\e[0m"
+	@printf "\e[38;5;208m▒\e[0m"
 
 $(OBJ_C_PATH)%.o: $(SRC_C_PATH)%.c
 	@gcc $(FLAGS) -I $(LIBFT) -I $(HEADER_LIB) -I $(HEADER) -o $@ -c $<
-	@printf "\e[33m▒\e[0m"
+	@printf "\e[38;5;208m▒\e[0m"
 
 clean:
 	@make -C $(LIBFT) clean

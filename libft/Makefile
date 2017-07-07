@@ -74,10 +74,10 @@ $(NAME): libft $(OBJ)
 	@printf "\n$(GREEN)[✓]$(NC) \x1B[32mLibrary $(NAME) built !\n\x1B[37m"
 
 libft:
-	@printf "\n\x1B[33mCompiling lib...\n\x1b[37m"
+	@printf "\n\x1B[38;5;208mCompiling lib...\n\x1b[37m"
 
 %.o : %.c
-	@printf "\e[33m▒\e[0m"
+	@printf "\e[38;5;208m▒\e[0m"
 	@gcc -o $@ -c -I $(HEADERS) $(FLAGS) $^
 
 clean:
