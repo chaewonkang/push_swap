@@ -71,7 +71,7 @@ all: $(NAME)
 $(NAME): libft $(OBJ)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
-	@printf "\n$(GREEN)[✓]$(NC) \x1B[32mLibrary $(NAME) built !\n\x1B[37m"
+	@printf "\n$(GREEN)[✓]$(NC)\x1B[32mLibrary $(NAME) built !\n\x1B[37m"
 
 libft:
 	@printf "\n\x1B[38;5;208mCompiling lib...\n\x1b[37m"
@@ -82,11 +82,11 @@ libft:
 
 clean:
 	@rm -f $(OBJ)
-	@printf "$(RED)[-]$(NC) Lib obj files deleted\x1B[37m\n"
+	@printf "$(RED)[-]$(NC)Lib obj files deleted\x1B[37m\n"
 
 fclean: clean
 	@rm -f $(NAME)
-	@printf "$(RED)[-]$(NC) $(NAME) deleted\x1B[37m\n"
+	@printf "$(RED)[-]$(NC)$(NAME) deleted\x1B[37m\n"
 
 re: fclean all
 .PHONY: all clean fclean re

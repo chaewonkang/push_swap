@@ -42,11 +42,11 @@ all: $(NAME) $(NAME_C)
 
 $(NAME): obj $(OBJ_PS)
 	@gcc $(FLAGS) -o $(NAME) -I $(HEADER_LIB) -I $(HEADER) $(OBJ_PS) -L $(LIBFT) -lft
-	@printf "\n$(GREEN)[✓]$(NC) \x1B[32mExecutable $(NAME) ready !\x1B[37m\n"
+	@printf "\n$(GREEN)[✓]$(NC)\x1B[32mExecutable $(NAME) ready !\x1B[37m\n"
 
 $(NAME_C): obj_c $(OBJ_C)
 	@gcc $(FLAGS) -o $(NAME_C) -I $(HEADER_LIB) -I $(HEADER) $(OBJ_C) -L $(LIBFT) -lft
-	@printf "\n$(GREEN)[✓]$(NC) \x1B[32mExecutable $(NAME_C) ready !\x1B[37m\n"
+	@printf "\n$(GREEN)[✓]$(NC)\x1B[32mExecutable $(NAME_C) ready !\x1B[37m\n"
 
 obj:
 	@make -C $(LIBFT)
@@ -67,14 +67,14 @@ $(OBJ_C_PATH)%.o: $(SRC_C_PATH)%.c
 clean:
 	@make -C $(LIBFT) clean
 	@rm -rf $(OBJ_PS_PATH)
-	@printf "$(RED)[-]$(NC) Obj files deleted\n"
+	@printf "$(RED)[-]$(NC)Obj files deleted\n"
 
 fclean: clean
 	@make -C $(LIBFT) fclean
 	@rm -f $(NAME)
-	@printf "$(RED)[-]$(NC) Executable $(NAME) deleted\n"
+	@printf "$(RED)[-]$(NC)Executable $(NAME) deleted\n"
 	@rm -f $(NAME_C)
-	@printf "$(RED)[-]$(NC) Executable $(NAME_C) deleted\n"
+	@printf "$(RED)[-]$(NC)Executable $(NAME_C) deleted\n"
 
 re: fclean all
 
