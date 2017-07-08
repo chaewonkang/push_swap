@@ -31,5 +31,5 @@ Display (usage):
 -r: visualizer  
 -c: colors  
 
-Tip: to generate a random sequence of numbers, run the program with the ruby command:
+Tip: to generate a random sequence of numbers, run the program with the ruby command:  
 ruby -e "puts (0..999).to_a.shuffle.join(' ')" 
