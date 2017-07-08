@@ -6,30 +6,30 @@ Results (average):
 - 100 parameters: 680 moves
 - 500 parameters: 5180 moves
 
-The game is composed of 2 stacks named a and b.
-	a contains a random number of either positive or negative numbers without any duplicates
-	b is empty
-The aim is to sort in ascending order numbers into stack a.
-
-Set of instructions:
-	sa: swap a - swaps the first 2 elements of stack a (does nothing if there is only one or no elements).
-	sb: swap b - swaps the first 2 elements of stack b (does nothing if there is only one or no elements).
-	ss: sa and sb at the same time.
-	pa: push a - takes the first element on top of b and puts it on top of a (does nothing if b is empty).
-	pb: push b - takes the first element on top of a and puts it on top of b (does nothing if a is empty).
-	ra: rotate a - shifts up all elements of stack. The first element becomes the last one.
-	rb: rotate b - shifts up all elements of stack. The first element becomes the last one.
-	rr: ra and rb at the same time.
-	rra: reverse rotate a - shifts down all elements of stack a. The last element becomes the first one.
-	rrb: reverse rotate b - shifts down all elements of stack b. The last element becomes the first one.
-	rrr: rra and rrb at the same time.
-
-********************************** USAGE **************************************
+The game is composed of 2 stacks named a and b.  
+	a contains a random number of either positive or negative numbers without any duplicates  
+	b is empty  
+The aim is to sort in ascending order numbers into stack a.  
+  
+Set of instructions:  
+	sa: swap a - swaps the first 2 elements of stack a (does nothing if there is only one or no elements).  
+	sb: swap b - swaps the first 2 elements of stack b (does nothing if there is only one or no elements).  
+	ss: sa and sb at the same time.  
+	pa: push a - takes the first element on top of b and puts it on top of a (does nothing if b is empty).  
+	pb: push b - takes the first element on top of a and puts it on top of b (does nothing if a is empty).  
+	ra: rotate a - shifts up all elements of stack. The first element becomes the last one.  
+	rb: rotate b - shifts up all elements of stack. The first element becomes the last one.  
+	rr: ra and rb at the same time.  
+	rra: reverse rotate a - shifts down all elements of stack a. The last element becomes the first one.  
+	rrb: reverse rotate b - shifts down all elements of stack b. The last element becomes the first one.  
+	rrr: rra and rrb at the same time.  
+  
+********************************** USAGE **************************************  
 
 -m: number of moves  
 -a: algorithm used  
 -s: stacks step by step  
 -r: visualizer  
 -c: colors  
-
-*******************************************************************************
+  
+*******************************************************************************  
