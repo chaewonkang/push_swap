@@ -2,7 +2,7 @@
 Sorting integers on a stack in a minimum number of moves with a limited set of instructions.
 The main algorithm is a mix of quick sort and merge sort.
 
-Results (average):
+**Results** (average):
 - 100 parameters: 680 moves
 - 500 parameters: 5180 moves
 
@@ -11,7 +11,7 @@ The game is composed of 2 stacks named a and b.
 	b is empty  
 The aim is to sort in ascending order numbers into stack a.  
   
-Set of instructions:
+**Set of instructions**:
 - sa: swap a - swaps the first 2 elements of stack a (does nothing if there is only one or no elements).
 - sb: swap b - swaps the first 2 elements of stack b (does nothing if there is only one or no elements).
 - ss: sa and sb at the same time.
@@ -24,7 +24,7 @@ Set of instructions:
 - rrb: reverse rotate b - shifts down all elements of stack b. The last element becomes the first one.
 - rrr: rra and rrb at the same time.  
   
-Display (usage):
+**Display** (usage):
 -m: number of moves  
 -a: algorithm used  
 -s: stacks step by step  
