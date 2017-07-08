@@ -26,15 +26,10 @@ Set of instructions:
 
 ********************************** USAGE **************************************
 
--m: number of moves
-
--a: algorithm used
-
--s: stacks step by step
-
--r: visualizer
-
--c: colors
-
+-m: number of moves  
+-a: algorithm used  
+-s: stacks step by step  
+-r: visualizer  
+-c: colors  
 
 *******************************************************************************
