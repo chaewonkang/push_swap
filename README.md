@@ -24,7 +24,7 @@ The aim is to sort in ascending order numbers into stack a.
 - rrb: reverse rotate b - shifts down all elements of stack b. The last element becomes the first one.
 - rrr: rra and rrb at the same time.  
   
-**Display** (usage):
+**Display** (usage):  
 -m: number of moves  
 -a: algorithm used  
 -s: stacks step by step  
