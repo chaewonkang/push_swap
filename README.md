@@ -3,8 +3,8 @@ Sorting integers on a stack in a minimum number of moves with a limited set of i
 The main algorithm is a mix of quick sort and merge sort.
 
 **Results** (average):
-- 100 parameters: 680 moves
-- 500 parameters: 5180 moves
+- 100 parameters: 679 moves
+- 500 parameters: 5149 moves
 
 The game is composed of 2 stacks named a and b.  
 	a contains a random number of either positive or negative numbers without any duplicates  
