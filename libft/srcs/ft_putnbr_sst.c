@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_sst.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/24 16:21:32 by ljoly             #+#    #+#             */
-/*   Updated: 2017/02/24 16:21:33 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/24 16:21:32 by ckang             #+#    #+#             */
+/*   Updated: 2021/02/24 16:21:33 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_sst(ssize_t n)
+void ft_putnbr_sst(ssize_t n)
 {
 	if (n == ft_power(-2, 63))
 	{
 		ft_putstr("-9223372036854775808");
-		return ;
+		return;
 	}
 	if (n < 0)
 	{

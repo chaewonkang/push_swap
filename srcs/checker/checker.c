@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/18 17:19:19 by ljoly             #+#    #+#             */
-/*   Updated: 2017/07/04 18:54:28 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/18 17:19:19 by ckang             #+#    #+#             */
+/*   Updated: 2021/04/05 19:26:43 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int		find_dup(t_stack e)
+static int find_dup(t_stack e)
 {
-	int			i;
-	int			j;
+	int i;
+	int j;
 
 	i = -1;
 	while (++i + 1 < e.param)
@@ -32,11 +32,11 @@ static int		find_dup(t_stack e)
 	return (0);
 }
 
-static void		get_instructions(t_stack *e)
+static void get_instructions(t_stack *e)
 {
-	char		*line;
-	int			ret;
-	int			i;
+	char *line;
+	int ret;
+	int i;
 
 	i = 0;
 	while ((ret = get_next_line(0, &line)))
@@ -51,14 +51,14 @@ static void		get_instructions(t_stack *e)
 	}
 }
 
-static void		checker(char **arg, int param)
+static void checker(char **arg, int param)
 {
-	int			i;
-	t_stack		e;
+	int i;
+	t_stack e;
 
 	e.param = param;
 	if (!(e.stack_a = ft_memalloc(sizeof(int) * e.param)) ||
-			!(e.stack_b = ft_memalloc(sizeof(int) * e.param)))
+		!(e.stack_b = ft_memalloc(sizeof(int) * e.param)))
 		exit(ft_end(4));
 	e.len_a = e.param;
 	e.len_b = 0;
@@ -73,13 +73,15 @@ static void		checker(char **arg, int param)
 		exit(ft_end(1));
 	get_instructions(&e);
 	is_sorted(e.stack_a, e.len_a, 0, 1) &&
-	e.len_b == 0 ? exit(ft_end(0)) : exit(ft_end(2));
+			e.len_b == 0
+		? exit(ft_end(0))
+		: exit(ft_end(2));
 }
 
-static int		get_format(char **arg)
+static int get_format(char **arg)
 {
-	int			i;
-	int			j;
+	int i;
+	int j;
 
 	i = 0;
 	while (arg[i])
@@ -93,19 +95,18 @@ static int		get_format(char **arg)
 				return (0);
 			j++;
 		}
-		if (ft_strlen(arg[i]) > 11 || ft_atoss(arg[i]) > INT_MAX
-				|| ft_atoss(arg[i]) < INT_MIN)
+		if (ft_strlen(arg[i]) > 11 || ft_atoss(arg[i]) > INT_MAX || ft_atoss(arg[i]) < INT_MIN)
 			return (0);
 		i++;
 	}
 	return (i);
 }
 
-int				main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	char		**arg;
-	int			i;
-	int			param;
+	char **arg;
+	int i;
+	int param;
 
 	if (argc < 2)
 		return (-1);
@@ -113,7 +114,7 @@ int				main(int argc, char **argv)
 		arg = ft_strsplit(argv[1], ' ');
 	else
 	{
-		if (!(arg = (char**)malloc(sizeof(char*) * (argc))))
+		if (!(arg = (char **)malloc(sizeof(char *) * (argc))))
 			exit(ft_end(4));
 		i = -1;
 		while (++i + 1 < argc)

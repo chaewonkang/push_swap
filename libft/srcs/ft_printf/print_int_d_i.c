@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   print_int_d_i.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/13 20:18:31 by ljoly             #+#    #+#             */
-/*   Updated: 2017/03/13 20:18:32 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/13 20:17:39 by ckang             #+#    #+#             */
+/*   Updated: 2021/04/05 19:14:54 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int					ft_int_size(ssize_t nb)
+int ft_int_size(ssize_t nb)
 {
-	int				size;
+	int size;
 
 	size = 1;
 	if (nb == ft_power(-2, 63))
@@ -29,11 +29,11 @@ int					ft_int_size(ssize_t nb)
 	return (size);
 }
 
-static size_t		ft_int_to_print(ssize_t i, int nb, int size,
-		t_info *info)
+static size_t ft_int_to_print(ssize_t i, int nb, int size,
+							  t_info *info)
 {
-	size_t			len;
-	int				add_precision;
+	size_t len;
+	int add_precision;
 
 	len = 0;
 	add_precision = PRECISION - size;
@@ -51,12 +51,12 @@ static size_t		ft_int_to_print(ssize_t i, int nb, int size,
 	return (len);
 }
 
-size_t				ft_print_int(va_list *arg, t_info *info)
+size_t ft_print_int(va_list *arg, t_info *info)
 {
-	int				nb;
-	ssize_t			i;
-	int				size;
-	size_t			len;
+	int nb;
+	ssize_t i;
+	int size;
+	size_t len;
 
 	len = 0;
 	i = va_arg(*arg, ssize_t);

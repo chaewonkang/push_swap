@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/24 16:15:45 by ljoly             #+#    #+#             */
-/*   Updated: 2017/02/24 16:15:46 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/24 16:15:45 by ckang             #+#    #+#             */
+/*   Updated: 2021/02/24 16:15:46 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isascii(int c)
+int ft_isascii(int c)
 {
 	return (c >= 0 && c <= 127);
 }

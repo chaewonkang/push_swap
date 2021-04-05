@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlenchr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/24 16:25:32 by ljoly             #+#    #+#             */
-/*   Updated: 2017/02/24 16:25:33 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/24 16:25:32 by ckang             #+#    #+#             */
+/*   Updated: 2021/02/24 16:25:33 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_strlenchr(const char *s, char c)
+size_t ft_strlenchr(const char *s, char c)
 {
-	size_t	i;
+	size_t i;
 
 	i = 0;
 	while (s[i] && s[i] != c)

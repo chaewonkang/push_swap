@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_hex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/24 16:20:16 by ljoly             #+#    #+#             */
-/*   Updated: 2017/02/24 16:20:17 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/24 16:20:16 by ckang             #+#    #+#             */
+/*   Updated: 2021/02/24 16:20:17 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_print_hex(size_t nb, int upper)
+void ft_print_hex(size_t nb, int upper)
 {
-	char	*tab;
+	char *tab;
 
 	if (upper == 1)
 		tab = "0123456789ABCDEF";

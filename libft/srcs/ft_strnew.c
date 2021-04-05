@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/24 16:26:27 by ljoly             #+#    #+#             */
-/*   Updated: 2017/02/24 16:26:28 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/24 16:26:27 by ckang             #+#    #+#             */
+/*   Updated: 2021/02/24 16:26:28 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+char *ft_strnew(size_t size)
 {
 	return (ft_memalloc(size + 1));
 }

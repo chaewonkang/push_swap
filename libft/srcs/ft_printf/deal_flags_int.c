@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   deal_flags_int.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/13 20:14:48 by ljoly             #+#    #+#             */
-/*   Updated: 2017/03/13 20:14:50 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/13 20:14:48 by ckang             #+#    #+#             */
+/*   Updated: 2021/04/05 19:14:54 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_int_print_sign(ssize_t i, t_info *info)
+static size_t ft_int_print_sign(ssize_t i, t_info *info)
 {
-	size_t		len;
+	size_t len;
 
 	if (i < 0)
 		ft_putchar('-');
@@ -27,9 +27,9 @@ static size_t	ft_int_print_sign(ssize_t i, t_info *info)
 	return (len);
 }
 
-size_t			ft_int_print_right(t_info *info)
+size_t ft_int_print_right(t_info *info)
 {
-	size_t		len;
+	size_t len;
 
 	len = 0;
 	if (RIGHT_B > 0)
@@ -40,9 +40,9 @@ size_t			ft_int_print_right(t_info *info)
 	return (len);
 }
 
-size_t			ft_int_print_left(ssize_t i, t_info *info)
+size_t ft_int_print_left(ssize_t i, t_info *info)
 {
-	size_t		len;
+	size_t len;
 
 	len = 0;
 	if (LEFT_B > 0)
@@ -59,7 +59,7 @@ size_t			ft_int_print_left(ssize_t i, t_info *info)
 	return (len);
 }
 
-void			ft_int_flags_right(int size, t_info *info)
+void ft_int_flags_right(int size, t_info *info)
 {
 	if (WIDTH > 0 && FILL_L >= 0)
 		FILL_R = WIDTH - size - FILL_L;
@@ -68,8 +68,8 @@ void			ft_int_flags_right(int size, t_info *info)
 	RIGHT_B = FILL_R;
 }
 
-void			ft_int_flags_left(ssize_t i, int size, int precision,
-		t_info *info)
+void ft_int_flags_left(ssize_t i, int size, int precision,
+					   t_info *info)
 {
 	if (MINUS)
 	{

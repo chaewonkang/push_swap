@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   deal_with_it_bro_2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/13 20:15:42 by ljoly             #+#    #+#             */
-/*   Updated: 2017/03/13 20:15:43 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/13 20:15:42 by ckang             #+#    #+#             */
+/*   Updated: 2021/04/05 19:14:54 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_handle_binary(va_list *arg, t_info *info)
+static size_t ft_handle_binary(va_list *arg, t_info *info)
 {
 	if (SPEC == 'b')
 		return (ft_print_binary_b(arg, info));
@@ -27,7 +27,7 @@ static size_t	ft_handle_binary(va_list *arg, t_info *info)
 	return (0);
 }
 
-static size_t	ft_handle_mod_hh(va_list *arg, t_info *info)
+static size_t ft_handle_mod_hh(va_list *arg, t_info *info)
 {
 	if (MOD == MOD_HH)
 	{
@@ -55,7 +55,7 @@ static size_t	ft_handle_mod_hh(va_list *arg, t_info *info)
 	return (ft_handle_binary(arg, info));
 }
 
-static size_t	ft_handle_mod_ll(va_list *arg, t_info *info)
+static size_t ft_handle_mod_ll(va_list *arg, t_info *info)
 {
 	if (MOD == MOD_LL)
 	{
@@ -73,7 +73,7 @@ static size_t	ft_handle_mod_ll(va_list *arg, t_info *info)
 	return (ft_handle_mod_hh(arg, info));
 }
 
-size_t			ft_handle_mod_z(va_list *arg, t_info *info)
+size_t ft_handle_mod_z(va_list *arg, t_info *info)
 {
 	if (MOD == MOD_Z)
 	{

@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/24 16:25:18 by ljoly             #+#    #+#             */
-/*   Updated: 2017/02/24 16:25:19 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/24 16:25:18 by ckang             #+#    #+#             */
+/*   Updated: 2021/02/24 16:25:19 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t			ft_strlcat(char *dst, const char *src, size_t size)
+size_t ft_strlcat(char *dst, const char *src, size_t size)
 {
-	char			*cpy_dst;
-	const char		*cpy_src;
-	size_t			i;
-	size_t			len;
+	char *cpy_dst;
+	const char *cpy_src;
+	size_t i;
+	size_t len;
 
 	i = size;
 	cpy_dst = dst;

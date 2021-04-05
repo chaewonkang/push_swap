@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/27 18:03:52 by ljoly             #+#    #+#             */
-/*   Updated: 2017/07/06 16:50:20 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/27 18:03:52 by ckang             #+#    #+#             */
+/*   Updated: 2021/07/06 16:50:20 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void		bonus(t_stack *e, char begin, char op, char algo)
+static void bonus(t_stack *e, char begin, char op, char algo)
 {
 	if (begin)
 	{
@@ -37,7 +37,7 @@ static void		bonus(t_stack *e, char begin, char op, char algo)
 	}
 }
 
-void			send_op(t_stack *e, char op, char algo)
+void send_op(t_stack *e, char op, char algo)
 {
 	bonus(e, 1, op, 0);
 	if (op == SA)
@@ -65,9 +65,9 @@ void			send_op(t_stack *e, char op, char algo)
 	bonus(e, 0, op, algo);
 }
 
-void			proceed_op(t_stack *e, char op)
+void proceed_op(t_stack *e, char op)
 {
-	t_op		*tmp;
+	t_op *tmp;
 
 	if (op)
 	{
@@ -93,9 +93,9 @@ void			proceed_op(t_stack *e, char op)
 	}
 }
 
-static void		init_stack_a(t_stack *e)
+static void init_stack_a(t_stack *e)
 {
-	int			i;
+	int i;
 
 	i = 0;
 	while (i < e->param)
@@ -105,13 +105,13 @@ static void		init_stack_a(t_stack *e)
 	}
 }
 
-void			push_swap(t_stack *e)
+void push_swap(t_stack *e)
 {
-	int			algo;
+	int algo;
 
 	algo = 0;
 	if (is_sorted(e->stack_a, e->len_a, 0, 1))
-		return ;
+		return;
 	e->moves = 0;
 	if (e->param < 5 && (algo = 1))
 		simple_sort(e);
@@ -127,8 +127,7 @@ void			push_swap(t_stack *e)
 		ft_putchar('\n');
 	if (e->bonus.is_moves)
 		ft_printf("Stack A was sorted in %d moves\n",
-		e->bonus.moves);
+				  e->bonus.moves);
 	if (e->bonus.algo)
-		algo == 1 ? ft_putendl("Algorithm used: simple sort") :
-		ft_putendl("Algorithm used: quick sort\n");
+		algo == 1 ? ft_putendl("Algorithm used: simple sort") : ft_putendl("Algorithm used: quick sort\n");
 }

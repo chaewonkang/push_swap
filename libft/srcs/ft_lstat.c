@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstat.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/24 16:18:12 by ljoly             #+#    #+#             */
-/*   Updated: 2017/02/24 16:18:13 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/24 16:18:12 by ckang             #+#    #+#             */
+/*   Updated: 2021/02/24 16:18:13 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstat(t_list *begin_list, unsigned int nbr)
+t_list *ft_lstat(t_list *begin_list, unsigned int nbr)
 {
-	unsigned int	i;
-	t_list			*tmp;
+	unsigned int i;
+	t_list *tmp;
 
 	tmp = begin_list;
 	i = 0;

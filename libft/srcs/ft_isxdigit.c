@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isxdigit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/24 16:16:53 by ljoly             #+#    #+#             */
-/*   Updated: 2017/02/24 16:16:55 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/24 16:16:53 by ckang             #+#    #+#             */
+/*   Updated: 2021/02/24 16:16:55 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isxdigit(int c)
+int ft_isxdigit(int c)
 {
 	return ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'F') ||
 			(c >= 'a' && c <= 'f'));

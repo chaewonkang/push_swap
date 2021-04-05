@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   get_specs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/27 18:02:04 by ljoly             #+#    #+#             */
-/*   Updated: 2017/07/06 14:15:10 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/27 18:02:04 by ckang             #+#    #+#             */
+/*   Updated: 2021/07/06 14:15:10 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int		find_dup(t_stack *e)
+static int find_dup(t_stack *e)
 {
-	int			i;
-	int			j;
+	int i;
+	int j;
 
 	i = -1;
 	while (++i + 1 < e->param)
@@ -32,20 +32,20 @@ static int		find_dup(t_stack *e)
 	return (0);
 }
 
-static void		get_specs(char **arg, int param, t_display dsp)
+static void get_specs(char **arg, int param, t_display dsp)
 {
-	int			i;
-	t_stack		e;
+	int i;
+	t_stack e;
 
 	e.bonus = dsp;
 	e.param = param;
 	if (!(e.stack_a = ft_memalloc(sizeof(int) * e.param)) ||
-			!(e.stack_b = ft_memalloc(sizeof(int) * e.param)) ||
-			!(e.bonus.stack = ft_memalloc(sizeof(int) * e.param)))
+		!(e.stack_b = ft_memalloc(sizeof(int) * e.param)) ||
+		!(e.bonus.stack = ft_memalloc(sizeof(int) * e.param)))
 		exit(ft_end(4));
 	e.len_a = e.param;
 	e.len_b = 0;
-	if (!(e.op = (t_op**)ft_memalloc(sizeof(t_op*))))
+	if (!(e.op = (t_op **)ft_memalloc(sizeof(t_op *))))
 		exit(ft_end(4));
 	i = -1;
 	while (arg[++i])
@@ -61,10 +61,10 @@ static void		get_specs(char **arg, int param, t_display dsp)
 	exit(ft_end(10));
 }
 
-static int		get_format(char **arg)
+static int get_format(char **arg)
 {
-	int			i;
-	int			j;
+	int i;
+	int j;
 
 	i = 0;
 	while (arg[i])
@@ -78,20 +78,19 @@ static int		get_format(char **arg)
 				return (0);
 			j++;
 		}
-		if (ft_strlen(arg[i]) > 11 || ft_atoss(arg[i]) > INT_MAX
-				|| ft_atoss(arg[i]) < INT_MIN)
+		if (ft_strlen(arg[i]) > 11 || ft_atoss(arg[i]) > INT_MAX || ft_atoss(arg[i]) < INT_MIN)
 			return (0);
 		i++;
 	}
 	return (i);
 }
 
-int				main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	char		**arg;
-	int			i;
-	int			param;
-	t_display	dsp;
+	char **arg;
+	int i;
+	int param;
+	t_display dsp;
 
 	if (argc < 2)
 		return (-1);
@@ -100,7 +99,7 @@ int				main(int argc, char **argv)
 		arg = ft_strsplit(argv[1 + dsp.flags], ' ');
 	else
 	{
-		if (!(arg = (char**)malloc(sizeof(char*) * (argc - dsp.flags))))
+		if (!(arg = (char **)malloc(sizeof(char *) * (argc - dsp.flags))))
 			exit(ft_end(4));
 		i = -1;
 		while (++i + 1 + dsp.flags < argc)

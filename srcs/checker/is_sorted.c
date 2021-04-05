@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/04 18:54:05 by ljoly             #+#    #+#             */
-/*   Updated: 2017/07/04 18:54:11 by ljoly            ###   ########.fr       */
+/*   Created: 2021/07/04 18:54:05 by ckang             #+#    #+#             */
+/*   Updated: 2021/04/05 19:14:54 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int			is_not_ranked(t_stack *e, int *st, int len)
+int is_not_ranked(t_stack *e, int *st, int len)
 {
-	int		i;
-	int		count;
-	int		rank;
+	int i;
+	int count;
+	int rank;
 
 	i = -1;
 	count = 0;
@@ -30,17 +30,17 @@ int			is_not_ranked(t_stack *e, int *st, int len)
 			i++;
 		}
 		if (i + 1 < len && count > 0 &&
-				(st[i] > st[i + 1] ||
-				(st[i] < st[i - 1] &&
-				(st[i] != e->min || st[i - 1] != e->max))))
+			(st[i] > st[i + 1] ||
+			 (st[i] < st[i - 1] &&
+			  (st[i] != e->min || st[i - 1] != e->max))))
 			return (-1);
 	}
 	return (rank);
 }
 
-int			is_sorted(int *st, int len, int start, int inc)
+int is_sorted(int *st, int len, int start, int inc)
 {
-	int		i;
+	int i;
 
 	i = start - 1;
 	if (inc)

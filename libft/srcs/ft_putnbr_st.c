@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_st.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/24 16:21:47 by ljoly             #+#    #+#             */
-/*   Updated: 2017/02/24 16:21:48 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/24 16:21:47 by ckang             #+#    #+#             */
+/*   Updated: 2021/02/24 16:21:48 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_st(size_t n)
+void ft_putnbr_st(size_t n)
 {
 	if (n <= 9)
 		ft_putchar(n + '0');

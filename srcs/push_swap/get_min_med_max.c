@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   get_min_med_max.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/05 16:30:23 by ljoly             #+#    #+#             */
-/*   Updated: 2017/07/06 16:25:11 by ljoly            ###   ########.fr       */
+/*   Created: 2021/05/05 16:30:23 by ckang             #+#    #+#             */
+/*   Updated: 2021/07/06 16:25:11 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int				get_dist_to_med(int *st, int size, int next_med)
+int get_dist_to_med(int *st, int size, int next_med)
 {
-	int			i;
+	int i;
 
 	i = 0;
 	while (i < size && st[i] != next_med)
@@ -24,10 +24,10 @@ int				get_dist_to_med(int *st, int size, int next_med)
 	return (i);
 }
 
-int				get_next_med(t_stack *e, int *st, int size)
+int get_next_med(t_stack *e, int *st, int size)
 {
-	int			i;
-	int			j;
+	int i;
+	int j;
 
 	i = 0;
 	while (i < size)
@@ -44,11 +44,11 @@ int				get_next_med(t_stack *e, int *st, int size)
 	return (INT_MIN);
 }
 
-int				get_max(int *st, int len)
+int get_max(int *st, int len)
 {
-	int			i;
-	int			j;
-	int			max;
+	int i;
+	int j;
+	int max;
 
 	max = INT_MIN;
 	i = -1;
@@ -64,11 +64,11 @@ int				get_max(int *st, int len)
 	return (max);
 }
 
-int				get_min(int *st, int len)
+int get_min(int *st, int len)
 {
-	int			i;
-	int			j;
-	int			min;
+	int i;
+	int j;
+	int min;
 
 	min = INT_MAX;
 	i = -1;
@@ -84,12 +84,12 @@ int				get_min(int *st, int len)
 	return (min);
 }
 
-int				get_med(int *st, int len)
+int get_med(int *st, int len)
 {
-	int			i;
-	int			j;
-	int			dist;
-	int			med;
+	int i;
+	int j;
+	int dist;
+	int med;
 
 	i = -1;
 	med = INT_MIN;
@@ -105,7 +105,7 @@ int				get_med(int *st, int len)
 		if (dist == (len % 2 == 0 ? (len / 2) - 1 : len / 2))
 		{
 			med = st[i];
-			break ;
+			break;
 		}
 	}
 	return (med);

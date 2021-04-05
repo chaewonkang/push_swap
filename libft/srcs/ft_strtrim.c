@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/24 16:27:26 by ljoly             #+#    #+#             */
-/*   Updated: 2017/02/24 16:27:28 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/24 16:27:26 by ckang             #+#    #+#             */
+/*   Updated: 2021/02/24 16:27:28 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s)
+char *ft_strtrim(char const *s)
 {
-	size_t	start;
-	size_t	end;
-	int		k;
-	char	*ret;
+	size_t start;
+	size_t end;
+	int k;
+	char *ret;
 
 	if (!s)
 		return (NULL);
@@ -31,7 +31,7 @@ char	*ft_strtrim(char const *s)
 			k = 1;
 	}
 	while (k == 0 && (s[end - 1] == ' ' || s[end - 1] == '\n' ||
-				s[end - 1] == '\t'))
+					  s[end - 1] == '\t'))
 		end--;
 	ret = ft_strnew(end - start);
 	if (!ret)

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putwchar.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/24 16:22:45 by ljoly             #+#    #+#             */
-/*   Updated: 2017/02/24 16:22:46 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/24 16:22:45 by ckang             #+#    #+#             */
+/*   Updated: 2021/02/24 16:22:46 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static wchar_t		ft_set_unicode(wchar_t c, wchar_t v, wchar_t w)
+static wchar_t ft_set_unicode(wchar_t c, wchar_t v, wchar_t w)
 {
 	v = c;
 	w = c;
@@ -39,10 +39,10 @@ static wchar_t		ft_set_unicode(wchar_t c, wchar_t v, wchar_t w)
 	return (c);
 }
 
-void				ft_putwchar(wchar_t c)
+void ft_putwchar(wchar_t c)
 {
-	wchar_t		v;
-	wchar_t		w;
+	wchar_t v;
+	wchar_t w;
 
 	v = 0;
 	w = 0;

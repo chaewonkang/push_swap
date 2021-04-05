@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_wchar_size.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/24 16:27:50 by ljoly             #+#    #+#             */
-/*   Updated: 2017/02/24 16:27:51 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/24 16:27:50 by ckang             #+#    #+#             */
+/*   Updated: 2021/02/24 16:27:51 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t			ft_wchar_size(wchar_t c)
+size_t ft_wchar_size(wchar_t c)
 {
-	size_t		len;
+	size_t len;
 
 	len = 0;
 	if (c <= 127)

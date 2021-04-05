@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   print_binary_b.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/13 20:16:31 by ljoly             #+#    #+#             */
-/*   Updated: 2017/03/13 20:16:33 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/13 20:16:31 by ckang             #+#    #+#             */
+/*   Updated: 2021/04/05 19:14:54 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int					ft_binary_size(size_t b)
+int ft_binary_size(size_t b)
 {
-	int				size;
+	int size;
 
 	size = 1;
 	while (b >= 2)
@@ -25,10 +25,10 @@ int					ft_binary_size(size_t b)
 	return (size);
 }
 
-static size_t		ft_binary_to_print(unsigned int b, int size, t_info *info)
+static size_t ft_binary_to_print(unsigned int b, int size, t_info *info)
 {
-	size_t			len;
-	int				add_precision;
+	size_t len;
+	int add_precision;
 
 	len = 0;
 	add_precision = PRECISION - size;
@@ -43,11 +43,11 @@ static size_t		ft_binary_to_print(unsigned int b, int size, t_info *info)
 	return (len);
 }
 
-size_t				ft_print_binary_b(va_list *arg, t_info *info)
+size_t ft_print_binary_b(va_list *arg, t_info *info)
 {
-	unsigned int	b;
-	size_t			len;
-	int				size;
+	unsigned int b;
+	size_t len;
+	int size;
 
 	len = 0;
 	b = va_arg(*arg, unsigned int);

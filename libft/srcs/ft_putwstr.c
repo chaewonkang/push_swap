@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putwstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/24 16:22:54 by ljoly             #+#    #+#             */
-/*   Updated: 2017/02/24 16:22:55 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/24 16:22:54 by ckang             #+#    #+#             */
+/*   Updated: 2021/02/24 16:22:55 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_putwstr(const wchar_t *s)
+void ft_putwstr(const wchar_t *s)
 {
-	size_t	i;
+	size_t i;
 
 	i = 0;
 	if (!s)
-		return ;
+		return;
 	while (s[i])
 		ft_putwchar(s[i++]);
 }

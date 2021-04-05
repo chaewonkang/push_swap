@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   print_hex_x.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/13 20:18:19 by ljoly             #+#    #+#             */
-/*   Updated: 2017/03/13 20:18:21 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/13 20:17:39 by ckang             #+#    #+#             */
+/*   Updated: 2021/04/05 19:15:36 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int					ft_hex_size(size_t x)
+int ft_hex_size(size_t x)
 {
-	int				size;
+	int size;
 
 	size = 1;
 	while (x >= 16)
@@ -25,10 +25,10 @@ int					ft_hex_size(size_t x)
 	return (size);
 }
 
-static size_t		ft_hex_to_print(unsigned int x, int size, t_info *info)
+static size_t ft_hex_to_print(unsigned int x, int size, t_info *info)
 {
-	size_t			len;
-	int				add_precision;
+	size_t len;
+	int add_precision;
 
 	len = 0;
 	add_precision = PRECISION - size;
@@ -43,11 +43,11 @@ static size_t		ft_hex_to_print(unsigned int x, int size, t_info *info)
 	return (len);
 }
 
-size_t				ft_print_hex_upper(va_list *arg, t_info *info)
+size_t ft_print_hex_upper(va_list *arg, t_info *info)
 {
-	unsigned int	x;
-	size_t			len;
-	int				size;
+	unsigned int x;
+	size_t len;
+	int size;
 
 	len = 0;
 	HEX_UPPER = 1;
@@ -65,11 +65,11 @@ size_t				ft_print_hex_upper(va_list *arg, t_info *info)
 	return (len);
 }
 
-size_t				ft_print_hex_lower(va_list *arg, t_info *info)
+size_t ft_print_hex_lower(va_list *arg, t_info *info)
 {
-	unsigned int	x;
-	size_t			len;
-	int				size;
+	unsigned int x;
+	size_t len;
+	int size;
 
 	len = 0;
 	x = va_arg(*arg, unsigned int);

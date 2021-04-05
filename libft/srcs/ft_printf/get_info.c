@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   get_info.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/13 20:16:05 by ljoly             #+#    #+#             */
-/*   Updated: 2017/03/13 20:16:07 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/13 20:16:05 by ckang             #+#    #+#             */
+/*   Updated: 2021/04/05 19:14:54 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_get_modifier(char *frmt, t_info *info)
+void ft_get_modifier(char *frmt, t_info *info)
 {
-	int		i;
+	int i;
 
 	i = 0;
 	while (frmt[i] && frmt[i] != SPEC)
@@ -32,15 +32,15 @@ void		ft_get_modifier(char *frmt, t_info *info)
 		else if (frmt[i] == 'h')
 			MOD = MOD_H;
 		if (MOD)
-			break ;
+			break;
 		i++;
 	}
 }
 
-void		ft_get_precision(char *frmt, t_info *info)
+void ft_get_precision(char *frmt, t_info *info)
 {
-	int		i;
-	char	*tmp;
+	int i;
+	char *tmp;
 
 	i = 0;
 	while (frmt[i] && frmt[i] != SPEC && frmt[i] != '.')
@@ -59,14 +59,13 @@ void		ft_get_precision(char *frmt, t_info *info)
 	}
 }
 
-void		ft_get_width(char *frmt, t_info *info)
+void ft_get_width(char *frmt, t_info *info)
 {
-	int		i;
-	char	*tmp;
+	int i;
+	char *tmp;
 
 	i = 0;
-	while (frmt[i] && frmt[i] != SPEC && (!(ft_isdigit(frmt[i]))
-				|| frmt[i] == '0'))
+	while (frmt[i] && frmt[i] != SPEC && (!(ft_isdigit(frmt[i])) || frmt[i] == '0'))
 		i++;
 	if (ft_isdigit(frmt[i]) && frmt[i - 1] != '.')
 	{
@@ -80,9 +79,9 @@ void		ft_get_width(char *frmt, t_info *info)
 	}
 }
 
-void		ft_get_flags(char *frmt, t_info *info)
+void ft_get_flags(char *frmt, t_info *info)
 {
-	int		i;
+	int i;
 
 	i = 0;
 	while (frmt[i] && frmt[i] != SPEC)
@@ -107,15 +106,15 @@ void		ft_get_flags(char *frmt, t_info *info)
 	}
 }
 
-void		ft_get_specifier(char **frmt, t_info *info)
+void ft_get_specifier(char **frmt, t_info *info)
 {
-	int		i;
-	char	*spec;
+	int i;
+	char *spec;
 
 	i = 0;
 	spec = "sSpdDioOuUxXcCb";
 	if (!**frmt)
-		return ;
+		return;
 	while (**frmt && !SPEC)
 	{
 		if (**frmt == spec[i])

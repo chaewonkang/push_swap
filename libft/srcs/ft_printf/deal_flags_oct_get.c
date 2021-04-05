@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   deal_flags_oct_get.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/13 20:14:56 by ljoly             #+#    #+#             */
-/*   Updated: 2017/03/13 20:14:57 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/13 20:14:56 by ckang             #+#    #+#             */
+/*   Updated: 2021/04/05 19:14:54 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void			ft_oct_flags_right(int size, t_info *info)
+void ft_oct_flags_right(int size, t_info *info)
 {
 	if (WIDTH > 0 && FILL_L >= 0)
 		FILL_R = WIDTH - size - FILL_L;
@@ -21,14 +21,14 @@ void			ft_oct_flags_right(int size, t_info *info)
 	RIGHT_B = FILL_R;
 }
 
-static void		ft_absolute(t_info *info)
+static void ft_absolute(t_info *info)
 {
 	LEFT_B < 0 ? LEFT_B = 0 : LEFT_B;
 	LEFT_Z < 0 ? LEFT_Z = 0 : LEFT_Z;
 	FILL_L += LEFT_Z + LEFT_B;
 }
 
-void			ft_oct_flags_left(int size, int precision, t_info *info)
+void ft_oct_flags_left(int size, int precision, t_info *info)
 {
 	if (MINUS)
 	{

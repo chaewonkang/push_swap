@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/24 16:28:13 by ljoly             #+#    #+#             */
-/*   Updated: 2017/03/07 11:35:57 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/24 16:28:13 by ckang             #+#    #+#             */
+/*   Updated: 2021/03/07 11:35:57 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void		ft_newline(t_line *lst, char **file)
+static void ft_newline(t_line *lst, char **file)
 {
-	char		*tmp;
+	char *tmp;
 
 	*file = ft_strjoin_and_free(*file, lst->tab, '\n', 0);
 	if (ft_memchr(lst->tab, '\n', ft_strlen(lst->tab)))
@@ -27,14 +27,14 @@ static void		ft_newline(t_line *lst, char **file)
 		ft_bzero(lst->tab, ft_strlen(lst->tab) + 1);
 }
 
-static int		ft_store(t_line *lst, char **file)
+static int ft_store(t_line *lst, char **file)
 {
-	char		*buf;
-	int			ret;
+	char *buf;
+	int ret;
 
 	buf = ft_strnew(BUFF_SIZE);
 	while (!ft_memchr(lst->tab, '\n', ft_strlen(lst->tab)) &&
-			(ret = read(lst->fd, buf, BUFF_SIZE)))
+		   (ret = read(lst->fd, buf, BUFF_SIZE)))
 	{
 		if (ret == -1)
 		{
@@ -55,9 +55,9 @@ static int		ft_store(t_line *lst, char **file)
 	return (1);
 }
 
-static void		ft_add(t_line **begin_list, t_line *end)
+static void ft_add(t_line **begin_list, t_line *end)
 {
-	t_line	*tmp;
+	t_line *tmp;
 
 	if (*begin_list)
 	{
@@ -70,11 +70,11 @@ static void		ft_add(t_line **begin_list, t_line *end)
 		*begin_list = end;
 }
 
-static t_line	*ft_new_list(const int fd)
+static t_line *ft_new_list(const int fd)
 {
-	t_line	*new;
+	t_line *new;
 
-	if (!(new = (t_line*)malloc(sizeof(t_line))))
+	if (!(new = (t_line *)malloc(sizeof(t_line))))
 		return (NULL);
 	new->tab = ft_strnew(0);
 	new->fd = fd;
@@ -82,10 +82,10 @@ static t_line	*ft_new_list(const int fd)
 	return (new);
 }
 
-int				get_next_line(const int fd, char **line)
+int get_next_line(const int fd, char **line)
 {
-	static t_line	*first;
-	t_line			*last;
+	static t_line *first;
+	t_line *last;
 
 	if (fd < 0 || !line || BUFF_SIZE < 1)
 		return (-1);

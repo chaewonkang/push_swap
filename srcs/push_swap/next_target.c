@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   next_target.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/04 14:58:36 by ljoly             #+#    #+#             */
-/*   Updated: 2017/07/06 16:27:08 by ljoly            ###   ########.fr       */
+/*   Created: 2021/07/04 14:58:36 by ckang             #+#    #+#             */
+/*   Updated: 2021/07/06 16:27:08 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int				next_target(int *st, int len, int target, char comp)
+int next_target(int *st, int len, int target, char comp)
 {
-	int			i;
+	int i;
 
 	i = -1;
 	if (comp == 1)

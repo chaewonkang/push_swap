@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/24 16:19:06 by ljoly             #+#    #+#             */
-/*   Updated: 2017/02/24 16:19:08 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/24 16:19:06 by ckang             #+#    #+#             */
+/*   Updated: 2021/02/24 16:19:08 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+void *ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	size_t	i;
+	size_t i;
 
 	i = 0;
 	while (i < n)

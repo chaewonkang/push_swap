@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   print_oct_short_ho.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/13 20:20:21 by ljoly             #+#    #+#             */
-/*   Updated: 2017/03/13 20:20:22 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/13 20:20:21 by ckang             #+#    #+#             */
+/*   Updated: 2021/03/13 20:20:22 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t		ft_oct_to_print(unsigned short o, int size, t_info *info)
+static size_t ft_oct_to_print(unsigned short o, int size, t_info *info)
 {
-	size_t			len;
-	int				add_precision;
+	size_t len;
+	int add_precision;
 
 	len = 0;
 	add_precision = PRECISION - size;
@@ -30,11 +30,11 @@ static size_t		ft_oct_to_print(unsigned short o, int size, t_info *info)
 	return (len);
 }
 
-size_t				ft_print_oct_short(va_list *arg, t_info *info)
+size_t ft_print_oct_short(va_list *arg, t_info *info)
 {
-	size_t			o;
-	size_t			len;
-	int				size;
+	size_t o;
+	size_t len;
+	int size;
 
 	len = 0;
 	o = va_arg(*arg, size_t);

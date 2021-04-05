@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   print_wchar_t_ls.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/13 20:22:27 by ljoly             #+#    #+#             */
-/*   Updated: 2017/03/13 20:22:27 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/13 20:22:27 by ckang             #+#    #+#             */
+/*   Updated: 2021/03/13 20:22:27 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_wstr_to_print(wchar_t *s, int size, t_info *info)
+static size_t ft_wstr_to_print(wchar_t *s, int size, t_info *info)
 {
-	size_t		len;
-	int			add_precision;
+	size_t len;
+	int add_precision;
 
 	len = 0;
 	add_precision = PRECISION - size;
@@ -30,14 +30,14 @@ static size_t	ft_wstr_to_print(wchar_t *s, int size, t_info *info)
 	return (len);
 }
 
-size_t			ft_print_wstr(va_list *arg, t_info *info)
+size_t ft_print_wstr(va_list *arg, t_info *info)
 {
-	wchar_t		*s;
-	size_t		len;
-	int			size;
+	wchar_t *s;
+	size_t len;
+	int size;
 
 	len = 0;
-	s = va_arg(*arg, wchar_t*);
+	s = va_arg(*arg, wchar_t *);
 	if (s == NULL && !IS_PRECISION)
 	{
 		ft_putstr("(null)");

@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/24 16:20:55 by ljoly             #+#    #+#             */
-/*   Updated: 2017/02/24 16:20:56 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/24 16:20:55 by ckang             #+#    #+#             */
+/*   Updated: 2021/02/24 16:20:56 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl(char const *s)
+void ft_putendl(char const *s)
 {
 	if (!s)
-		return ;
+		return;
 	write(1, s, ft_strlen(s));
 	ft_putchar('\n');
 }

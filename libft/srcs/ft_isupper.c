@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/24 16:16:44 by ljoly             #+#    #+#             */
-/*   Updated: 2017/02/24 16:16:46 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/24 16:16:44 by ckang             #+#    #+#             */
+/*   Updated: 2021/02/24 16:16:46 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isupper(int c)
+int ft_isupper(int c)
 {
 	return (c >= 'A' && c <= 'Z');
 }

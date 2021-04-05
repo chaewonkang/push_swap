@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push_back.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/24 16:20:35 by ljoly             #+#    #+#             */
-/*   Updated: 2017/02/24 16:20:36 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/24 16:20:35 by ckang             #+#    #+#             */
+/*   Updated: 2021/02/24 16:20:36 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_push_back(t_list **begin_list, t_list *last)
+void ft_push_back(t_list **begin_list, t_list *last)
 {
-	t_list	*tmp;
+	t_list *tmp;
 
 	if (*begin_list)
 	{

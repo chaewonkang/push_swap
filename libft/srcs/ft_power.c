@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_power.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/24 16:20:02 by ljoly             #+#    #+#             */
-/*   Updated: 2017/02/24 16:20:03 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/24 16:20:02 by ckang             #+#    #+#             */
+/*   Updated: 2021/02/24 16:20:03 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long long int		ft_power(int nb, int power)
+long long int ft_power(int nb, int power)
 {
-	long long int	r;
+	long long int r;
 
 	if (power == 0)
 		return (1);

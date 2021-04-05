@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin_and_free.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/24 16:25:10 by ljoly             #+#    #+#             */
-/*   Updated: 2017/02/24 16:25:11 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/24 16:25:10 by ckang             #+#    #+#             */
+/*   Updated: 2021/02/24 16:25:11 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin_and_free(char *s1, char *s2, char c, int at)
+char *ft_strjoin_and_free(char *s1, char *s2, char c, int at)
 {
-	size_t	i;
-	size_t	j;
-	char	*ret;
+	size_t i;
+	size_t j;
+	char *ret;
 
 	if (!s1 || !s2)
 		return (NULL);

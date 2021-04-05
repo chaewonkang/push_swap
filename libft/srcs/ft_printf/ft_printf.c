@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/13 20:15:52 by ljoly             #+#    #+#             */
-/*   Updated: 2017/03/13 20:15:56 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/13 20:15:52 by ckang             #+#    #+#             */
+/*   Updated: 2021/04/05 19:14:54 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_get_info(va_list *arg, char **frmt)
+static size_t ft_get_info(va_list *arg, char **frmt)
 {
-	char		*tmp;
-	t_info		info;
-	size_t		len;
+	char *tmp;
+	t_info info;
+	size_t len;
 
 	len = 0;
 	++(*frmt);
@@ -38,11 +38,11 @@ static size_t	ft_get_info(va_list *arg, char **frmt)
 	return (len);
 }
 
-static int		ft_check(va_list *arg, const char *format)
+static int ft_check(va_list *arg, const char *format)
 {
-	size_t		len;
-	char		*frmt;
-	char		*start;
+	size_t len;
+	char *frmt;
+	char *start;
 
 	len = 0;
 	frmt = (char *)format;
@@ -65,10 +65,10 @@ static int		ft_check(va_list *arg, const char *format)
 	return (len);
 }
 
-int				ft_printf(const char *format, ...)
+int ft_printf(const char *format, ...)
 {
-	size_t		ret;
-	va_list		arg;
+	size_t ret;
+	va_list arg;
 
 	ret = 0;
 	if (format)

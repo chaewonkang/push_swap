@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   deal_flags_hex_print.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/13 20:14:39 by ljoly             #+#    #+#             */
-/*   Updated: 2017/03/13 20:14:41 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/13 20:14:39 by ckang             #+#    #+#             */
+/*   Updated: 2021/04/05 19:14:54 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_hex_print_flag(t_info *info)
+static size_t ft_hex_print_flag(t_info *info)
 {
-	size_t		len;
+	size_t len;
 
 	len = 0;
 	if (HEX_UPPER)
@@ -30,9 +30,9 @@ static size_t	ft_hex_print_flag(t_info *info)
 	return (len);
 }
 
-size_t			ft_hex_print_right(t_info *info)
+size_t ft_hex_print_right(t_info *info)
 {
-	size_t		len;
+	size_t len;
 
 	len = 0;
 	if (RIGHT_B > 0)
@@ -43,9 +43,9 @@ size_t			ft_hex_print_right(t_info *info)
 	return (len);
 }
 
-static size_t	ft_hex_print_left_end(t_info *info)
+static size_t ft_hex_print_left_end(t_info *info)
 {
-	size_t		len;
+	size_t len;
 
 	len = 0;
 	if (!SHARP && LEFT_B > 0)
@@ -61,9 +61,9 @@ static size_t	ft_hex_print_left_end(t_info *info)
 	return (len);
 }
 
-size_t			ft_hex_print_left(t_info *info)
+size_t ft_hex_print_left(t_info *info)
 {
-	size_t		len;
+	size_t len;
 
 	len = 0;
 	if (SHARP)

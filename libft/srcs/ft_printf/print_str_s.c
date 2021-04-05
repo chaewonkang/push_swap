@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   print_str_s.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/13 20:21:05 by ljoly             #+#    #+#             */
-/*   Updated: 2017/03/13 20:21:05 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/13 20:21:05 by ckang             #+#    #+#             */
+/*   Updated: 2021/03/13 20:21:05 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t		ft_str_to_print(char *s, t_info *info)
+static size_t ft_str_to_print(char *s, t_info *info)
 {
-	size_t			len;
-	int				size;
+	size_t len;
+	int size;
 
 	len = 0;
 	size = (int)ft_strlen(s);
@@ -30,13 +30,13 @@ static size_t		ft_str_to_print(char *s, t_info *info)
 	return (len);
 }
 
-size_t				ft_print_str(va_list *arg, t_info *info)
+size_t ft_print_str(va_list *arg, t_info *info)
 {
-	char			*s;
-	size_t			len;
+	char *s;
+	size_t len;
 
 	len = 0;
-	s = va_arg(*arg, char*);
+	s = va_arg(*arg, char *);
 	if (!s && !IS_PRECISION)
 	{
 		ft_putstr("(null)");

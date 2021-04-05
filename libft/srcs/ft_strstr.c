@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/24 16:27:06 by ljoly             #+#    #+#             */
-/*   Updated: 2017/02/24 16:27:07 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/24 16:27:06 by ckang             #+#    #+#             */
+/*   Updated: 2021/02/24 16:27:07 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strstr(const char *big, const char *little)
+char *ft_strstr(const char *big, const char *little)
 {
-	size_t	i;
-	size_t	j;
+	size_t i;
+	size_t j;
 
 	i = 0;
 	if (*little == '\0')

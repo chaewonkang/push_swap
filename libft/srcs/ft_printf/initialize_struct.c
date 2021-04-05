@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_struct.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/13 20:16:17 by ljoly             #+#    #+#             */
-/*   Updated: 2017/03/13 20:16:20 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/13 20:16:17 by ckang             #+#    #+#             */
+/*   Updated: 2021/04/05 19:14:54 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_initialize_struct(t_info *info)
+void ft_initialize_struct(t_info *info)
 {
 	SPEC = 0;
 	ft_bzero(FLAGS, 7);

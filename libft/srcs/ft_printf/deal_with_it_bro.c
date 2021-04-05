@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   deal_with_it_bro.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/13 20:15:31 by ljoly             #+#    #+#             */
-/*   Updated: 2017/03/13 20:15:33 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/13 20:15:31 by ckang             #+#    #+#             */
+/*   Updated: 2021/04/05 19:14:54 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_handle_mod_j(va_list *arg, t_info *info)
+static size_t ft_handle_mod_j(va_list *arg, t_info *info)
 {
 	if (MOD == MOD_J)
 	{
@@ -36,7 +36,7 @@ static size_t	ft_handle_mod_j(va_list *arg, t_info *info)
 	return (ft_handle_mod_z(arg, info));
 }
 
-static size_t	ft_handle_mod_h(va_list *arg, t_info *info)
+static size_t ft_handle_mod_h(va_list *arg, t_info *info)
 {
 	if (MOD == MOD_H)
 	{
@@ -58,10 +58,10 @@ static size_t	ft_handle_mod_h(va_list *arg, t_info *info)
 	return (ft_handle_mod_j(arg, info));
 }
 
-static size_t	ft_handle_mod_l(va_list *arg, t_info *info)
+static size_t ft_handle_mod_l(va_list *arg, t_info *info)
 {
 	if (MOD == MOD_L || (MOD == NO_MOD && (SPEC == 'C' || SPEC == 'S' ||
-					SPEC == 'D' || SPEC == 'U' || SPEC == 'O')))
+										   SPEC == 'D' || SPEC == 'U' || SPEC == 'O')))
 	{
 		if (SPEC == 'c' || SPEC == 'C')
 			return (ft_print_wchar(arg, info));
@@ -81,7 +81,7 @@ static size_t	ft_handle_mod_l(va_list *arg, t_info *info)
 	return (ft_handle_mod_h(arg, info));
 }
 
-size_t			ft_handle_spec(va_list *arg, t_info *info)
+size_t ft_handle_spec(va_list *arg, t_info *info)
 {
 	SPEC == 'i' ? SPEC = 'd' : SPEC;
 	if (MOD == NO_MOD)

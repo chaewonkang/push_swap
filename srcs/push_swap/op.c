@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   op.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/27 14:00:13 by ljoly             #+#    #+#             */
-/*   Updated: 2017/07/06 16:37:51 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/27 14:00:13 by ckang             #+#    #+#             */
+/*   Updated: 2021/07/06 16:37:51 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void		reverse_rotate(int *st, int len)
+static void reverse_rotate(int *st, int len)
 {
-	int			i;
-	int			j;
+	int i;
+	int j;
 
 	if (len > 1)
 	{
@@ -27,10 +27,10 @@ static void		reverse_rotate(int *st, int len)
 	}
 }
 
-static void		rotate(int *st, int len)
+static void rotate(int *st, int len)
 {
-	int			i;
-	int			j;
+	int i;
+	int j;
 
 	if (len > 1)
 	{
@@ -42,10 +42,10 @@ static void		rotate(int *st, int len)
 	}
 }
 
-static void		push(int *st1, int *st2, int *len1, int *len2)
+static void push(int *st1, int *st2, int *len1, int *len2)
 {
-	int			i;
-	int			j;
+	int i;
+	int j;
 
 	if (*len2 > 0)
 	{
@@ -62,9 +62,9 @@ static void		push(int *st1, int *st2, int *len1, int *len2)
 	}
 }
 
-static void		swap(int *tab, int len)
+static void swap(int *tab, int len)
 {
-	int			i;
+	int i;
 
 	if (len > 1)
 	{
@@ -74,7 +74,7 @@ static void		swap(int *tab, int len)
 	}
 }
 
-void			do_op(t_stack *e, char op)
+void do_op(t_stack *e, char op)
 {
 	if (op == SA || op == SS)
 		swap(e->stack_a, e->len_a);

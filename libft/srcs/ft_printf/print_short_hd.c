@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   print_short_hd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/13 20:20:52 by ljoly             #+#    #+#             */
-/*   Updated: 2017/03/13 20:20:53 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/13 20:20:52 by ckang             #+#    #+#             */
+/*   Updated: 2021/03/13 20:20:53 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t		ft_int_to_print(short nb, ssize_t i, int size,
-		t_info *info)
+static size_t ft_int_to_print(short nb, ssize_t i, int size,
+							  t_info *info)
 {
-	size_t			len;
-	int				add_precision;
+	size_t len;
+	int add_precision;
 
 	len = 0;
 	add_precision = PRECISION - size;
@@ -34,12 +34,12 @@ static size_t		ft_int_to_print(short nb, ssize_t i, int size,
 	return (len);
 }
 
-size_t				ft_print_short(va_list *arg, t_info *info)
+size_t ft_print_short(va_list *arg, t_info *info)
 {
-	short			nb;
-	ssize_t			i;
-	int				size;
-	size_t			len;
+	short nb;
+	ssize_t i;
+	int size;
+	size_t len;
 
 	len = 0;
 	i = va_arg(*arg, ssize_t);

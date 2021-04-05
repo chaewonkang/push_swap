@@ -3,36 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/05 20:38:22 by ljoly             #+#    #+#             */
-/*   Updated: 2017/07/06 16:30:11 by ljoly            ###   ########.fr       */
+/*   Created: 2021/07/05 20:38:22 by ckang             #+#    #+#             */
+/*   Updated: 2021/07/06 16:30:11 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int			get_st(char op)
+static int get_st(char op)
 {
-	int				st;
+	int st;
 
 	st = 0;
 	if (op == SA || op == SS || op == PA || op == PB || op == RA || op == RR ||
-			op == RRA || op == RRR)
+		op == RRA || op == RRR)
 		st += 1;
 	if (op == SB || op == SS || op == PA || op == PB || op == RB || op == RR ||
-			op == RRB || op == RRR)
+		op == RRB || op == RRR)
 		st += 2;
 	return (st);
 }
 
-static void			display_colors(t_stack *e, char op)
+static void display_colors(t_stack *e, char op)
 {
-	int				i;
-	int				st;
+	int i;
+	int st;
 
 	st = get_st(op);
-	ft_printf(""BLUE"%s"NC"\n", "STACK A: ");
+	ft_printf("" BLUE "%s" NC "\n", "STACK A: ");
 	if (st == AB || st == A)
 		ft_putstr(GREEN);
 	i = 0;
@@ -41,7 +41,7 @@ static void			display_colors(t_stack *e, char op)
 		ft_printf("%d\n", e->stack_a[i]);
 		i++;
 	}
-	ft_printf("\n"BLUE"%s"NC"\n", "STACK B: ");
+	ft_printf("\n" BLUE "%s" NC "\n", "STACK B: ");
 	if (st == AB || st == B)
 		ft_putstr(GREEN);
 	i = 0;
@@ -53,15 +53,15 @@ static void			display_colors(t_stack *e, char op)
 	ft_putendl(NC);
 }
 
-void				display_stacks(t_stack *e, char c, char op)
+void display_stacks(t_stack *e, char c, char op)
 {
-	int				i;
+	int i;
 
 	i = 0;
 	if (c)
 	{
 		display_colors(e, op);
-		return ;
+		return;
 	}
 	ft_printf("%s\n", "STACK A: ");
 	while (i < e->len_a)
@@ -79,7 +79,7 @@ void				display_stacks(t_stack *e, char c, char op)
 	ft_putchar('\n');
 }
 
-static void			init_display(t_display *dsp)
+static void init_display(t_display *dsp)
 {
 	dsp->stacks = 0;
 	dsp->refresh = 0;
@@ -90,9 +90,9 @@ static void			init_display(t_display *dsp)
 	dsp->flags = 0;
 }
 
-void				parse_display(char **argv, t_display *dsp)
+void parse_display(char **argv, t_display *dsp)
 {
-	int				i;
+	int i;
 
 	init_display(dsp);
 	i = 1;
@@ -111,5 +111,5 @@ void				parse_display(char **argv, t_display *dsp)
 		i++;
 	}
 	dsp->flags = dsp->stacks + dsp->refresh + dsp->colors + dsp->algo +
-		dsp->is_moves;
+				 dsp->is_moves;
 }

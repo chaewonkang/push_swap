@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   end.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/18 14:22:08 by ljoly             #+#    #+#             */
-/*   Updated: 2017/07/04 14:46:46 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/18 14:22:08 by ckang             #+#    #+#             */
+/*   Updated: 2021/04/05 19:26:43 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int				ft_end(int status)
+int ft_end(int status)
 {
 	if (status == 0 || status == 10)
 	{

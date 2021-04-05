@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/24 16:18:21 by ljoly             #+#    #+#             */
-/*   Updated: 2017/02/24 16:18:22 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/24 16:18:21 by ckang             #+#    #+#             */
+/*   Updated: 2021/02/24 16:18:22 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
+void ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	t_list	*fw_lst;
+	t_list *fw_lst;
 
 	if (!alst || !del)
-		return ;
+		return;
 	while (*alst)
 	{
 		fw_lst = (*alst)->next;

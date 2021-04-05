@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   print_oct_o.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/13 20:20:13 by ljoly             #+#    #+#             */
-/*   Updated: 2017/03/13 20:20:14 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/13 20:20:13 by ckang             #+#    #+#             */
+/*   Updated: 2021/03/13 20:20:14 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int					ft_oct_size(size_t o)
+int ft_oct_size(size_t o)
 {
-	int				size;
+	int size;
 
 	size = 1;
 	while (o >= 8)
@@ -25,10 +25,10 @@ int					ft_oct_size(size_t o)
 	return (size);
 }
 
-static size_t		ft_oct_to_print(unsigned int o, int size, t_info *info)
+static size_t ft_oct_to_print(unsigned int o, int size, t_info *info)
 {
-	size_t			len;
-	int				add_precision;
+	size_t len;
+	int add_precision;
 
 	len = 0;
 	add_precision = PRECISION - size;
@@ -43,11 +43,11 @@ static size_t		ft_oct_to_print(unsigned int o, int size, t_info *info)
 	return (len);
 }
 
-size_t				ft_print_oct(va_list *arg, t_info *info)
+size_t ft_print_oct(va_list *arg, t_info *info)
 {
-	unsigned int	o;
-	size_t			len;
-	int				size;
+	unsigned int o;
+	size_t len;
+	int size;
 
 	len = 0;
 	o = va_arg(*arg, unsigned int);

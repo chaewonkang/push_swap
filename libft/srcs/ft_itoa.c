@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/24 16:17:01 by ljoly             #+#    #+#             */
-/*   Updated: 2017/02/24 16:17:10 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/24 16:17:01 by ckang             #+#    #+#             */
+/*   Updated: 2021/02/24 16:17:10 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int			ft_checklen(int nbr)
+int ft_checklen(int nbr)
 {
-	int		len;
+	int len;
 
 	len = 0;
 	if (nbr < 0)
@@ -32,10 +32,10 @@ int			ft_checklen(int nbr)
 	return (len);
 }
 
-char		*ft_fill_array(int nbr, char *ret, int len, int s)
+char *ft_fill_array(int nbr, char *ret, int len, int s)
 {
-	int		i;
-	int		tmp;
+	int i;
+	int tmp;
 
 	if (s)
 	{
@@ -59,9 +59,9 @@ char		*ft_fill_array(int nbr, char *ret, int len, int s)
 	return (ret);
 }
 
-char		*ft_intmax(void)
+char *ft_intmax(void)
 {
-	char	*ret;
+	char *ret;
 
 	if (!(ret = (char *)malloc(sizeof(char) * (11 + 1))))
 		return (NULL);
@@ -69,11 +69,11 @@ char		*ft_intmax(void)
 	return (ret);
 }
 
-char		*ft_itoa(int nbr)
+char *ft_itoa(int nbr)
 {
-	char	*ret;
-	int		len;
-	int		s;
+	char *ret;
+	int len;
+	int s;
 
 	if (nbr == -2147483648)
 		return ((ret = ft_intmax()));

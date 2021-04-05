@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   print_wchar_t_lc.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/13 20:22:19 by ljoly             #+#    #+#             */
-/*   Updated: 2017/03/13 20:22:20 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/13 20:22:19 by ckang             #+#    #+#             */
+/*   Updated: 2021/03/13 20:22:20 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_wchar_to_print(wchar_t c, int size, t_info *info)
+static size_t ft_wchar_to_print(wchar_t c, int size, t_info *info)
 {
-	size_t		len;
-	int			add_precision;
+	size_t len;
+	int add_precision;
 
 	len = 0;
 	add_precision = PRECISION - size;
@@ -30,11 +30,11 @@ static size_t	ft_wchar_to_print(wchar_t c, int size, t_info *info)
 	return (len);
 }
 
-size_t			ft_print_wchar(va_list *arg, t_info *info)
+size_t ft_print_wchar(va_list *arg, t_info *info)
 {
-	wchar_t		c;
-	size_t		len;
-	int			size;
+	wchar_t c;
+	size_t len;
+	int size;
 
 	len = 0;
 	c = va_arg(*arg, wchar_t);

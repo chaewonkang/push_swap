@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   checker_op.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljoly <ljoly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckang <ckang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/27 13:53:56 by ljoly             #+#    #+#             */
-/*   Updated: 2017/07/06 16:22:15 by ljoly            ###   ########.fr       */
+/*   Created: 2021/03/27 13:53:56 by ckang             #+#    #+#             */
+/*   Updated: 2021/04/05 19:26:43 by ckang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void		reverse_rotate(t_stack *e, int *st, int len)
+static void reverse_rotate(t_stack *e, int *st, int len)
 {
-	int			i;
-	int			j;
+	int i;
+	int j;
 
 	if (len > 1)
 	{
@@ -28,10 +28,10 @@ static void		reverse_rotate(t_stack *e, int *st, int len)
 	e->op_ok = 1;
 }
 
-static void		rotate(t_stack *e, int *st, int len)
+static void rotate(t_stack *e, int *st, int len)
 {
-	int			i;
-	int			j;
+	int i;
+	int j;
 
 	if (len > 1)
 	{
@@ -44,10 +44,10 @@ static void		rotate(t_stack *e, int *st, int len)
 	e->op_ok = 1;
 }
 
-static void		push(int *st1, int *st2, int *len1, int *len2)
+static void push(int *st1, int *st2, int *len1, int *len2)
 {
-	int			i;
-	int			j;
+	int i;
+	int j;
 
 	if (*len2 > 0)
 	{
@@ -64,9 +64,9 @@ static void		push(int *st1, int *st2, int *len1, int *len2)
 	}
 }
 
-static void		swap(t_stack *e, int *tab, int len)
+static void swap(t_stack *e, int *tab, int len)
 {
-	int			i;
+	int i;
 
 	if (len > 1)
 	{
@@ -77,7 +77,7 @@ static void		swap(t_stack *e, int *tab, int len)
 	e->op_ok = 1;
 }
 
-int				get_operations(char *line, t_stack *e)
+int get_operations(char *line, t_stack *e)
 {
 	if (ft_strequ(line, "sa") || ft_strequ(line, "ss"))
 		swap(e, e->stack_a, e->len_a);
